@@ -1,7 +1,38 @@
 <p>
     Home component is working!
 </p>
+
 <section>
-    <app-pets-listing *ngFor="let petsListing of
-    petsListingList" [petsListing]="petsListing"></app-pets-listing>
+    
+    <form>
+        <input type="text" placeholder="Filter by name" #filter>
+        <button class="primary" type="button" (click)="filterResults(filter.value)">
+            Search
+        </button>
+
+    </form>
+    
+      <button class="primary" type="button" (click)="filterByType('cat')">
+        Cats
+    </button>
+
+    <button class="primary" type="button" (click)="filterByType('dog')">
+        Dogs
+    </button>
+
+    <button class="primary" type="button" (click)="filterByGender('Male')">
+        Male
+    </button>
+
+    <button class="primary" type="button" (click)="filterByGender('Female')">
+        Female
+    </button>
+
+    <button class="primary" type="button" (click)="resetFilters()">
+        Reset Filters
+    </button>
+
+    <app-pets-listing *ngFor="let petsListing of filteredPetsList" 
+                      [petsListing]="petsListing">
+    </app-pets-listing>
 </section>
