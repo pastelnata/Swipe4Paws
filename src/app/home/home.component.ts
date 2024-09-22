@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../pets-listing/pets-listing.component';
 import { PetsListing } from '../pets-listing';
 
+declare function showButtons(): void;
+
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [CommonModule, PetsListingComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+  
 })
 export class HomeComponent {
   petsListingList: PetsListing[] = [
@@ -52,6 +55,9 @@ export class HomeComponent {
 
   filteredPetsList: PetsListing[] = [];
 
+  //Boolean contrioling visibility of buttons
+  showFilterOptions: boolean = false;
+
   // Filter criteria
   nameFilter: string = '';
   typeFilter: string = '';
@@ -61,30 +67,12 @@ export class HomeComponent {
     this.filteredPetsList = this.petsListingList; 
   }
 
-  // // Filter by name function
-  // filterResults(name: string) {
-  //   if (!name) {
-  //     this.filteredPetsList = this.petsListingList;
-  //   } else {
-  //     this.filteredPetsList = this.petsListingList.filter(petsListing =>
-  //       petsListing.name.toLowerCase().includes(name.toLowerCase())
-  //     );
-  //   }
-  // }
+  //Function that is called upon clicking button Filter
+  //Changes visibility of filteroptions
+  toggleFilterOptions() {
+    this.showFilterOptions = !this.showFilterOptions;
+  }
 
-  // //Filter by pet type
-  // filterByType(type: string) {
-  //   this.filteredPetsList = this.petsListingList.filter(petsListing =>
-  //     petsListing.type.toLowerCase() === type.toLowerCase()
-  //   );
-  // }
-
-  // //Filter by pet type
-  // filterByGender(gender: string) {
-  //   this.filteredPetsList = this.petsListingList.filter(petsListing =>
-  //     petsListing.gender.toLowerCase() === gender.toLowerCase()
-  //   );
-  // }
 
   applyFilters() {
     this.filteredPetsList = this.petsListingList.filter(pet => {
