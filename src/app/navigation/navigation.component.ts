@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../pets-listing/pets-listing.component';
 import { PetsListing } from '../pets-listing';
+import { Navigation } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -16,6 +17,7 @@ import { PetsListing } from '../pets-listing';
         Search</button>
     </form> -->
   `,
+  templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css'
 })
 export class NavigationComponent {
