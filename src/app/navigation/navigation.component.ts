@@ -8,6 +8,7 @@ import { PetsListing } from '../pets-listing';
   standalone: true,
   imports: [CommonModule, PetsListingComponent],
   template: `
+   <h1>Nawigation is working</h1>
     <!-- Search engine, can be used -->
     <!-- <form>
         <input type="text" placeholder="Filter by name" #filter>
