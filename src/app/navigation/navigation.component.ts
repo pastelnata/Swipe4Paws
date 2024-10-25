@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../pets-listing/pets-listing.component';
-import { PetsListing } from '../pets-listing';
-import { Navigation } from '@angular/router';
+
 
 @Component({
   selector: 'app-navigation',
@@ -11,11 +10,11 @@ import { Navigation } from '@angular/router';
   template: `
    <h1>Nawigation is working</h1>
     <!-- Search engine, can be used -->
-    <!-- <form>
+    <form>
         <input type="text" placeholder="Filter by name" #filter>
         <button class="primary" type="button" (click)="filterResults(filter.value)">
         Search</button>
-    </form> -->
+    </form>
   `,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css'
