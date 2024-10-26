@@ -6,7 +6,7 @@
   #Filters {
     display: flex;  
     justify-content: space-between; 
-    align-items: center;
+    align-items: top;    
     margin: 10px 40px 10px 40px; 
 }
 
@@ -37,16 +37,12 @@
 }
 
 
-#SortByButton {
-    width: 80px;
-    background-color: white;
-}
-
 #Reset {
-    background-color: rgb(132, 185, 132);
+    background-color:rgb(86, 125, 99);
     border-radius: 10%;
-    border-color: rgb(132, 185, 132) ;
+    border-color: rgb(86, 125, 99);
     border-style: solid;
+    color: white;
 }
 
 #Reset:hover {
@@ -56,17 +52,18 @@
 .FilterRight {
     display: flex;
     align-items: center; 
+    justify-content: center;
 }
 
 .primary {
-    background-color: rgb(132, 185, 132);
-    height: 30px;
-    width: 60px;
+    background-color: rgb(86, 125, 99);
+    height: 50px;
+    width: 80px;
     margin: 2px;
     border-radius: 10%;
-    border-color: rgb(132, 185, 132) ;
+    border-color: rgba(86, 125, 99, 0.784) ;
     border-style: solid;
-    
+    color: white;    
 }
 .primary:hover {
     background-color:rgb(165, 232, 165) ;
@@ -74,13 +71,14 @@
 }
 
 .secondary {
-    background-color: rgb(241, 194, 255);
+    background-color:rgb(233, 160, 255);
     height: 30px;
     width: 60px;
     margin: 2px;
     border-radius: 10%;
-    border-color: rgb(241, 194, 255) ;
+    border-color: rgb(233, 160, 255) ;
     border-style: solid;  
+    color: white;
 }
 .secondary:hover {
     background-color:rgb(246, 215, 253) ;
@@ -88,8 +86,6 @@
 }
 
 .sort-dropdown{
-    margin-left: 20px;
-top: calc(100% + 10px) !important;
     
     
 }
