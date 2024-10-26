@@ -87,3 +87,10 @@
     border-color:rgb(246, 215, 253) ;
 }
 
+.sort-dropdown{
+    margin-left: 20px;
+top: calc(100% + 10px) !important;
+    
+    
+}
+
