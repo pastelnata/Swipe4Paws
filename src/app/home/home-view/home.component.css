@@ -1,9 +1,7 @@
-home.component.css
-
 *  {
     box-sizing: border-box;
-}
-
+  }
+  
 
 /* MAIN */
 
@@ -35,6 +33,7 @@ home.component.css
 
 /*FILTERS */
 
+  #Filters {
 #Filters {
     display: block;
     display: flex;  
@@ -75,6 +74,12 @@ home.component.css
     background-color: white;
 }
 
+
+#SortByButton {
+    width: 80px;
+    background-color: white;
+}
+
 #Reset {
     background-color:rgb(86, 125, 99);
     border-radius: 10%;
@@ -87,7 +92,6 @@ home.component.css
     background-color:rgb(165, 232, 165) ;
     border-color:rgb(165, 232, 165) ;
 }
-
 .FilterRight {
     display: flex;
     align-items: center; 
@@ -119,7 +123,6 @@ home.component.css
     border-style: solid;  
     color: white;
 }
-
 .secondary:hover {
     background-color:rgb(246, 215, 253) ;
     border-color:rgb(246, 215, 253) ;

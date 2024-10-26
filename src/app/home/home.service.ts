@@ -50,4 +50,3 @@ export class HomeService {
     return this.filteredPetsList;
   }
 }
-

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
 import { PetsListing } from '../../models/pets-listing';
@@ -13,6 +13,9 @@ import { HomeService } from '../home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+ 
+  
+
 
   petsListingList: PetsListing[] = [];
   showFilterOptions: boolean = false;
@@ -84,6 +87,7 @@ export class HomeComponent {
     this.showFilterOptions = !this.showFilterOptions;
   }
 
+
   applyFilters() {
     this.homeService.setFilters(this.nameFilter, this.typeFilter, this.genderFilter);
     this.loadListData();
@@ -95,6 +99,7 @@ export class HomeComponent {
     this.genderFilter = '';
     this.homeService.resetFilters();
     this.loadListData();
+
   }
 
   filterByType(type: string) {
