@@ -7,10 +7,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
     padding: 0% 15%;
     box-sizing: border-box;
     border-bottom: 0.5px solid rgb(53, 85, 64);
+    z-index: 3;
 }
 
 .header img {

@@ -5,6 +5,7 @@ import { PetsListing } from '../../models/pets-listing';
 import { MatSelectModule } from '@angular/material/select';
 import { HomeService } from '../home.service';
 
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -13,10 +14,6 @@ import { HomeService } from '../home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
- 
-  
-
-
   petsListingList: PetsListing[] = [];
   showFilterOptions: boolean = false;
   nameFilter: string = '';
@@ -27,16 +24,12 @@ export class HomeComponent {
   constructor(private homeService: HomeService) {
     this.loadListData();
   }
-  
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('catVideo') catVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('otherVideo') otherVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('backgroundPic') backgroundPic!: ElementRef<HTMLPictureElement>;
-  
 
-  /* CHANGE VIDEO BACKGROUND METHODS */
-  
   hideallVideos() {
     this.dogVideo.nativeElement.classList.remove('show');
     this.catVideo.nativeElement.classList.remove('show');
@@ -75,6 +68,7 @@ export class HomeComponent {
     selectedVideo.nativeElement.classList.remove('show');
     this.backgroundPic.nativeElement.classList.add('show');
   }
+
   
 
   /* FILTER METHODS */
