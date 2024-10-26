@@ -6,56 +6,29 @@ import { PetsListing } from '../models/pets-listing';
 })
 export class HomeService {
 
-  constructor() {
-    this.filteredPetsList = this.petsListingList; 
-  }
-  petsListingList: PetsListing[] = [
-    {
-      "id": 1,
-      "name": "kicia",
-      "gender": "Female",
-      "age": 2,
-      "type": "cat",
-      "city": "Odense",
-      "photo": "/assets/kitty1.jpg",
-    },
-    {
-      "id": 2,
-      "name": "Pawel",
-      "gender": "Male",
-      "age": 3,
-      "type": "dog",
-      "city": "Sonderborg",
-      "photo": "/assets/kitty1.jpg",
-    },
-    {
-      "id": 3,
-      "name": "miau",
-      "gender": "Female",
-      "age": 6,
-      "type": "dog",
-      "city": "Sonderborg",
-      "photo": "/assets/kitty1.jpg", 
-    },
-    {
-      "id": 4,
-      "name": "Pusia",
-      "gender": "Male",
-      "age": 1,
-      "type": "cat",
-      "city": "Sonderborg",
-      "photo": "/assets/kitty1.jpg",
-    }
+  private petsListingList: PetsListing[] = [
+    { id: 1, name: "a", postDate: new Date('2024-10-20'), gender: "Female", age: 2, type: "cat", city: "Odense", photo: "/assets/kitty1.jpg" },
+    { id: 2, name: "c", postDate: new Date('2024-10-19'), gender: "Male", age: 3, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 3, name: "b", postDate: new Date('2024-10-22'),gender: "Female", age: 6, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 4, name: "d", postDate: new Date('2024-10-21'),gender: "Male", age: 1, type: "cat", city: "Sonderborg", photo: "/assets/kitty1.jpg" }
   ];
 
-  filteredPetsList: PetsListing[] = [];
+  private filteredPetsList: PetsListing[] = [];
+  private nameFilter: string = '';
+  private typeFilter: string = '';
+  private genderFilter: string = '';
+  private sortOrder: string = '';
 
-  // Filter criteria
-  nameFilter: string = '';
-  typeFilter: string = '';
-  genderFilter: string = '';
+  constructor() {
+    this.resetFilters();
+  }
 
-  
+  setFilters(name: string, type: string, gender: string) {
+    this.nameFilter = name;
+    this.typeFilter = type;
+    this.genderFilter = gender;
+    this.applyFilters();
+  }
 
   applyFilters() {
     this.filteredPetsList = this.petsListingList.filter(pet => {
@@ -66,30 +39,14 @@ export class HomeService {
     });
   }
 
-  
-  filterResults(name: string) {
-    this.nameFilter = name;  
-    this.applyFilters();     
-  }
-
-  filterByType(type: string) {
-    this.typeFilter = type;  
-    this.applyFilters();  
-    }
-
-  filterByGender(gender: string) {
-    this.genderFilter = gender;  
-    this.applyFilters();         
-  }
-
   resetFilters() {
     this.nameFilter = '';
     this.typeFilter = '';
     this.genderFilter = '';
-    this.filteredPetsList = this.petsListingList; 
+    this.filteredPetsList = this.petsListingList;
   }
 
-  getList(){
+  getList() {
     return this.filteredPetsList;
   }
 }
