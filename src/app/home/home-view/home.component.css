@@ -1,9 +1,41 @@
+home.component.css
+
 *  {
     box-sizing: border-box;
-  }
-  
+}
 
-  #Filters {
+
+/* MAIN */
+
+#main {
+    display: flex;
+    height: 330px;
+}
+
+.background-video, #background-pic {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.background-video.show, #background-pic.show {
+    opacity: 1;
+}
+
+#button-container {
+    z-index: 2;
+}
+
+
+/*FILTERS */
+
+#Filters {
     display: flex;  
     justify-content: space-between; 
     align-items: center;
@@ -36,12 +68,6 @@
     opacity: 1; 
 }
 
-
-#SortByButton {
-    width: 80px;
-    background-color: white;
-}
-
 #Reset {
     background-color: rgb(132, 185, 132);
     border-radius: 10%;
@@ -53,6 +79,7 @@
     background-color:rgb(165, 232, 165) ;
     border-color:rgb(165, 232, 165) ;
 }
+
 .FilterRight {
     display: flex;
     align-items: center; 
@@ -82,8 +109,16 @@
     border-color: rgb(241, 194, 255) ;
     border-style: solid;  
 }
+
 .secondary:hover {
     background-color:rgb(246, 215, 253) ;
     border-color:rgb(246, 215, 253) ;
 }
 
+
+/*SORT BY*/
+
+#SortByButton {
+    width: 80px;
+    background-color: white;
+}
