@@ -1,3 +1,16 @@
+<section id="main">
+    <img #backgroundPic id="background-pic" class="background-pic show" src="/assets/main-background.png">
+    <video #catVideo class="background-video" src="/assets/cat-video.mp4" muted loop></video>
+    <video #dogVideo class="background-video" src="/assets/dog-video.mp4" muted loop></video>
+    <video #otherVideo class="background-video" src="/assets/other-video.mp4" muted loop></video>
+    
+    <div id="button-container">
+        <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')">Dog</button>
+        <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')">Cat</button>
+        <button (mouseenter)="playVideo('other')" (mouseleave)="pauseVideo('other')">Other</button>
+    </div>
+</section>
+
 <section id="Filters">  
     <div class="FilterLeft">
         <div class="FilterLeftBox">
