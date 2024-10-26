@@ -18,6 +18,7 @@
         <div>
             <mat-form-field class="sort-dropdown">
                 <mat-select (selectionChange)="sortBy($event.value)" placeholder="Sort:">
+                    <mat-option value="none">Order: None</mat-option>
                     <mat-option value="AZpets">Order: A-Z pets</mat-option>
                     <mat-option value="ZApets">Order: Z-A pets</mat-option>
                     <mat-option value="NewOldDate">Date: New first</mat-option>

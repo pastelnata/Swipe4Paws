@@ -1,6 +1,6 @@
 export interface PetsListing {
     id: number,
-    // postDate: Date,
+    postDate: Date,
     name: string,
     gender: string,
     age: number,
