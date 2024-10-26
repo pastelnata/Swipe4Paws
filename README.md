@@ -4,17 +4,17 @@ Application designed to help people across Denmark find their perfect pet for ad
 
 ## Key features
 
-- *Discover Animals for Adoption:* Browse a variety of pets from shelters across Denmark, with descriptions for each animal and the shelter contact.
-- *Favorites:* Save your favorite animals and keep track of the ones you're interested in.
-- *Find Shelters:* Read more about the shelters we showcase.
-- *Swipe Feature:* Discover your perfect pet in a fun and engaging way by swiping through animals, helping you connect with your ideal companion faster.
+- **Discover Animals for Adoption:** Browse a variety of pets from shelters across Denmark, with descriptions for each animal and the shelter contact.
+- **Favorites:** Save your favorite animals and keep track of the ones you're interested in.
+- **Find Shelters:** Read more about the shelters we showcase.
+- **Swipe Feature:** Discover your perfect pet in a fun and engaging way by swiping through animals, helping you connect with your ideal companion faster.
 
 ## Tools Used
 
-- *HTML:* For structuring the content.
-- *CSS:* For styling the website.
-- *TypeScript:* For interactive elements and functionality.
-- *Angular Framework:* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+- **HTML:** For structuring the content.
+- **CSS:** For styling the website.
+- **TypeScript:** For interactive elements and functionality.
+- **Angular Framework:** This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
 
 ## Project Developed By:
 
