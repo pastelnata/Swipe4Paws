@@ -25,8 +25,6 @@ export class HomeComponent {
     this.loadListData();
   }
   
-  petsListingList: PetsListing[] = []
-  showFilterOptions: boolean = false;
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('catVideo') catVideo!: ElementRef<HTMLVideoElement>;
@@ -100,7 +98,7 @@ export class HomeComponent {
   }
 
   filterByType(type: string) {
-    this.homeService.filterByType(type);
+    // this.homeService.filterByType(type);
     this.loadListData();
     this.typeFilter = type;
     this.applyFilters();
