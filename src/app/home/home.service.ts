@@ -7,16 +7,17 @@ import { PetsListing } from '../models/pets-listing';
 export class HomeService {
 
   private petsListingList: PetsListing[] = [
-    { id: 1, name: "kicia", gender: "Female", age: 2, type: "cat", city: "Odense", photo: "/assets/kitty1.jpg" },
-    { id: 2, name: "Pawel", gender: "Male", age: 3, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 3, name: "miau", gender: "Female", age: 6, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 4, name: "Pusia", gender: "Male", age: 1, type: "cat", city: "Sonderborg", photo: "/assets/kitty1.jpg" }
+    { id: 1, name: "a", gender: "Female", age: 2, type: "cat", city: "Odense", photo: "/assets/kitty1.jpg" },
+    { id: 2, name: "c", gender: "Male", age: 3, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 3, name: "b", gender: "Female", age: 6, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 4, name: "d", gender: "Male", age: 1, type: "cat", city: "Sonderborg", photo: "/assets/kitty1.jpg" }
   ];
 
   private filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
   private typeFilter: string = '';
   private genderFilter: string = '';
+  private sortOrder: string = '';
 
   constructor() {
     this.resetFilters();

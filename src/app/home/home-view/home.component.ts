@@ -19,6 +19,7 @@ export class HomeComponent {
   nameFilter: string = '';
   typeFilter: string = '';
   genderFilter: string = '';
+  sortOrder: string = '';
 
   constructor(private homeService: HomeService) {
     this.loadListData();
@@ -55,7 +56,50 @@ export class HomeComponent {
     this.applyFilters();
   }
 
-  sortBy(sortOrder: string) {
-   //SortBy logic
+  //Sorting
+  sortBy(sortValue: string) {
+    this.sortOrder = sortValue;
+    if(this.sortOrder === "AZpets"){
+      this.petsListingList.sort(function (a, b) {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+    }else if(this.sortOrder === "ZApets"){
+      this.petsListingList.sort(function (a, b) {
+        if (a.name < b.name) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return -1;
+        }
+        return 0;
+      });
+    }else if(this.sortOrder === "NewOldDate"){
+      this.petsListingList.sort(function (a, b) {
+        if (a.name < b.name) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return -1;
+        }
+        return 0;
+      })
+
+    }else if(this.sortOrder === "OldNewDate") {
+      this.petsListingList.sort(function (a, b) {
+        if (a.name < b.name) {
+          return 1;
+        }
+        if (a.name > b.name) {
+          return -1;
+        }
+        return 0;
+      })
+    }
   }
 }
