@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, viewChild, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
 import { PetsListing } from '../../models/pets-listing';
