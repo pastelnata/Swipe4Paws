@@ -1,22 +1,22 @@
-*  {
-    box-sizing: border-box;
-  }
-  
-
 /* MAIN */
+* {
+    box-sizing: border-box;
+}
 
 #main {
     display: flex;
-    height: auto;
+    flex-direction: column;
+    height: 40vh;
+    position: relative;
 }
 
 .background-video, #background-pic {
     position: absolute;
+    top: 0; 
     left: 0;
     width: 100%;
-    height: 60%;
+    height: 100%; 
     object-fit: cover;
-    z-index: 1;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -33,11 +33,10 @@
 /*FILTERS */
 
 #Filters {
-    display: block;
     display: flex;  
-    justify-content: space-between; 
-    align-items: top;    
+    justify-content: space-between;     
     margin: 10px 40px 10px 40px; 
+    z-index: 2;
 }
 
 .FilterLeft {
@@ -90,6 +89,7 @@
     background-color:rgb(165, 232, 165) ;
     border-color:rgb(165, 232, 165) ;
 }
+
 .FilterRight {
     display: flex;
     align-items: center; 
