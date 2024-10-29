@@ -7,7 +7,7 @@
 
 #main {
     display: flex;
-    height: 330px;
+    height: auto;
 }
 
 .background-video, #background-pic {
