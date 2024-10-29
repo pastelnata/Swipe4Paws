@@ -8,10 +8,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 footer {
     width: 100%;
     bottom: 0;
-    background: linear-gradient(to right, #16bb3b, #053e11);
+    background: linear-gradient(to right, rgb(53, 85, 64), #053e11);
     color: #fff;
-    padding: 100px 0 40px;
-    border-top-left-radius: 95px;
+    padding: 10px 0 40px;
     font-size: 14px;
     line-height: 20px;
 }
@@ -26,7 +25,7 @@ footer {
 .col{
     flex-basis: 1;
     padding: 10px;
-    max-width: 33%;
+    max-width: 33%; 
     box-sizing: border-box;
 }
 /* .logo{
@@ -34,10 +33,11 @@ footer {
     margin-bottom: 30px;
 } */
 .col h3{
-    width: fit-cintent;
+    width: fit-content;
     margin-bottom: 10px;
     position: relative;
 }
+
 .email-id{
     width: fit-content;
     border-bottom: 1px solid #ccc;
