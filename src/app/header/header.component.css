@@ -15,7 +15,7 @@
 }
 
 .header img {
-    height: 90px;
+    height: 80px;
     width: auto;
     cursor: pointer;
 }
@@ -27,5 +27,5 @@
 }
 
 .right-side-icons img {
-    height: 32px;
+    height: 30px;
 }
