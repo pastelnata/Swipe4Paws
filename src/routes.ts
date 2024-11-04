@@ -9,7 +9,7 @@ const routeConfig: Routes = [
     { path: 'about-us', component: AboutUsComponent, title: 'About Us' },
     { path: 'shelters', component: SheltersComponent, title: 'Shelters' },
     { path: 'swipe', component: SwipeComponent, title: 'Swipe' },
-    { path: 'adopt', component: HomeComponent, title: 'Adopt', pathMatch: 'full', data: { fragment: 'adopt' } },
+    { path: 'adopt', component: HomeComponent, title: 'Adopt'},
 ];
 
 export default routeConfig;
