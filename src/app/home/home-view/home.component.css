@@ -126,3 +126,10 @@
     border-color:rgb(246, 215, 253) ;
 }
 
+#pet-listing-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+}
