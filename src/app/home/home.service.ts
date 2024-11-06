@@ -7,10 +7,10 @@ import { PetsListing } from '../models/pets-listing';
 export class HomeService {
 
   private petsListingList: PetsListing[] = [
-    { id: 1, name: "a", postDate: new Date('2024-10-20'), gender: "Female", age: 2, type: "cat", city: "Odense", photo: "/assets/kitty1.jpg" },
-    { id: 2, name: "c", postDate: new Date('2024-10-19'), gender: "Male", age: 3, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 3, name: "b", postDate: new Date('2024-10-22'),gender: "Female", age: 6, type: "dog", city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 4, name: "d", postDate: new Date('2024-10-21'),gender: "Male", age: 1, type: "cat", city: "Sonderborg", photo: "/assets/kitty1.jpg" }
+    { id: 1, name: "a", postDate: new Date('2024-10-20'), gender: "Female", age: 2, type: "cat", behavior: ["friendly", "calm"], city: "Odense", photo: "/assets/kitty1.jpg" },
+    { id: 2, name: "c", postDate: new Date('2024-10-19'), gender: "Male", age: 3, type: "dog", behavior: ["good with children", "lazy"], city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 3, name: "b", postDate: new Date('2024-10-22'),gender: "Female", age: 6, type: "dog", behavior: ["friendly", "playful"] ,city: "Sonderborg", photo: "/assets/kitty1.jpg" },
+    { id: 4, name: "d", postDate: new Date('2024-10-21'),gender: "Male", age: 1, type: "cat", behavior: ["aggressive", "loud"],city: "Sonderborg", photo: "/assets/kitty1.jpg" }
   ];
 
   private filteredPetsList: PetsListing[] = [];

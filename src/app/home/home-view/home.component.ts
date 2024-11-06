@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
 import { PetsListing } from '../../models/pets-listing';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeService } from '../home.service';
-
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PetsListingComponent, MatSelectModule],
+  imports: [CommonModule, PetsListingComponent, MatSelectModule, MatExpansionModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

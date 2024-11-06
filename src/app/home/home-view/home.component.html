@@ -11,36 +11,70 @@
     </div>
 </section>
 
+<section id="Filter-Buttons">
+    <div class="filters-sort-container">
+        <div class="filter-by-container">
+            <!-- Button tooggle -->
+            <button class="primary" type="button" (click)="toggleFilterOptions()">Filters:</button>
+            <!-- Filter options -->
+            <div class="filter-options-box ng-star-inserted" *ngIf="showFilterOptions">
+                <div class="top-row-container">
+                    <div class="filter-basic-options">
+                        <button class="secondary" type="button" (click)="filterByType('cat')">Cats</button>
+                        <button class="secondary" type="button" (click)="filterByType('dog')">Dogs</button>
+                        <button class="secondary" type="button" (click)="filterByGender('Male')">Male</button>
+                        <button class="secondary" type="button" (click)="filterByGender('Female')">Female</button>
+                        <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
+                    </div>
+                
+                    <div class="add-filters">
+                        <input id="inputFilters" type="text">
+                        <button id="applyFilters" type="submit">Add:</button>
+                    </div>
+                </div>
+
+                    <div class="current-filters">
+                        current filters
+                    </div>
+            </div>
+        </div>
+
+        <!-- Sort By dropdown -->
+        <div class="SortBy">
+                <mat-form-field class="sort-dropdown">
+                    <mat-select (selectionChange)="sortBy($event.value)" placeholder="Sort:">
+                        <mat-option value="none">Order: None</mat-option>
+                        <mat-option value="AZpets">Order: A-Z pets</mat-option>
+                        <mat-option value="ZApets">Order: Z-A pets</mat-option>
+                        <mat-option value="NewOldDate">Date: New first</mat-option>
+                        <mat-option value="OldNewDate">Date: Old first</mat-option>
+                    </mat-select>
+                </mat-form-field>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<!-- 
 <section id="Filters">  
     <div class="FilterLeft">
         <div class="FilterLeftBox">
             <div id="FilterButtonBox">
                 <button class="primary" type="button" (click)="toggleFilterOptions()">Filters</button>
             </div>
-            <!-- Filter options -->
+    
             <div id="OptionButtonBox" [style.visibility]="showFilterOptions ? 'visible' : 'hidden'"> 
-                <button class="secondary" type="button" (click)="filterByType('cat')">Cats</button>
-                <button class="secondary" type="button" (click)="filterByType('dog')">Dogs</button>
-                <button class="secondary" type="button" (click)="filterByGender('Male')">Male</button>
-                <button class="secondary" type="button" (click)="filterByGender('Female')">Female</button>
-                <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
+                
             </div>
         </div>
     </div>
     <div class="FilterRight">
-        <div>
-            <mat-form-field class="sort-dropdown">
-                <mat-select (selectionChange)="sortBy($event.value)" placeholder="Sort:">
-                    <mat-option value="none">Order: None</mat-option>
-                    <mat-option value="AZpets">Order: A-Z pets</mat-option>
-                    <mat-option value="ZApets">Order: Z-A pets</mat-option>
-                    <mat-option value="NewOldDate">Date: New first</mat-option>
-                    <mat-option value="OldNewDate">Date: Old first</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+        
     </div>
-</section>
+</section> -->
 <section id="adopt">
     <app-pets-listing *ngFor="let petsListing of petsListingList" 
                       [petsListing]="petsListing">
