@@ -1,13 +1,28 @@
 <section id="main">
-    <img #backgroundPic id="background-pic" class="background-pic show" src="/assets/main-background.png">
+    <img #backgroundPic id="background-pic" class="background-pic show" src="/assets/main-background.png" alt="Main Background">
     <video #catVideo class="background-video" src="/assets/cat-video.mp4" muted loop></video>
     <video #dogVideo class="background-video" src="/assets/dog-video.mp4" muted loop></video>
     <video #otherVideo class="background-video" src="/assets/other-video.mp4" muted loop></video>
-    
+
     <div id="button-container">
-        <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')">Dog</button>
-        <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')">Cat</button>
-        <button (mouseenter)="playVideo('other')" (mouseleave)="pauseVideo('other')">Other</button>
+        <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')" class="icon-button">
+            <div class="icon-container">
+                <img src="assets/australian-shepherd.png" alt="Australian Shepherd" class="icon">
+                <span class="icon-label">Dogs</span>
+            </div>
+        </button>
+        <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')" class="icon-button">
+            <div class="icon-container">
+                <img src="assets/black-cat.png" alt="Black Cat" class="icon">
+                <span class="icon-label">Cats</span>
+            </div>
+        </button>
+        <button (mouseenter)="playVideo('other')" (mouseleave)="pauseVideo('other')" class="icon-button">
+            <div class="icon-container">
+                <img src="assets/bird.png" alt="bird" class="icon">
+                <span class="icon-label">Others</span>
+            </div>
+        </button>
     </div>
 </section>
 
@@ -41,8 +56,8 @@
         </div>
     </div>
 </section>
+
 <section>
-    <app-pets-listing *ngFor="let petsListing of petsListingList" 
-                      [petsListing]="petsListing">
+    <app-pets-listing *ngFor="let petsListing of petsListingList" [petsListing]="petsListing">
     </app-pets-listing>
 </section>
