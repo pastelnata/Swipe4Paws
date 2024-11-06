@@ -1,7 +1,7 @@
 FROM node:18
 
 # Navigate to directory
-WORKDIR /usr/src/
+WORKDIR /backend
 
 # Install dependancies
 COPY package*.json ./
