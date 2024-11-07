@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit {
         //create button
         const buttonElement: HTMLButtonElement = document.createElement('button');
         //Add contnet
-        buttonElement.textContent = 'X '+selectedOption;
+        buttonElement.textContent = selectedOption + ' X';
         //add id
         buttonElement.id = selectedOption;
         buttonElement.classList.add('filter-select-button');

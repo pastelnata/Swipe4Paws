@@ -35,10 +35,35 @@
             <div class="filter-options-box ng-star-inserted" *ngIf="showFilterOptions">
                 <div class="top-row-container">
                     <div class="filter-basic-options">
-                        <button class="secondary" type="button" (click)="filterByType('cat')">Cats</button>
-                        <button class="secondary" type="button" (click)="filterByType('dog')">Dogs</button>
-                        <button class="secondary" type="button" (click)="filterByGender('Male')">Male</button>
-                        <button class="secondary" type="button" (click)="filterByGender('Female')">Female</button>
+                        <div class="filter-by-type">
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{
+                                'backgroundColor' : typeFilter === 'cat' ? 'rgb(233, 160, 255)' : '',
+                                'borderColor' : typeFilter === 'cat' ? ' rgb(233, 160, 255)' : ''}" 
+                            (click)="filterByType('cat')">
+                                Cats
+                            </button>
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{'backgroundColor' : typeFilter === 'dog' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : typeFilter === 'dog' ? ' rgb(233, 160, 255)' : ''}"  
+                             (click)="filterByType('dog')">
+                             Dogs
+                            </button>
+                        </div>
+                        <div class="filter-by-gender"> 
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{'backgroundColor' : genderFilter === 'Male' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : genderFilter === 'Male' ? ' rgb(233, 160, 255)' : ''}" 
+                            (click)="filterByGender('Male')">
+                            Male
+                        </button>
+                            <button class="secondary" type="button"
+                            (click)="filterByGender('Female')"
+                             [ngStyle]="{'backgroundColor' : genderFilter === 'Female' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : genderFilter === 'Female' ? ' rgb(233, 160, 255)' : ''}">
+                             Female
+                            </button>
+                        </div>
                         <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
                     </div>
                 
