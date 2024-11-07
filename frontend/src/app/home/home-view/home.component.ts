@@ -1,29 +1,57 @@
-import { Component, ElementRef, ViewChild, viewChild, } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, viewChild, } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
 import { PetsListing } from '../../models/pets-listing';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeService } from '../home.service';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, PetsListingComponent, MatSelectModule, MatExpansionModule],
+  imports: [
+    CommonModule,
+    PetsListingComponent,
+    MatSelectModule,
+    MatExpansionModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
-  showFilterOptions: boolean = false;
+  showFilterOptions: boolean = true;
   nameFilter: string = '';
   typeFilter: string = '';
   genderFilter: string = '';
   sortOrder: string = '';
+  currentFilters: string[] = [];
+  //we need a validation here so it cant be longer than 20 characters
+  currentOptions: string[] = ["agressive", "friendly", "cat", "other"];
+
+  selectFiltersForm = new FormGroup({
+    color: new FormControl(''),
+  });
+
+  ngOnInit(): void {
+    this.selectFiltersForm = new FormGroup({
+      color: new FormControl(''),
+    });
+  }
 
   constructor(private homeService: HomeService) {
     this.loadListData();
   }
+
+  onSubmit() {
+    const selectedOption = this.selectFiltersForm.get('color')?.value;
+    if (selectedOption) {
+      console.log(selectedOption);
+    }
+  }
+
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('catVideo') catVideo!: ElementRef<HTMLVideoElement>;
@@ -73,6 +101,8 @@ export class HomeComponent {
 
   /* FILTER METHODS */
 
+  getBehavior()  {  }
+
   loadListData(){
     this.petsListingList = this.homeService.getList();
   }
@@ -83,7 +113,7 @@ export class HomeComponent {
 
 
   applyFilters() {
-    this.homeService.setFilters(this.nameFilter, this.typeFilter, this.genderFilter);
+    this.homeService.setFilters(this.nameFilter, this.typeFilter, this.genderFilter, this.currentFilters);
     this.loadListData();
   }
 
@@ -105,6 +135,11 @@ export class HomeComponent {
 
   filterByGender(gender: string) {
     this.genderFilter = gender;
+    this.applyFilters();
+  }
+
+  filterByBehavior(behavior: string) {
+    this.currentFilters.push(behavior);
     this.applyFilters();
   }
 
