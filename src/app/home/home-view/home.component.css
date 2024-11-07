@@ -26,8 +26,55 @@
 }
 
 #button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 15px; 
     z-index: 2;
 }
+
+
+#button-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button-container button:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+}
+.icon {
+    width: 100px;
+    height: 100px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-label {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #333;
+}
+
 
 
 /*FILTERS */
@@ -148,8 +195,8 @@ option {
     min-width: 50px;
 }
 
-
 #Reset, #applyFilters {
+
     background-color:rgb(86, 125, 99);
     border-radius: 10%;
     border-color: rgb(86, 125, 99);
