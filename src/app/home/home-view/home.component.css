@@ -32,52 +32,124 @@
 
 /*FILTERS */
 
-#Filters {
-    display: flex;  
-    justify-content: space-between;     
-    margin: 10px 40px 10px 40px; 
-    z-index: 2;
+.filters-sort-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 40px 10px 40px;
 }
 
-.FilterLeft {
+.filter-by-container {
     display: flex;
     flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    width: 80vh;
+    z-index: 10;
 }
-
-.FilterLeftBox {
+.filter-options-box.ng-star-inserted {
     display: flex;
-    align-items: center; 
-}
-
-#FilterButtonBox {
-    margin-right: 2px;
-}
-
-#OptionButtonBox {
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border: 1px solid rgb(86, 125, 99);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 1px 20px 20px 20px;
+    max-width: 600px;
+    min-width: fit-content;
+    max-height: 200px;
+    min-height: fit-content;
+  }
+  /* top rowww inside a filter containers filters */
+.top-row-container {
     display: flex;
-    gap: 5px; 
-    min-height: 30px;
-    transition:ease-in-out 0.5s;  
-    opacity: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#OptionButtonBox[style*="visibility: visible"] {
-    opacity: 1; 
-}
-
-
-#SortByButton {
-    width: 80px;
-    background-color: white;
+.filter-basic-options {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
 }
 
 
-#SortByButton {
-    width: 80px;
-    background-color: white;
+
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    -ms-appearance: none; 
+    margin-left:10vh ;
+    width: 10vh;
+    padding: 0px 5px 0px 5px;
+    border-color: rgb(86, 125, 99);
+    border-style: solid;
+    border-radius: 5px;
+    max-height: 40px;
+    min-width: fit-content;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  select:hover {
+    cursor: pointer;
+  }
+
+option {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color:rgb(86, 125, 99);
+  }
+
+.add-filters {
+    display: flex;
+    flex-direction: row;
 }
 
-#Reset {
+/* bottom row in the filters container */
+.current-filters{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 10px 2px 10px 2px;
+    max-height: fit-content;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    
+}
+
+.filter-select-button{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    column-rule: black;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(86, 125, 99);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 5px;
+    max-height: 30px;
+    min-width: fit-content;
+    max-width: max-content;
+    
+}
+
+/* Sort by */
+
+/* filter buttons */
+
+#applyFilters {
+    margin-left: 5px;
+    max-height: 40px;
+    min-width: 50px;
+}
+
+
+#Reset, #applyFilters {
     background-color:rgb(86, 125, 99);
     border-radius: 10%;
     border-color: rgb(86, 125, 99);
@@ -85,15 +157,9 @@
     color: white;
 }
 
-#Reset:hover {
+#Reset:hover, #applyFilters:hover {
     background-color:rgb(165, 232, 165) ;
     border-color:rgb(165, 232, 165) ;
-}
-
-.FilterRight {
-    display: flex;
-    align-items: center; 
-    justify-content: center;
 }
 
 .primary {
@@ -112,17 +178,18 @@
 }
 
 .secondary {
-    background-color:rgb(233, 160, 255);
+    
     height: 30px;
     width: 60px;
     margin: 2px;
     border-radius: 10%;
-    border-color: rgb(233, 160, 255) ;
+    background-color:rgb(246, 215, 253) ;
+    border-color:rgb(246, 215, 253) ;
     border-style: solid;  
     color: white;
 }
 .secondary:hover {
-    background-color:rgb(246, 215, 253) ;
-    border-color:rgb(246, 215, 253) ;
+    background-color:rgb(242, 182, 255) ;
+    border-color:rgb(242, 182, 255) ;
 }
 
