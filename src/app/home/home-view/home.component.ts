@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
-  showFilterOptions: boolean = true;
+  showFilterOptions: boolean = false;
   nameFilter: string = '';
   typeFilter: string = '';
   genderFilter: string = '';
