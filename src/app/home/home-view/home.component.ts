@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   sortOrder: string = '';
   currentFilters: string[] = [];
   //we need a validation here so it cant be longer than 20 characters
-  currentOptions: string[] = ["agressive", "friendly", "cat", "other"];
+  currentOptions: string[] = [];
 
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),
@@ -43,13 +43,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private homeService: HomeService) {
     this.loadListData();
-  }
-
-  onSubmit() {
-    const selectedOption = this.selectFiltersForm.get('color')?.value;
-    if (selectedOption) {
-      console.log(selectedOption);
-    }
+    this.currentOptions = this.getAllTheOptions();
   }
 
 
@@ -101,7 +95,70 @@ export class HomeComponent implements OnInit {
 
   /* FILTER METHODS */
 
-  getBehavior()  {  }
+
+  //Create html object filters
+
+  getAllTheOptions() {
+    return this.homeService.getAllTheOptions();
+  }
+
+  onSubmit() {
+    const selectedOption = this.selectFiltersForm.get('color')?.value;
+    if (selectedOption) {
+      if(!document.querySelector('#'+selectedOption)){
+        //create button
+        const buttonElement: HTMLButtonElement = document.createElement('button');
+        //Add contnet
+        buttonElement.textContent = 'X '+selectedOption;
+        //add id
+        buttonElement.id = selectedOption;
+        buttonElement.classList.add('filter-select-button');
+        buttonElement.style.display = 'flex';
+        
+        //Applies styles manualy becouse class does not work for some reson
+        this.ApplyStyles(buttonElement);
+        
+        //add onclick event
+        buttonElement.addEventListener('click', () => {
+          this.removeFilter(selectedOption);
+        });
+        //adds element to the .currnt-filters class element
+        const currentFiltersDiv: HTMLDivElement = document.querySelector('.current-filters') as HTMLDivElement;
+        currentFiltersDiv.appendChild(buttonElement);
+        //push it to the current filters list and apply filters
+        this.currentFilters.push(selectedOption);
+        this.applyFilters();
+      }
+      else{
+        console.log('Already added!');
+      }
+    }
+  }
+
+
+  ApplyStyles ( buttonElement: HTMLButtonElement){ 
+    buttonElement.style.display = 'flex';
+    buttonElement.style.flexDirection = 'row';
+    buttonElement.style.textAlign = 'center';
+    buttonElement.style.alignItems = 'center';
+    buttonElement.style.backgroundColor = 'rgb(255, 255, 255)';
+    buttonElement.style.border = '1px solid rgb(86, 125, 99)';
+    buttonElement.style.boxShadow = '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)';
+    buttonElement.style.borderRadius = '10px';
+    buttonElement.style.padding = '5px';
+    buttonElement.style.maxHeight = '30px';
+    buttonElement.style.minWidth = 'fit-content';
+    buttonElement.style.maxWidth = 'max-content';
+
+  }
+  
+  //removes filter and apply filters
+  removeFilter(id: string): void {
+    const elementToDelete: HTMLElement = document.getElementById(id) as HTMLElement;
+    elementToDelete.remove();
+    this.currentFilters = this.currentFilters.filter(filter => filter !== id);
+    this.applyFilters();
+  }
 
   loadListData(){
     this.petsListingList = this.homeService.getList();
@@ -110,7 +167,6 @@ export class HomeComponent implements OnInit {
   toggleFilterOptions() {
     this.showFilterOptions = !this.showFilterOptions;
   }
-
 
   applyFilters() {
     this.homeService.setFilters(this.nameFilter, this.typeFilter, this.genderFilter, this.currentFilters);
@@ -123,7 +179,6 @@ export class HomeComponent implements OnInit {
     this.genderFilter = '';
     this.homeService.resetFilters();
     this.loadListData();
-
   }
 
   filterByType(type: string) {
@@ -135,11 +190,6 @@ export class HomeComponent implements OnInit {
 
   filterByGender(gender: string) {
     this.genderFilter = gender;
-    this.applyFilters();
-  }
-
-  filterByBehavior(behavior: string) {
-    this.currentFilters.push(behavior);
     this.applyFilters();
   }
 

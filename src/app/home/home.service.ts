@@ -19,9 +19,22 @@ export class HomeService {
   private genderFilter: string = '';
   private sortOrder: string = '';
   private currentFilters: string[] = [];
+  private currentOptions: string[] = [];
 
   constructor() {
     this.resetFilters();
+    this.RetriveFilterOptions();
+  }
+
+  RetriveFilterOptions(){
+    this.petsListingList.forEach(pet => {
+      pet.behavior.forEach(behavior => {
+        if(!this.currentOptions.includes(behavior)){
+          this.currentOptions.push(behavior);
+          console.log(this.currentOptions);
+        }
+      })
+    })
   }
 
   setFilters(name: string, type: string, gender: string, currentFilters: string[]) {
@@ -38,8 +51,6 @@ export class HomeService {
       const matchesType = this.typeFilter ? pet.type.toLowerCase() === this.typeFilter.toLowerCase() : true;
       const matchesGender = this.genderFilter ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase() : true;  
       const matchesbehavior = this.currentFilters.length === 0 || this.currentFilters.every(filter => pet.behavior.includes(filter));
-      
-    
       return matchesName && matchesType && matchesGender && matchesbehavior;
     });
   }
@@ -53,5 +64,9 @@ export class HomeService {
 
   getList() {
     return this.filteredPetsList;
+  }
+
+  getAllTheOptions() {
+    return this.currentOptions;
   }
 }
