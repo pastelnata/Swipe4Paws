@@ -106,7 +106,7 @@
     max-height: 200px;
     min-height: fit-content;
   }
-
+  /* top rowww inside a filter containers filters */
 .top-row-container {
     display: flex;
     flex-direction: row;
@@ -156,6 +156,7 @@ option {
     flex-direction: row;
 }
 
+/* bottom row in the filters container */
 .current-filters{
     display: flex;
     flex-direction: row;
@@ -184,6 +185,9 @@ option {
     
 }
 
+/* Sort by */
+
+/* filter buttons */
 
 #applyFilters {
     margin-left: 5px;
