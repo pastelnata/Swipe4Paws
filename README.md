@@ -15,6 +15,31 @@ Application designed to help people across Denmark find their perfect pet for ad
 - **CSS:** For styling the website.
 - **TypeScript:** For interactive elements and functionality.
 - **Angular Framework:** This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.5.
+- **Docker:** For containerization of backend services.
+- **PostgreSQL:** For the backend database.
+
+## Project Setup & Running Locally
+
+### Prerequisites
+
+- **Docker:** Install [Docker](https://www.docker.com/get-started) on your local machine.
+- **Node.js and npm:** Ensure you have [Node.js](https://nodejs.org/) installed.
+- **Angular CLI:** You can install the Angular CLI globally using: npm install -g @angular/cli
+
+### Running the Project with Docker
+
+- **.env File:** Create an .env file in the project's root directory. Further instructions are in the file: .example.env
+- **Start the application using Docker:** Once the .env file is set up and filled in with the correct values, run the following command in the terminal: docker-compose up --build
+
+### Accessing the Application:
+
+- **Frontend (Angular):** open your browser at: http://localhost:4200/
+- **Backend (express):** accessible on http://localhost:3000/. . You can test the API by navigating to: http://localhost:3000/pets (To fetch all pets from the database)
+
+### Stopping the Applicaion:
+
+- **To stop the containers and clean up, run:** docker-compose down
+
 
 ## Project Developed By:
 

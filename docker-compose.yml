@@ -1,17 +1,15 @@
-version: '3.8'
-
 services:
-  db:
+  database:
     image: postgres:latest
-    container_name: postgres-db
+    container_name: database
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
     ports:
-      - "5432:5432"
+      - "${DATABASE_PORT}:${DATABASE_PORT}" 
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - ./database/database-init:/docker-entrypoint-initdb.d
     networks:
       - app-network
 
@@ -20,15 +18,16 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      DB_NAME: ${DB_NAME}
-      DB_HOST: db
-      DB_PORT: ${DB_PORT}
+      PORT: ${PORT}
+      DATABASE_HOST: database
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_NAME: ${DATABASE_NAME}
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - database
     networks:
       - app-network
 
