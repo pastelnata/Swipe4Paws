@@ -5,13 +5,13 @@
     <video #otherVideo class="background-video" src="/assets/other-video.mp4" muted loop></video>
 
     <div id="button-container">
-        <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')" class="icon-button">
+        <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')" (click)="filterByType('dog')" class="icon-button">
             <div class="icon-container">
                 <img src="assets/australian-shepherd.png" alt="Australian Shepherd" class="icon">
                 <span class="icon-label">Dogs</span>
             </div>
         </button>
-        <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')" class="icon-button">
+        <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')" (click)="filterByType('cat')" class="icon-button">
             <div class="icon-container">
                 <img src="assets/black-cat.png" alt="Black Cat" class="icon">
                 <span class="icon-label">Cats</span>
