@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
         buttonElement.id = selectedOption;
         buttonElement.classList.add('filter-select-button');
         buttonElement.style.display = 'flex';
-        
+
         //Applies styles manualy becouse class does not work for some reson
         this.ApplyStyles(buttonElement);
         
@@ -127,11 +127,17 @@ export class HomeComponent implements OnInit {
         currentFiltersDiv.appendChild(buttonElement);
         //push it to the current filters list and apply filters
         this.currentFilters.push(selectedOption);
+        //Disables the alredy added option
+        this.currentOptions.splice(this.currentOptions.indexOf(selectedOption), 1);
         this.applyFilters();
+        //resets the form
+        this.selectFiltersForm.reset();
       }
       else{
         console.log('Already added!');
       }
+
+
     }
   }
 
@@ -158,6 +164,7 @@ export class HomeComponent implements OnInit {
     elementToDelete.remove();
     this.currentFilters = this.currentFilters.filter(filter => filter !== id);
     this.applyFilters();
+    this.currentOptions.push(id);
   }
 
   loadListData(){

@@ -101,9 +101,8 @@ option {
   }
 
 .add-filters {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns, each taking equal space */
-    gap: 10px; /* Optional: space between items */  
+    display: flex;
+    flex-direction: row;
 }
 
 .current-filters{
