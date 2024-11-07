@@ -5,6 +5,7 @@ export interface PetsListing {
     gender: string,
     age: number,
     type: string,
+    behavior: string[],
     city: string,
     photo: string,
 }

@@ -26,38 +26,82 @@
     </div>
 </section>
 
-<section id="Filters">  
-    <div class="FilterLeft">
-        <div class="FilterLeftBox">
-            <div id="FilterButtonBox">
-                <button class="primary" type="button" (click)="toggleFilterOptions()">Filters</button>
-            </div>
+<section id="Filter-Buttons">
+    <div class="filters-sort-container">
+        <div class="filter-by-container">
+            <!-- Button tooggle -->
+            <button class="primary" type="button" (click)="toggleFilterOptions()">Filters:</button>
             <!-- Filter options -->
-            <div id="OptionButtonBox" [style.visibility]="showFilterOptions ? 'visible' : 'hidden'"> 
-                <button class="secondary" type="button" (click)="filterByType('cat')">Cats</button>
-                <button class="secondary" type="button" (click)="filterByType('dog')">Dogs</button>
-                <button class="secondary" type="button" (click)="filterByGender('Male')">Male</button>
-                <button class="secondary" type="button" (click)="filterByGender('Female')">Female</button>
-                <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
+            <div class="filter-options-box ng-star-inserted" *ngIf="showFilterOptions">
+                <div class="top-row-container">
+                    <div class="filter-basic-options">
+                        <div class="filter-by-type">
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{
+                                'backgroundColor' : typeFilter === 'cat' ? 'rgb(233, 160, 255)' : '',
+                                'borderColor' : typeFilter === 'cat' ? ' rgb(233, 160, 255)' : ''}" 
+                            (click)="filterByType('cat')">
+                                Cats
+                            </button>
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{'backgroundColor' : typeFilter === 'dog' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : typeFilter === 'dog' ? ' rgb(233, 160, 255)' : ''}"  
+                             (click)="filterByType('dog')">
+                             Dogs
+                            </button>
+                        </div>
+                        <div class="filter-by-gender"> 
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{'backgroundColor' : genderFilter === 'Male' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : genderFilter === 'Male' ? ' rgb(233, 160, 255)' : ''}" 
+                            (click)="filterByGender('Male')">
+                            Male
+                        </button>
+                            <button class="secondary" type="button"
+                            (click)="filterByGender('Female')"
+                             [ngStyle]="{'backgroundColor' : genderFilter === 'Female' ? 'rgb(233, 160, 255)' : '',
+                             'borderColor' : genderFilter === 'Female' ? ' rgb(233, 160, 255)' : ''}">
+                             Female
+                            </button>
+                        </div>
+                        <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
+                    </div>
+                
+                    <div class="add-filters">
+                        <form [formGroup]="selectFiltersForm" (ngSubmit)="onSubmit()" >
+                            <select formControlName="color" id="selectFilters" aria-placeholder="Add filter" id="myOptions">
+                                <option  *ngIf="currentOptions.length === 0">No options!</option>
+                                <option *ngIf="currentOptions.length !== 0">Chose filter:</option>
+                                <option *ngFor="let option of currentOptions">{{option}}</option>>
+                            </select>
+                            <button id="applyFilters" type="submit">Add:</button>
+                        </form>
+                    </div>
+                </div>
+
+                    <div class="current-filters">
+                        <span *ngIf="currentFilters.length === 0">No filters!</span>
+                    </div>
             </div>
         </div>
-    </div>
-    <div class="FilterRight">
-        <div>
-            <mat-form-field class="sort-dropdown">
-                <mat-select (selectionChange)="sortBy($event.value)" placeholder="Sort:">
-                    <mat-option value="none">Order: None</mat-option>
-                    <mat-option value="AZpets">Order: A-Z pets</mat-option>
-                    <mat-option value="ZApets">Order: Z-A pets</mat-option>
-                    <mat-option value="NewOldDate">Date: New first</mat-option>
-                    <mat-option value="OldNewDate">Date: Old first</mat-option>
-                </mat-select>
-            </mat-form-field>
+
+        <!-- Sort By dropdown -->
+        <div class="SortBy">
+                <mat-form-field class="sort-dropdown">
+                    <mat-select class="sort-dropdown-select" (selectionChange)="sortBy($event.value)" placeholder="Sort by:">
+                        <mat-option value="none">Order: None</mat-option>
+                        <mat-option value="AZpets">Order: A-Z pets</mat-option>
+                        <mat-option value="ZApets">Order: Z-A pets</mat-option>
+                        <mat-option value="NewOldDate">Date: New first</mat-option>
+                        <mat-option value="OldNewDate">Date: Old first</mat-option>
+                    </mat-select>
+                </mat-form-field>
         </div>
     </div>
-</section>
 
-<section>
-    <app-pets-listing *ngFor="let petsListing of petsListingList" [petsListing]="petsListing">
+</section>
+<section id="adopt">
+    <app-pets-listing *ngFor="let petsListing of petsListingList" 
+                      [petsListing]="petsListing">
     </app-pets-listing>
 </section>
