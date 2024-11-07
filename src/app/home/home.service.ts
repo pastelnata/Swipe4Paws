@@ -18,15 +18,17 @@ export class HomeService {
   private typeFilter: string = '';
   private genderFilter: string = '';
   private sortOrder: string = '';
+  private currentFilters: string[] = [];
 
   constructor() {
     this.resetFilters();
   }
 
-  setFilters(name: string, type: string, gender: string) {
+  setFilters(name: string, type: string, gender: string, currentFilters: string[]) {
     this.nameFilter = name;
     this.typeFilter = type;
     this.genderFilter = gender;
+    this.currentFilters = currentFilters;
     this.applyFilters();
   }
 
@@ -34,8 +36,11 @@ export class HomeService {
     this.filteredPetsList = this.petsListingList.filter(pet => {
       const matchesName = pet.name.toLowerCase().includes(this.nameFilter.toLowerCase());
       const matchesType = this.typeFilter ? pet.type.toLowerCase() === this.typeFilter.toLowerCase() : true;
-      const matchesGender = this.genderFilter ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase() : true;
-      return matchesName && matchesType && matchesGender;
+      const matchesGender = this.genderFilter ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase() : true;  
+      const matchesbehavior = this.currentFilters.length === 0 || this.currentFilters.every(filter => pet.behavior.includes(filter));
+      
+    
+      return matchesName && matchesType && matchesGender && matchesbehavior;
     });
   }
 

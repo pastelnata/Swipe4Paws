@@ -70,6 +70,36 @@
     
 }
 
+
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    -ms-appearance: none; 
+    margin-left:10vh ;
+    width: 10vh;
+    padding: 0px 5px 0px 5px;
+    border-color: rgb(86, 125, 99);
+    border-style: solid;
+    border-radius: 5px;
+    max-height: 40px;
+    min-width: fit-content;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  select:hover {
+    cursor: pointer;
+  }
+
+option {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color:rgb(86, 125, 99);
+  }
+
 .add-filters {
     display: flex;
     flex-direction: row;
@@ -81,22 +111,11 @@
     max-width: max-content;
 }
 
+
 #applyFilters {
     margin-left: 5px;
     max-height: 40px;
     min-width: 50px;
-}
-
-#inputFilters{
-    margin-left:10vh ;
-    width: 10vh;
-    border-color: rgb(86, 125, 99);
-    border-style: solid;
-    border-radius: 10px;
-    max-height: 40px;
-    max-width: 90px;
-    min-width: 50px;
-    
 }
 
 

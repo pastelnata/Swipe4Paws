@@ -28,8 +28,14 @@
                     </div>
                 
                     <div class="add-filters">
-                        <input id="inputFilters" type="text">
-                        <button id="applyFilters" type="submit">Add:</button>
+                        <form [formGroup]="selectFiltersForm" (ngSubmit)="onSubmit()" >
+                            <select formControlName="color" id="selectFilters" aria-placeholder="Add filter" id="myOptions">
+                                <option  *ngIf="currentOptions.length === 0">No options!</option>
+                                <option *ngIf="currentOptions.length !== 0">Chose filter:</option>
+                                <option *ngFor="let option of currentOptions">{{option}}</option>>
+                            </select>
+                            <button id="applyFilters" type="submit">Add:</button>
+                        </form>
                     </div>
                 </div>
 
