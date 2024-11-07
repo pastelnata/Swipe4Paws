@@ -1,0 +1,31 @@
+.header {
+    position: sticky;
+    top: 0;
+    padding: 0px 5px;
+    background: #ffffff;
+    color: #000000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0% 15%;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid rgb(53, 85, 64);
+    z-index: 3;
+}
+
+.header img {
+    height: 80px;
+    width: auto;
+    cursor: pointer;
+}
+
+.right-side-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.right-side-icons img {
+    height: 30px;
+}
