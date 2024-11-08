@@ -1,0 +1,10 @@
+<main>
+    <app-header (toggleProfileBar)="toggleProfileBar()"></app-header>
+    <header class="Swipe4Paws">
+      <app-navigation></app-navigation>
+    </header>
+    <section class="content">
+      <router-outlet></router-outlet>
+      <app-profile-bar-view *ngIf="isProfileBarVisible" (close)="toggleProfileBar()"></app-profile-bar-view>
+    </section>
+  </main>
