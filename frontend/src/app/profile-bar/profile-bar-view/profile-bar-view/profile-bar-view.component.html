@@ -1,0 +1,37 @@
+<div class="popup-overlay" id="popup-overlay" (click)="onClose()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <div class="popup-header">
+        <div class="header-username">
+          <img src="../../../../assets/cat.png" alt="Profile picture">
+          <p>username</p>
+        </div>
+        <p class="close-popup-button" (click)="onClose()">X</p>
+      </div>
+      <div class="popup-description">
+        <div class="popup-description-top">
+          <div class="description-group">
+            <mat-icon>manage_accounts</mat-icon>
+            <p>Your profile</p>
+          </div>
+          <div class="description-group">
+            <mat-icon>star</mat-icon>
+            <p>Favourites</p>
+          </div>
+          <div class="description-group">
+            <mat-icon>email</mat-icon>
+            <p>Messages</p>
+          </div>
+        </div>
+        <div class="popup-description-bottom">
+          <div class="description-group">
+            <mat-icon>vpn_key</mat-icon>
+            <p>Change password</p>
+          </div>
+          <div class="description-group">
+            <mat-icon class="logout-icon">logout</mat-icon>
+            <p class="logout-icon">Sign out</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
