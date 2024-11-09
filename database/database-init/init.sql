@@ -1,14 +1,14 @@
 -- CREATION OF TABLES --
 
 CREATE TABLE "user" (
-    userID SERIAL PRIMARY KEY,
+    userid SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(255),
     "password" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE shelter (
-    shelterID SERIAL PRIMARY KEY,
+    shelterid SERIAL PRIMARY KEY,
     managed_by INT,
     email VARCHAR(255) UNIQUE NOT NULL,
     "name" VARCHAR(255) NOT NULL,
@@ -20,28 +20,28 @@ CREATE TABLE shelter (
 );
 
 CREATE TABLE pet (
-    petID SERIAL PRIMARY KEY,
+    petid SERIAL PRIMARY KEY,
     race VARCHAR(70),
-    shelterID INT NOT NULL,
+    shelterid INT NOT NULL,
     gender VARCHAR(10) CHECK (gender IN ('Male', 'Female', 'Unknown')),
     age INT,
     date_added TIMESTAMP,
-    FOREIGN KEY (shelterID) REFERENCES shelter(shelterID) ON DELETE CASCADE
+    FOREIGN KEY (shelterid) REFERENCES shelter(shelterid) ON DELETE CASCADE
 );
 
 CREATE TABLE moderator (
-    modID SERIAL PRIMARY KEY,
+    modid SERIAL PRIMARY KEY,
     email VARCHAR(255) UNIQUE NOT NULL,
     username VARCHAR(255),
     "password" VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE favorites (
-    petID INT,
-    userID INT,
-    PRIMARY KEY (petID, userID),
-    FOREIGN KEY (petID) REFERENCES pet(petID) ON DELETE CASCADE,
-    FOREIGN KEY (userID) REFERENCES "user"(userID) ON DELETE CASCADE
+    petid INT,
+    userid INT,
+    PRIMARY KEY (petid, userid),
+    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES "user"(userid) ON DELETE CASCADE
 );
 
 
