@@ -1,0 +1,130 @@
+* {
+    z-index: 100;
+}
+
+@keyframes fall {
+    0% {
+      transform: translateX(100%);
+    }
+    99% {
+      transform: translateX(1%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+}
+
+.popup-content {
+    position: fixed;
+    background-color: white;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 0 30px;
+    width: 400px;
+    height: 100%;
+    animation: fall 0.2s linear forwards;
+}
+  
+.popup-header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid rgb(53, 85, 64);
+}
+
+.header-username {
+    color: rgb(53, 85, 64);
+    position: static;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-username p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 30px;
+    margin-left: 70px;
+}
+
+.header-username img {
+    width: 50px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.popup-description {
+    margin-top: 20px;
+    position: relative;
+    box-sizing: content-box;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-description-top {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-description-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.description-group {
+    position: static;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    border-radius: 15px;
+}
+
+.description-group:hover {
+    background-color: lightgray;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.description-group:active {
+    background-color: darkgray;
+}
+
+.description-group p {
+    margin: 0;
+    position: relative;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-popup-button {
+    cursor: pointer;
+}
+
+.logout-icon {
+    color: red;
+}

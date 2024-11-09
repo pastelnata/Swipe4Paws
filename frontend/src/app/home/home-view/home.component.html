@@ -7,13 +7,13 @@
     <div id="button-container">
         <button (mouseenter)="playVideo('dog')" (mouseleave)="pauseVideo('dog')" (click)="filterByType('dog')" class="icon-button">
             <div class="icon-container">
-                <img src="/assets/australian-shepherd.png" alt="Australian Shepherd" class="icon">
+                <img src="assets/australian-shepherd.png" alt="Australian Shepherd" class="icon">
                 <span class="icon-label">Dogs</span>
             </div>
         </button>
         <button (mouseenter)="playVideo('cat')" (mouseleave)="pauseVideo('cat')" (click)="filterByType('cat')" class="icon-button">
             <div class="icon-container">
-                <img src="/assets/black-cat.png" alt="Black Cat" class="icon">
+                <img src="assets/black-cat.png" alt="Black Cat" class="icon">
                 <span class="icon-label">Cats</span>
             </div>
         </button>
@@ -100,6 +100,27 @@
     </div>
 
 </section>
+
+
+
+
+<!-- 
+<section id="Filters">  
+    <div class="FilterLeft">
+        <div class="FilterLeftBox">
+            <div id="FilterButtonBox">
+                <button class="primary" type="button" (click)="toggleFilterOptions()">Filters</button>
+            </div>
+    
+            <div id="OptionButtonBox" [style.visibility]="showFilterOptions ? 'visible' : 'hidden'"> 
+                
+            </div>
+        </div>
+    </div>
+    <div class="FilterRight">
+        
+    </div>
+</section> -->
 <section id="adopt">
     <app-pets-listing *ngFor="let petsListing of petsListingList" 
                       [petsListing]="petsListing">

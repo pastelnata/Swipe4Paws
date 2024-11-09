@@ -32,8 +32,55 @@
     transform: translate(-50%, -50%);
     display: flex;
     gap: 15px; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 15px; 
     z-index: 2;
 }
+
+
+#button-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#button-container button:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+}
+.icon {
+    width: 100px;
+    height: 100px;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.icon-label {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #333;
+}
+
 
 
 #button-container button {
@@ -89,9 +136,8 @@
 .filter-by-container {
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
     width: 80vh;
-    z-index: 10;
+    z-index: 3;
 }
 .filter-options-box.ng-star-inserted {
     display: flex;
@@ -112,9 +158,49 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .filter-basic-options {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+
+
+select {
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    -ms-appearance: none; 
+    margin-left:10vh ;
+    width: 10vh;
+    padding: 0px 5px 0px 5px;
+    border-color: rgb(86, 125, 99);
+    border-style: solid;
+    border-radius: 5px;
+    max-height: 40px;
+    min-width: fit-content;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
+  select:hover {
+    cursor: pointer;
+  }
+
+option {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    color:rgb(86, 125, 99);
+  }
+
+.add-filters {
     display: flex;
     gap: 10px;
     margin: 10px 0px 10px 0px;
@@ -193,10 +279,50 @@ option {
     margin-left: 5px;
     max-height: 40px;
     min-width: 50px;
+    flex-direction: row;
 }
 
-#Reset, #applyFilters {
+/* bottom row in the filters container */
+.current-filters{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin: 10px 2px 10px 2px;
+    max-height: fit-content;
+    min-width: fit-content;
+    flex-wrap: wrap;
+    
+}
 
+.filter-select-button{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    column-rule: black;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(86, 125, 99);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 5px;
+    max-height: 30px;
+    min-width: fit-content;
+    max-width: max-content;
+    
+}
+
+/* Sort by */
+
+/* filter buttons */
+
+#applyFilters {
+    margin-left: 5px;
+    max-height: 40px;
+    min-width: 50px;
+}
+
+
+#Reset, #applyFilters {
     background-color:rgb(86, 125, 99);
     border-radius: 10%;
     border-color: rgb(86, 125, 99);
@@ -226,10 +352,13 @@ option {
 
 .secondary {
     
+    
     height: 30px;
     width: 60px;
     margin: 2px;
     border-radius: 10%;
+    background-color:rgb(246, 215, 253) ;
+    border-color:rgb(246, 215, 253) ;
     background-color:rgb(246, 215, 253) ;
     border-color:rgb(246, 215, 253) ;
     border-style: solid;  
@@ -238,5 +367,6 @@ option {
 .secondary:hover {
     background-color:rgb(242, 182, 255) ;
     border-color:rgb(242, 182, 255) ;
+    background-color:rgb(242, 182, 255) ;
+    border-color:rgb(242, 182, 255) ;
 }
-
