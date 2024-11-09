@@ -1,5 +1,8 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
+# Ignore Angular cache and dependencies
+.angular/
+node_modules/
+dist/
 # Compiled output
 /dist
 /tmp
@@ -43,3 +46,4 @@ Thumbs.db
 
 # Database sensitive info
 .env
+
