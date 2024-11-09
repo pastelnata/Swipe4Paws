@@ -29,20 +29,20 @@ CREATE TABLE pet (
     date_added TIMESTAMP,
     FOREIGN KEY (shelterID) REFERENCES shelter(shelterID) ON DELETE CASCADE
 );
--- -- Step 1: Create the behavior table
--- CREATE TABLE behavior (
---     behaviorID SERIAL PRIMARY KEY,
---     description VARCHAR(100) NOT NULL UNIQUE
--- );
+-- Step 1: Create the behavior table
+CREATE TABLE behavior (
+    behaviorID SERIAL PRIMARY KEY,
+    description VARCHAR(100) NOT NULL UNIQUE
+);
 
--- -- Step 2: Create the join table to associate pets with behaviors
--- CREATE TABLE pet_behavior (
---     petID INT NOT NULL,
---     behaviorID INT NOT NULL,
---     PRIMARY KEY (petID, behaviorID),
---     FOREIGN KEY (petID) REFERENCES pet(petID) ON DELETE CASCADE,
---     FOREIGN KEY (behaviorID) REFERENCES behavior(behaviorID) ON DELETE CASCADE
--- );
+-- Step 2: Create the join table to associate pets with behaviors
+CREATE TABLE pet_behavior (
+    petID INT NOT NULL,
+    behaviorID INT NOT NULL,
+    PRIMARY KEY (petID, behaviorID),
+    FOREIGN KEY (petID) REFERENCES pet(petID) ON DELETE CASCADE,
+    FOREIGN KEY (behaviorID) REFERENCES behavior(behaviorID) ON DELETE CASCADE
+);
 
 
 CREATE TABLE moderator (
@@ -108,3 +108,66 @@ INSERT INTO pet (shelterID, "name", race, gender, age, date_added) VALUES
 (5, 'Zeus', 'Doberman', 'Male', 3, '2024-11-20 18:00:00'),
 (5, 'Penny', 'Basset Hound', 'Female', 4, '2024-12-05 19:00:00'),
 (5, 'Oscar', 'Bengal Cat', 'Male', 2, '2024-01-20 08:30:00');
+
+
+-- Mock data for the behavior table
+INSERT INTO behavior (description) VALUES
+('Playful'),
+('Aggressive'),
+('Friendly'),
+('Shy'),
+('Curious'),
+('Loyal'),
+('Energetic'),
+('Independent'),
+('Calm'),
+('Protective');
+
+
+-- Mock data for the pet_behavior table
+INSERT INTO pet_behavior (petID, behaviorID) VALUES
+-- Behaviors for pets in Shelter 1
+(1, 1),  -- Max is Playful
+(1, 3),  -- Max is also Friendly
+(2, 4),  -- Bella is Shy
+(2, 3),  -- Bella is Friendly
+(3, 2),  -- Charlie is Aggressive
+(4, 1),  -- Milo is Playful
+(4, 7),  -- Milo is Energetic
+(5, 3),  -- Luna is Friendly
+(5, 10), -- Luna is Protective
+
+-- Behaviors for pets in Shelter 2
+(6, 5),  -- Rocky is Curious
+(6, 8),  -- Rocky is Independent
+(7, 7),  -- Daisy is Energetic
+(8, 4),  -- Simba is Shy
+(9, 1),  -- Zoe is Playful
+(9, 9),  -- Zoe is Calm
+(10, 6), -- Buddy is Loyal
+
+-- Behaviors for pets in Shelter 3
+(11, 8), -- Bailey is Independent
+(12, 9), -- Lily is Calm
+(13, 10),-- Rex is Protective
+(13, 6), -- Rex is Loyal
+(14, 3), -- Ruby is Friendly
+(15, 1), -- Finn is Playful
+
+-- Behaviors for pets in Shelter 4
+(16, 4), -- Mittens is Shy
+(17, 3), -- Shadow is Friendly
+(17, 7), -- Shadow is Energetic
+(18, 8), -- Whiskers is Independent
+(19, 6), -- Chloe is Loyal
+(19, 9), -- Chloe is Calm
+(20, 10),-- Toby is Protective
+
+-- Behaviors for pets in Shelter 5
+(21, 9), -- Oliver is Calm
+(22, 10),-- Sadie is Protective
+(23, 2), -- Zeus is Aggressive
+(23, 6), -- Zeus is Loyal
+(24, 5), -- Penny is Curious
+(25, 3), -- Oscar is Friendly
+(25, 1); -- Oscar is Playful
