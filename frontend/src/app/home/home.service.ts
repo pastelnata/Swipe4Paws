@@ -93,7 +93,7 @@ export class HomeService {
     this.nameFilter = '';
     this.typeFilter = '';
     this.genderFilter = '';
-    this.filteredPetsList = this.petsListingList;
+    this.applyFilters();
   }
 
   getList() {
