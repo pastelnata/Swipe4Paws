@@ -1,7 +1,7 @@
 FROM node:18
 
 # Navigate to directory
-WORKDIR /backend
+WORKDIR /Swipe4Paws
 
 # Install dependancies
 RUN npm install dotenv
@@ -11,10 +11,10 @@ COPY package*.json ./
 RUN npm install
 
 # 4. Copy code
-COPY . .
+COPY backend ./backend
 
 # 5. Compile
-RUN npm run build
+RUN npm run build:backend
 
 # wait for the database to be ready
 
@@ -22,4 +22,4 @@ RUN npm run build
 EXPOSE 3000
 
 # 7. Start the server
-CMD ["npm", "start"]
+CMD ["npm", "run", "start:backend"]
