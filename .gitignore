@@ -3,6 +3,7 @@
 .angular/
 node_modules/
 dist/
+
 # Compiled output
 /dist
 /tmp
@@ -10,7 +11,6 @@ dist/
 /bazel-out
 
 # Node
-/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -46,4 +46,3 @@ Thumbs.db
 
 # Database sensitive info
 .env
-

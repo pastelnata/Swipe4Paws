@@ -1,13 +1,62 @@
 {
+  "name": "swipe4paws",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && rimraf ./dist && ng build",
+    "build:backend": "rimraf ./backend/dist && tsc -p backend/tsconfig.json",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "serve:ssr:swipe4paws": "node dist/swipe4paws/server/server.mjs",
+    "dev": "ts-node-dev --poll ./src/index.ts",
+    "start:backend": "npm run build:backend && node backend/dist/index.js"
+  },
+  "private": true,
   "dependencies": {
+    "@angular/animations": "^18.2.0",
+    "@angular/cdk": "^18.2.10",
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "^18.2.0",
+    "@angular/material": "^18.2.10",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/platform-browser-dynamic": "^18.2.0",
+    "@angular/platform-server": "^18.2.0",
+    "@angular/router": "^18.2.0",
+    "@angular/ssr": "^18.2.5",
+    "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
-    "sequelize": "^6.37.5"
+    "pg": "^8.13.1",
+    "rollup": "^3.0.0",
+    "rxjs": "~7.8.0",
+    "sequelize": "^6.37.5",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.10"
   },
   "devDependencies": {
-    "rimraf": "^6.0.1"
+    "@angular-devkit/build-angular": "^18.2.5",
+    "@angular/cli": "^18.2.5",
+    "@angular/compiler-cli": "^18.2.0",
+    "@types/dotenv": "^8.2.3",
+    "@types/express": "^4.17.17",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "@types/pg": "^8.11.10",
+    "jasmine-core": "~5.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "rimraf": "^6.0.1",
+    "typescript": "~5.5.2"
   },
-  "scripts": {
-    "build": "rm -rf ./dist && tsc"
+  "resolutions": {
+    "@rollup/rollup-win32-x64-msvc": "npm:@rollup/rollup@^3.0.0"
   }
 }

@@ -1,3 +1,5 @@
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 /* basic styling */
 body {
     margin: 0;
