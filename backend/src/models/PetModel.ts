@@ -3,6 +3,7 @@ import sequelize from '../config/sequelize';
 
 class pet extends Model {
     private petid!: number;
+    private name!: string;
     private gender!: 'Male' | 'Female' | 'Unknown';
     private age!: number;
     private date_added!: Date;
@@ -16,6 +17,10 @@ pet.init(
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
+        },
+        name: {
+            type: DataTypes.STRING(70),
+            allowNull: false,
         },
         gender: {
             type: DataTypes.ENUM('Female', 'Male', 'Unknown'),
