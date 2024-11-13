@@ -1,17 +1,14 @@
 import { Injectable } from '@angular/core';
 import { PetsListing } from '../models/pets-listing';
-import { ApiService } from '../services/api.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HomeModule } from './home.module';
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
 
-  private petsListingList: PetsListing[] = [
-    { id: 1, name: "a", postDate: new Date('2024-10-20'), gender: "Female", age: 2, type: "cat", behavior: ["friendly", "calm"], city: "Odense", photo: "/assets/kitty1.jpg" },
-    { id: 2, name: "c", postDate: new Date('2024-10-19'), gender: "Male", age: 3, type: "dog", behavior: ["good with children", "lazy"], city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 3, name: "b", postDate: new Date('2024-10-22'),gender: "Female", age: 6, type: "kaczka", behavior: ["friendly", "playful"] ,city: "Sonderborg", photo: "/assets/kitty1.jpg" },
-    { id: 4, name: "d", postDate: new Date('2024-10-21'),gender: "Male", age: 1, type: "cat", behavior: ["aggressive", "loud"],city: "Sonderborg", photo: "/assets/kitty1.jpg" }
-  ];
+  private petsListingList: PetsListing[] = [];
 
   private filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
@@ -21,7 +18,9 @@ export class HomeService {
   private currentFilters: string[] = [];
   private currentOptions: string[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(private http: HttpClient) {
+    this.loadListData();
+    this.getLoadedList();
     this.resetFilters();
     this.RetriveFilterOptions();
   }
@@ -103,4 +102,15 @@ export class HomeService {
   getAllTheOptions() {
     return this.currentOptions;
   }
+
+  //API CALLS:
+  loadListData(): Observable<PetsListing[]> {
+    return this.http.get<PetsListing[]>('http://localhost:5000/api/pets');
+  }
+ 
+    getLoadedList() {
+      this.loadListData().subscribe((data: PetsListing[]) => {
+        this.petsListingList = data;
+      })
+    }
 }
