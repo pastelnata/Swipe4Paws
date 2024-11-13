@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PetsListing } from '../models/pets-listing';
-
+import { ApiService } from '../services/api.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,7 @@ export class HomeService {
   private currentFilters: string[] = [];
   private currentOptions: string[] = [];
 
-  constructor() {
+  constructor(private apiService: ApiService) {
     this.resetFilters();
     this.RetriveFilterOptions();
   }
