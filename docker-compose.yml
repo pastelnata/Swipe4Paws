@@ -16,8 +16,8 @@ services:
   backend:
     container_name: backend
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     environment:
       PORT: ${PORT}
       DATABASE_HOST: ${DATABASE_HOST}
@@ -35,7 +35,10 @@ services:
   frontend:
     container_name: frontend
     build:
-      context: ./frontend
+      context: .
+      dockerfile: frontend/Dockerfile
+    environment:
+      NODE_ENV: production
     depends_on:
       - backend
     ports:

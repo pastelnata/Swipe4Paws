@@ -33,10 +33,10 @@ CREATE TABLE pet (
 -- Step 2: Create the join table to associate pets with behaviors
 CREATE TABLE pet_behavior (
     petid INT NOT NULL,
-    behaviorid INT NOT NULL,
+    behaviorid SERIAL,
     behavior VARCHAR(255),
     PRIMARY KEY (petid, behaviorid),
-    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE,
+    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE
 );
 
 
@@ -116,24 +116,19 @@ INSERT INTO pet_behavior (petid, behavior) VALUES
 (7, 'Energetic'),
 (8, 'Independent'),
 (9, 'Calm'),
-(10, 'Protective');
+(10, 'Protective'),
 (11, 'Affectionate'),
 (12, 'Gentle'),
 (13, 'Playful'),
 (14, 'Alert'),
-(15, 'Lively');
+(15, 'Lively'),
 (16, 'Curious'),
 (17, 'Relaxed'),
 (18, 'Loyal'),
 (19, 'Obedient'),
-(20, 'Sociable');
+(20, 'Sociable'),
 (21, 'Adventurous'),
 (22, 'Calm'),
 (23, 'Reserved'),
 (24, 'Cuddly'),
 (25, 'Active');
-(26, 'Friendly'),
-(27, 'Gentle'),
-(28, 'Protective'),
-(29, 'Playful'),
-(30, 'Curious');

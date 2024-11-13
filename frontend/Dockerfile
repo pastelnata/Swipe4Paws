@@ -1,11 +1,8 @@
-# Stage 1: Build the Angular app
-FROM node:18 AS build
+# Use an official Node.js runtime as a parent image
+FROM node:20
 
-# Set working directory to /frontend
-WORKDIR /frontend
-
-# Install Angular CLI globally
-RUN npm install -g @angular/cli
+# Set working directory to the project root
+WORKDIR /Swipe4Paws
 
 # Copy package files to install dependencies
 COPY package*.json ./
@@ -13,10 +10,20 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-COPY . . 
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
 
+# Set working directory to the frontend directory
+WORKDIR /Swipe4Paws/frontend
+
+# Copy the frontend source code to the container
+COPY frontend .
+
+# Link the root node_modules to the frontend directory
+RUN ln -s /Swipe4Paws/node_modules ./node_modules
+
+# Expose the application port
 EXPOSE 4200
 
-# Run http-server to serve the Angular app
-
+# Start the Angular application
 CMD ["ng", "serve", "--host", "0.0.0.0"]
