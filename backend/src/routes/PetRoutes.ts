@@ -1,5 +1,4 @@
 import PetController from "../controllers/PetController";
-import app from "../config/server";
 import Router from "express";
 
 const petRoutes = Router();
