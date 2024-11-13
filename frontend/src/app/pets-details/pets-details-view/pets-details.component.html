@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="pets-details.component.css">
+    <title>
+        "Pet details"
+    </title>
+</head>
+<body>
+    <h1>Pet details</h1>
+    <section id="pet-details">
+        <div class="details">
+            <img class="pet-photo" [src]="petsListing.photo" 
+            alt="Photo of the {{petsListing.name}}"> 
+            <p class="pet-name">Name: {{petsListing.name}}</p>
+            <p class="pet-age">Age: {{petsListing.age}}</p>
+            <p class="pet-description">{{petsListing.type}}, {{petsListing.gender}}</p>
+            <p class="pet-location">{{petsListing.city}}</p>
+            <!--<p class="time-in-shelter">{{petsListing.postDate}}</p>-->
+        </div>
+    </section>
+</body>

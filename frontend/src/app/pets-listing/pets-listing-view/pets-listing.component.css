@@ -1,0 +1,48 @@
+.pet-photo {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.pet-name, .pet-description, .pet-age, .pet-location {
+    color: black;
+    padding: 5px;
+}
+
+.listing {
+    background-color: rgb(187, 232, 203);
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.like-button i {
+    color: rgb(0, 0, 0);
+}
+
+.like-button i:hover {
+    color: rgb(255, 0, 0);
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+}
+
+.like-button i.fa-solid {
+    color: rgb(255, 0, 0);
+}
+
+.petDetailButton {
+    color: rgb(0, 0, 0);
+    margin-left: 15%;
+    margin-bottom: 2%;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 1%;
+    border-radius: 5px;
+    background-color: white;
+}
