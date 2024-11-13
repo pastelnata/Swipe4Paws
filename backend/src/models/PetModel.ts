@@ -9,7 +9,8 @@ class pet extends Model {
     private date_added!: Date;
     private race!: string;
     private shelterid!: number;
-    private photo!: string
+    private photo!: string;
+    private type!: string;
     // private behavior!: string;
 }
 
@@ -43,6 +44,10 @@ pet.init(
         shelterid: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        type: {
+            type: DataTypes.STRING(70),
+            allowNull: true,
         },
         // behavior: {
         //     type: DataTypes.STRING(70),
