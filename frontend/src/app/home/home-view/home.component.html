@@ -100,27 +100,6 @@
     </div>
 
 </section>
-
-
-
-
-<!-- 
-<section id="Filters">  
-    <div class="FilterLeft">
-        <div class="FilterLeftBox">
-            <div id="FilterButtonBox">
-                <button class="primary" type="button" (click)="toggleFilterOptions()">Filters</button>
-            </div>
-    
-            <div id="OptionButtonBox" [style.visibility]="showFilterOptions ? 'visible' : 'hidden'"> 
-                
-            </div>
-        </div>
-    </div>
-    <div class="FilterRight">
-        
-    </div>
-</section> -->
 <section id="adopt">
     <app-pets-listing *ngFor="let petsListing of petsListingList" 
                       [petsListing]="petsListing">

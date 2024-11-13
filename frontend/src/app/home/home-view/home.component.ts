@@ -36,13 +36,15 @@ export class HomeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.loadListData();
     this.selectFiltersForm = new FormGroup({
       color: new FormControl(''),
     });
+    console.log(this.petsListingList);
   }
 
   constructor(private homeService: HomeService) {
-    this.loadListData();
+    
     this.currentOptions = this.getAllTheOptions();
   }
 
@@ -167,8 +169,11 @@ export class HomeComponent implements OnInit {
     this.currentOptions.push(id);
   }
 
-  loadListData(){
-    this.petsListingList = this.homeService.getList();
+  loadListData(): void {
+    this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
+      this.petsListingList = filteredPetsList;
+      console.log(this.petsListingList);
+    });
   }
 
   toggleFilterOptions() {
@@ -225,10 +230,10 @@ export class HomeComponent implements OnInit {
       });
     }else if(this.sortOrder === "NewOldDate"){
       this.petsListingList.sort(function (a, b) {
-        if (a.postDate < b.postDate) {
+        if (a.date_added < b.date_added) {
           return 1;
         }
-        if (a.postDate > b.postDate) {
+        if (a.date_added > b.date_added) {
           return -1;
         }
         return 0;
@@ -236,10 +241,10 @@ export class HomeComponent implements OnInit {
 
     }else if(this.sortOrder === "OldNewDate") {
       this.petsListingList.sort(function (a, b) {
-        if (a.postDate < b.postDate) {
+        if (a.date_added < b.date_added) {
           return -1;
         }
-        if (a.postDate > b.postDate) {
+        if (a.date_added > b.date_added) {
           return 1;
         }
         return 0;
