@@ -1,7 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/sequelize';
+import Shelter from './ShelterModel';
+import PetBehavior from './PetBehaviorModel';
 
-class pet extends Model {
+class Pet extends Model {
     private petid!: number;
     private name!: string;
     private gender!: 'Male' | 'Female' | 'Unknown';
@@ -14,29 +16,25 @@ class pet extends Model {
     // private behavior!: string;
 }
 
-pet.init(
+Pet.init(
     {
         petid: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
         },
-        name: {
-            type: DataTypes.STRING(70),
-            allowNull: false,
-        },
-        gender: {
-            type: DataTypes.ENUM('Female', 'Male', 'Unknown'),
-            allowNull: true,
-        },
-        age: {
+        shelterid: {
             type: DataTypes.INTEGER,
-            allowNull: true,
+            allowNull: false,
         },
         date_added: {
             type: DataTypes.DATE,
-            allowNull: true,
+            defaultValue: DataTypes.NOW,
         },
+        name: DataTypes.STRING(70),
+        gender: DataTypes.ENUM('Female', 'Male', 'Unknown'),
+        age: DataTypes.INTEGER,
+        race: DataTypes.STRING(70)
         race: {
             type: DataTypes.STRING(70),
             allowNull: true,
@@ -61,8 +59,14 @@ pet.init(
     {
         sequelize,
         tableName: 'pet',
-        timestamps: false
+        timestamps: true,
+        createdAt: 'date_added',
+        updatedAt: false,
     }
-)
+);
 
-export default pet;
+Pet.belongsTo(Shelter, { foreignKey: 'shelterid' });
+Pet.hasMany(PetBehavior, { foreignKey: 'petid' });
+
+
+export default Pet;

@@ -1,11 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import cors from 'cors'; 
 
 dotenv.config();
 const app = express();
-app.use(cors());
 app.use(express.json());
 
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:4200' }));
 
 export default app;

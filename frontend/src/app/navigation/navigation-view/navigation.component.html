@@ -4,7 +4,7 @@
 <nav id="nav">
     <div class="search">
         <img src="assets/search-icon.png" alt="Search Icon">
-        <input type="text" placeholder="Search for pets in Denmark" class="input-box">
+        <input type="text" placeholder="Search for pets in Denmark" class="input-box" (keydown)="onKeyDown($event)">
     </div>
     <ul class="nav-links">
         <li><a href="adopt">Adopt</a></li>
