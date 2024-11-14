@@ -16,7 +16,7 @@ export class HomeService {
   private genderFilter: string = '';
   private sortOrder: string = '';
   private currentFilters: string[] = [];
-  private currentOptions: string[] = [];
+  private currentOptions: string[] = ["good witch children", "aggressive", "good with other pets", "lazy", "friendly", "playfull", "active", "energetic"];
 
   constructor(private http: HttpClient)  {
     this.loadListData(); //cals api in future this can be on init or smthng
