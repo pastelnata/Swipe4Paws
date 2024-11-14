@@ -34,14 +34,9 @@ Pet.init(
         name: DataTypes.STRING(70),
         gender: DataTypes.ENUM('Female', 'Male', 'Unknown'),
         age: DataTypes.INTEGER,
-        race: DataTypes.STRING(70)
         race: {
             type: DataTypes.STRING(70),
             allowNull: true,
-        },
-        shelterid: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         },
         type: {
             type: DataTypes.STRING(70),
