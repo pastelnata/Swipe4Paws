@@ -45,7 +45,7 @@ Pet.init(
         // behavior: {
         //     type: DataTypes.STRING(70),
         //     allowNull: true,
-        // }
+        // },
         photo: {
             type: DataTypes.STRING(70),
             allowNull: true,

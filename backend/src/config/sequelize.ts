@@ -1,7 +1,9 @@
 import { Sequelize } from 'sequelize';
 
+// Database connection
 const sequelize = new Sequelize(
 {
+    //Configuration
     dialect: 'postgres',
     logging: console.log,
     host: process.env.DATABASE_HOST,
