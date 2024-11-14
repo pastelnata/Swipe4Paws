@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild, viewChild, } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
+import { PetsListingComponent } from '../../pets-listing/pets-listing-view/pets-listing.component';
 import { PetsListing } from '../../models/pets-listing';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';

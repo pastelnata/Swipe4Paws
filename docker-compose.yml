@@ -1,7 +1,6 @@
 services:
   database:
     image: postgres:latest
-    container_name: database
     environment:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
@@ -14,7 +13,7 @@ services:
       - app-network
 
   backend:
-    container_name: backend
+    image: swipe4paws-backend
     build:
       context: .
       dockerfile: backend/Dockerfile
@@ -33,7 +32,7 @@ services:
       - app-network
 
   frontend:
-    container_name: frontend
+    image: swipe4paws-frontend
     build:
       context: .
       dockerfile: frontend/Dockerfile
