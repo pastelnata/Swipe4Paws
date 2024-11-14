@@ -131,14 +131,16 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 10px 40px 10px 40px;
+    z-index: 1000;
 }
 
 .filter-by-container {
     display: flex;
     flex-direction: column;
     width: 80vh;
-    z-index: 3;
+    z-index: 1000;
 }
+
 .filter-options-box.ng-star-inserted {
     display: flex;
     flex-direction: column;
