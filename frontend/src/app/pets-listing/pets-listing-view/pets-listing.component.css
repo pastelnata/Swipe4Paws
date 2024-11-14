@@ -6,7 +6,11 @@
     border: 2px solid black;
 }
 
-.pet-name, .pet-description, .pet-age, .pet-location {
+.pet-name, 
+.pet-description, 
+.pet-age 
+/* .pet-location  */
+{
     color: black;
     padding: 5px;
 }
