@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListing } from '../../models/pets-listing';
 import { NavigationService } from '../navigation.service';
-import { PetsListingComponent } from '../../pets-listing/pets-listing.component';
+import { PetsListingComponent } from '../../pets-listing/pets-listing-view/pets-listing.component';
 
 
 @Component({
