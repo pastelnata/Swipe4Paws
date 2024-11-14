@@ -1,0 +1,20 @@
+<head>
+    <link rel="stylesheet" href="pets-listing.component.css">
+</head>
+<body>
+    <section id="listing-pets">
+        <div class="listing">
+            <img class="pet-photo" [src]="petsListing.photo" 
+            alt="Photo of the {{petsListing.name}}"> 
+            <p class="pet-name">Name: {{petsListing.name}}</p>
+            <p class="pet-age">Age: {{petsListing.age}}</p>
+            <p class="pet-description">{{petsListing.type}}, {{petsListing.gender}}</p>
+            <p class="pet-location">{{petsListing.city}}</p>
+            <button (click)="toggleLike()" class="like-button">
+                <i [ngClass]="isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
+            </button>
+            <!--<p class="time-in-shelter">{{petsListing.postDate}}</p>-->
+            <a href="petInfo" class="petDetailButton">Pet info</a>
+        </div>
+    </section>
+</body>
