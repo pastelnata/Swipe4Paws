@@ -7,6 +7,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeService } from '../home.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RedirectCommand } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -159,6 +160,17 @@ export class HomeComponent implements OnInit {
     buttonElement.style.maxWidth = 'max-content';
 
   }
+  ///CRUD COMMANDS:
+  loadListData(): void {
+    this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
+      this.petsListingList = filteredPetsList;
+      console.log(this.petsListingList);
+    });
+  }
+
+  displayPetsDetails(index: number): void {
+    new RedirectCommand(parseUrl(`petInfo/${index}`));
+  }
   
   //removes filter and apply filters
   removeFilter(id: string): void {
@@ -169,12 +181,7 @@ export class HomeComponent implements OnInit {
     this.currentOptions.push(id);
   }
 
-  loadListData(): void {
-    this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
-      this.petsListingList = filteredPetsList;
-      console.log(this.petsListingList);
-    });
-  }
+ 
 
   toggleFilterOptions() {
     this.showFilterOptions = !this.showFilterOptions;
@@ -254,4 +261,10 @@ export class HomeComponent implements OnInit {
       this.loadListData();
     }
   }
+
+
 }
+function parseUrl(arg0: string): import("@angular/router").UrlTree {
+  throw new Error('Function not implemented.');
+}
+

@@ -100,9 +100,9 @@
     </div>
 </section>
 <section id="pet-listing-container">
-    <div class="listing-wrapper" *ngFor="let petsListing of petsListingList">
+    <div class="listing-wrapper" *ngFor="let petsListing of petsListingList; index as i">
         <app-pets-listing
-                      [petsListing]="petsListing">
+                      [petsListing]="petsListing" onclick="displayPetsDetails(i)">
         </app-pets-listing>
     </div>
 </section>

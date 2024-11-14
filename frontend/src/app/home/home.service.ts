@@ -8,7 +8,7 @@ import { HomeModule } from './home.module';
 })
 export class HomeService {
 
-  private petsListingList: PetsListing[] = [];
+  public petsListingList: PetsListing[] = [];
   private filteredPetsListSubject: BehaviorSubject<PetsListing[]> = new BehaviorSubject<PetsListing[]>([]);
   private filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
