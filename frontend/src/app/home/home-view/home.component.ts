@@ -7,6 +7,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { HomeService } from '../home.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RedirectCommand } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -36,13 +37,15 @@ export class HomeComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.loadListData();
     this.selectFiltersForm = new FormGroup({
       color: new FormControl(''),
     });
+    console.log(this.petsListingList);
   }
 
   constructor(private homeService: HomeService) {
-    this.loadListData();
+    
     this.currentOptions = this.getAllTheOptions();
   }
 
@@ -157,6 +160,17 @@ export class HomeComponent implements OnInit {
     buttonElement.style.maxWidth = 'max-content';
 
   }
+  ///CRUD COMMANDS:
+  loadListData(): void {
+    this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
+      this.petsListingList = filteredPetsList;
+      console.log(this.petsListingList);
+    });
+  }
+
+  displayPetsDetails(index: number): void {
+    new RedirectCommand(parseUrl(`petInfo/${index}`));
+  }
   
   //removes filter and apply filters
   removeFilter(id: string): void {
@@ -167,9 +181,7 @@ export class HomeComponent implements OnInit {
     this.currentOptions.push(id);
   }
 
-  loadListData(){
-    this.petsListingList = this.homeService.getList();
-  }
+ 
 
   toggleFilterOptions() {
     this.showFilterOptions = !this.showFilterOptions;
@@ -225,10 +237,10 @@ export class HomeComponent implements OnInit {
       });
     }else if(this.sortOrder === "NewOldDate"){
       this.petsListingList.sort(function (a, b) {
-        if (a.postDate < b.postDate) {
+        if (a.date_added < b.date_added) {
           return 1;
         }
-        if (a.postDate > b.postDate) {
+        if (a.date_added > b.date_added) {
           return -1;
         }
         return 0;
@@ -236,10 +248,10 @@ export class HomeComponent implements OnInit {
 
     }else if(this.sortOrder === "OldNewDate") {
       this.petsListingList.sort(function (a, b) {
-        if (a.postDate < b.postDate) {
+        if (a.date_added < b.date_added) {
           return -1;
         }
-        if (a.postDate > b.postDate) {
+        if (a.date_added > b.date_added) {
           return 1;
         }
         return 0;
@@ -249,4 +261,10 @@ export class HomeComponent implements OnInit {
       this.loadListData();
     }
   }
+
+
 }
+function parseUrl(arg0: string): import("@angular/router").UrlTree {
+  throw new Error('Function not implemented.');
+}
+
