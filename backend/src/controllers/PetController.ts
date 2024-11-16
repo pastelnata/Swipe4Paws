@@ -6,7 +6,7 @@ class PetController {
 
     public async getAllPets (req: Request, res: Response) {
         try {
-            const pets = await Pet.findAll();
+            const pets = await PetService.getAllPets();
             res.json(pets);
         } catch (error) {
             console.error("Error fetching pets:", error);

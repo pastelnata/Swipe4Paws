@@ -1,64 +1,89 @@
 import { Op } from 'sequelize';
-import { Pet, PetBehavior } from '../models/associations';
 import { parseISO, isValid } from 'date-fns';
+import { Pet, PetBehavior } from '../models/associations';
 
 class PetService {
+    static async getAllPets () {
+        try {
+            const pets = await Pet.findAll({
+                include: [
+                    {
+                        model: PetBehavior,
+                        as: 'behaviors',
+                        attributes: ['behavior']
+                    }
+                ]
+            });
+            return pets;
+        } catch (error) {
+            console.error("Error fetching pets:", error);
+        }
+    } 
+
     static async searchPets(query: string) {
         try {
-            // splits the querry into an array, then trisms any white space from each member, then removes any empty strings
-            const searchWords = query.split(' ').map(term => term.trim()).filter(term => term);
+            // Split the query into individual words, trim each word (removes empty spaces), and filter out empty words
+            const searchWords = query.split(' ').map(word => word.trim()).filter(word => word);
 
             const whereConditions: any[] = [];
 
-            // searches each word in the searchWords array
             for (const word of searchWords) {
-                //checks if the word is a valid date
-                const parsedDate = parseISO(word);
-                const isValidDate = isValid(parsedDate);
+                const validConditions = await this.getValidConditions(word);
 
-                const searchWordConditions: any[] = [];
-
-                // searches for the word in the following columns
-                searchWordConditions.push(
-                    { gender: { [Op.iLike]: `%${word}%` } },
-                    { race: { [Op.iLike]: `%${word}%` } },
-                    { name: { [Op.iLike]: `%${word}%` } },
-                    { type: { [Op.iLike]: `%${word}%` } },
-                    { '$behaviors.behavior$': { [Op.iLike]: `%${word}%` } }
-                );
-
-                // searches for the date in the date_added column (if the query is a date)
-                if (isValidDate) {
-                    searchWordConditions.push({ date_added: { [Op.eq]: parsedDate } });
+                // Add valid conditions to whereConditions if any match is found
+                if (validConditions.length > 0) {
+                    whereConditions.push({
+                        [Op.or]: validConditions
+                    });
                 }
-
-
-                // searches for the word in the age column (if the query is a number)
-                if (!isNaN(Number(word))) {
-                    searchWordConditions.push({ age: { [Op.eq]: Number(word) } });
-                }
-
-                // Adds searchWord conditions to whereConditions if any match is found
-                whereConditions.push({
-                    [Op.or]: searchWordConditions
-                });
             }
 
+            console.log('Final whereConditions:', whereConditions);
+            // Execute the query and return all matching records
             return await Pet.findAll({
                 where: {
-                    [Op.and]: whereConditions
+                    [Op.or]: whereConditions
                 },
                 include: [
-                    { 
+                    {
                         model: PetBehavior,
                         as: 'behaviors',
-                        attributes: ['behavior'],
-                    },
+                        attributes: ['behavior']
+                    }
                 ]
             });
         } catch (error) {
-            console.error("Error searching pets:", error);
+            console.error('Error searching pets:', error);
+            throw error;
         }
+    }
+
+    private static async getValidConditions(word: string): Promise<any[]> {
+        const parsedDate = parseISO(word);
+        const isValidDate = isValid(parsedDate);
+
+        const searchConditions: any[] = [];
+
+        // Search for the word in the following columns
+        searchConditions.push(
+            { gender: { [Op.iLike]: `%${word}%` } },
+            { race: { [Op.iLike]: `%${word}%` } },
+            { name: { [Op.iLike]: `%${word}%` } },
+            { type: { [Op.iLike]: `%${word}%` } },
+            { '$behaviors.behavior$': { [Op.iLike]: `%${word}%` } }
+        );
+
+        // Search for the date in the date_added column (if the query is a date)
+        if (isValidDate) {
+            searchConditions.push({ date_added: { [Op.eq]: parsedDate } });
+        }
+
+        // Search for the word in the age column (if the query is a number)
+        if (!isNaN(Number(word))) {
+            searchConditions.push({ age: { [Op.eq]: Number(word) } });
+        }
+
+        return searchConditions;
     }
 }
 
