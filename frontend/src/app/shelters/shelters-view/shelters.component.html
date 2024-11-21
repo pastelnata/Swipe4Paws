@@ -1,10 +1,12 @@
 <div class="shelters">
     <h1>Our partner shelters:</h1>
     <div class="shelters-container">
-        <div *ngFor="let shelter of sheltersList" class="shelters-card">
+        <div *ngFor="let shelter of sheltersList; index as i" class="shelter-card" (click)="displayShelterDetails(i)">
             <img src="{{shelter.photo}}" alt="Shelter Photo">
-            <h2>{{shelter.name}}</h2>
-            <p>{{shelter.address}}, {{shelter.city}}, </p>
+            <div class="shelter-card-info">
+                <h2>{{shelter.name}}</h2>
+                <p>{{shelter.address}}, {{shelter.city}}, </p>
+            </div>
         </div> 
     </div>
 

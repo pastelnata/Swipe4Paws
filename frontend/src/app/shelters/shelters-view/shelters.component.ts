@@ -41,6 +41,11 @@ export class SheltersComponent {
     return shelter.status === 'Approved';
   }
 
+  //Redirect to shelter details
+  displayShelterDetails(index: number){
+    const shelter = this.sheltersList[index];
+    window.location.replace(`http://localhost:4200/shelters/${shelter.shelterid}`);
+  }
 
 
 }
