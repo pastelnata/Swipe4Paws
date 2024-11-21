@@ -2,24 +2,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PetsListing } from '../../models/pets-listing';
 import { NavigationService } from '../navigation.service';
-import { PetsListingComponent } from '../../pets-listing/pets-listing-view/pets-listing.component';
-
+import { HomeComponent } from '../../home/home-view/home.component';
+import { HomeService } from '../../home/home.service';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
   imports: [CommonModule],
-  template: `
-   <h1>Navigation is working</h1>
-    <!-- Search engine, can be used -->
-    <form>
-        <input type="text" placeholder="Filter by name" #filter>
-        <button class="primary" type="button" (click)="filterResults(filter.value)">
-        Search</button>
-    </form>
-  `,
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.css'
+  styleUrls: ['./navigation.component.css']
 })
 
 export class NavigationComponent {
@@ -27,7 +18,7 @@ export class NavigationComponent {
   allPets: PetsListing[] = [];
   searchedPets: PetsListing[] = [];
 
-  constructor(private navigationService: NavigationService) {}
+  constructor(private navigationService: NavigationService, private homeService: HomeService) {}
 
   onKeyDown(event: KeyboardEvent) {
     if (event.key === "Enter") {
@@ -35,16 +26,7 @@ export class NavigationComponent {
     }
   }
 
-  async searchPets(query: string) {
-    await this.navigationService.searchPets(query).subscribe({
-      next: (data) => {
-        this.searchedPets = data;
-        this.searchResults.emit(this.searchedPets);
-        console.log(this.searchedPets);
-      },
-      error: (error) => {
-        console.error("Error searching pets:", error);
-      }
-    });
+  searchPets(query: string) {
+    this.navigationService.searchPets(query);
   }
 }

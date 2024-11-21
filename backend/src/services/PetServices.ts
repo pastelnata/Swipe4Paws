@@ -1,51 +1,89 @@
-import { Op } from "sequelize";
-import { Request, Response } from "express";
-import Shelter from "../models/ShelterModel";
-import PetBehavior from "../models/PetBehaviorModel";
-import Pet from "../models/PetModel";
-import { isValid, parseISO } from 'date-fns';
+import { Op } from 'sequelize';
+import { parseISO, isValid } from 'date-fns';
+import { Pet, PetBehavior } from '../models/associations';
 
 class PetService {
-    
-    public static async searchPets(query: string): Promise<Pet[]> {
+    static async getAllPets () {
         try {
-            query = query ? query.trim() : '';
-            const parsedDate = parseISO(query);
-            const isValidDate = isValid(parsedDate);
+            const pets = await Pet.findAll({
+                include: [
+                    {
+                        model: PetBehavior,
+                        as: 'behaviors',
+                        attributes: ['behavior']
+                    }
+                ]
+            });
+            return pets;
+        } catch (error) {
+            console.error("Error fetching pets:", error);
+        }
+    } 
 
-            const whereConditions: any[] = [
-                { gender: { [Op.like]: `%${query}%` } },
-                { race: { [Op.like]: `%${query}%` } },
-                { name: { [Op.like]: `%${query}%` } },
-            ];
+    static async searchPets(query: string) {
+        try {
+            // Split the query into individual words, trim each word (removes empty spaces), and filter out empty words
+            const searchWords = query.split(' ').map(word => word.trim()).filter(word => word);
 
-            if (isValidDate) {
-                whereConditions.push({ date_added: { [Op.eq]: parsedDate } });
+            const whereConditions: any[] = [];
+
+            for (const word of searchWords) {
+                const validConditions = await this.getValidConditions(word);
+
+                // Add valid conditions to whereConditions if any match is found
+                if (validConditions.length > 0) {
+                    whereConditions.push({
+                        [Op.or]: validConditions
+                    });
+                }
             }
 
-            if (!isNaN(Number(query))) {
-                whereConditions.push({ age: { [Op.eq]: Number(query) } });
-            }
-
+            console.log('Final whereConditions:', whereConditions);
+            // Execute the query and return all matching records
             return await Pet.findAll({
                 where: {
                     [Op.or]: whereConditions
                 },
                 include: [
-                    { 
-                        model: Shelter,
-                        attributes: ['city', 'address', 'postal_code', 'name'],
-                    },
-                    { 
+                    {
                         model: PetBehavior,
-                        attributes: ['behavior'],
-                    },
+                        as: 'behaviors',
+                        attributes: ['behavior']
+                    }
                 ]
             });
         } catch (error) {
             console.error("Error searching pets:", error);
             throw error;
         }
+    }
+
+    private static async getValidConditions(word: string): Promise<any[]> {
+        const parsedDate = parseISO(word);
+        const isValidDate = isValid(parsedDate);
+
+        const searchConditions: any[] = [];
+
+        // Search for the word in the following columns
+        searchConditions.push(
+            { gender: { [Op.iLike]: `%${word}%` } },
+            { race: { [Op.iLike]: `%${word}%` } },
+            { name: { [Op.iLike]: `%${word}%` } },
+            { type: { [Op.iLike]: `%${word}%` } },
+            { '$behaviors.behavior$': { [Op.iLike]: `%${word}%` } }
+        );
+
+        // Search for the date in the date_added column (if the query is a date)
+        if (isValidDate) {
+            searchConditions.push({ date_added: { [Op.eq]: parsedDate } });
+        }
+
+        // Search for the word in the age column (if the query is a number)
+        if (!isNaN(Number(word))) {
+            searchConditions.push({ age: { [Op.eq]: Number(word) } });
+        }
+
+        return searchConditions;
     }
 }
 

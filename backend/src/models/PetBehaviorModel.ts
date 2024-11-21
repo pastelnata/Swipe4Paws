@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/sequelize';
+import Pet from './PetModel';
 
 class PetBehavior extends Model {}
 
