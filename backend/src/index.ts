@@ -33,4 +33,4 @@ app.use('/shelters', shelterRoutes);
 app.use('/users', userRoutes);
 
 // Moderators
-app.use('/moderators', modRoutes);
+app.use('/mods', modRoutes);
