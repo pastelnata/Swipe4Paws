@@ -53,7 +53,7 @@ class PetService {
                 ]
             });
         } catch (error) {
-            console.error('Error searching pets:', error);
+            console.error("Error searching pets:", error);
             throw error;
         }
     }

@@ -2,6 +2,8 @@ import app from "./config/server";
 import client from "./config/database";
 import petRoutes from "./routes/PetRoutes";
 import shelterRoutes from "./routes/ShelterRoutes";
+import userRoutes from "./routes/UserRoutes";
+import modRoutes from "./routes/ModRoutes";
 
 const port = process.env.PORT || 3000;
 
@@ -22,7 +24,13 @@ client.connect()
 
 
 // Pets
-app.use(petRoutes);
+app.use('/pets', petRoutes);
 
 // Shelters
-app.use(shelterRoutes);
+app.use('/shelters', shelterRoutes);
+
+// Users
+app.use('/users', userRoutes);
+
+// Moderators
+app.use('/mods', modRoutes);

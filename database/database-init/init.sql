@@ -32,7 +32,6 @@ CREATE TABLE pet (
     FOREIGN KEY (shelterid) REFERENCES shelter(shelterid) ON DELETE CASCADE
 );
 
--- Step 2: Create the join table to associate pets with behaviors
 CREATE TABLE pet_behavior (
     petid INT NOT NULL,
     behaviorid SERIAL,
@@ -40,7 +39,6 @@ CREATE TABLE pet_behavior (
     PRIMARY KEY (petid, behaviorid),
     FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE
 );
-
 
 CREATE TABLE moderator (
     modid SERIAL PRIMARY KEY,
@@ -59,14 +57,18 @@ CREATE TABLE favorites (
 
 
 -- MOCK DATA --
+-- Mock data for the moderator table
+INSERT INTO moderator (email, username, "password") VALUES
+('moderator@gmail.com', 'moderator', 'moderator'),
+('moderator2@gmail.com', 'moderator2', 'moderator2');
 
 -- Mock data for the shelter table
-INSERT INTO shelter (email, "name", "password", "address", city, postal_code, "status") VALUES
-('shelter1@example.com', 'Sunny Shelter', 'password_1', '123 Street, City', 'Copenhagen', '1000', 'Approved'),
-('shelter2@example.com', 'Happy Tails', 'password_2', '456 Avenue, City', 'Aarhus', '2000', 'Approved'),
-('shelter3@example.com', 'Furry Friends', 'password_3', '789 Road, City', 'Odense', '3000', 'Approved'),
-('shelter4@example.com', 'Paws Place', 'password_4', '101 Blvd, City', 'Aalborg', '4000', 'Approved'),
-('shelter5@example.com', 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved');
+INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status") VALUES
+('shelter1@example.com', 1, 'Sunny Shelter', 'password_1', '123 Street, City', 'Copenhagen', '1000', 'Approved'),
+('shelter2@example.com', 1, 'Happy Tails', 'password_2', '456 Avenue, City', 'Aarhus', '2000', 'Approved'),
+('shelter3@example.com', 1, 'Furry Friends', 'password_3', '789 Road, City', 'Odense', '3000', 'Approved'),
+('shelter4@example.com', 1, 'Paws Place', 'password_4', '101 Blvd, City', 'Aalborg', '4000', 'Approved'),
+('shelter5@example.com', 1, 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved');
 
 
 -- Mock data for the pet table

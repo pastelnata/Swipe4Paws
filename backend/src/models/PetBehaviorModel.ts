@@ -18,8 +18,9 @@ PetBehavior.init({
 },
 { 
     sequelize, 
-    modelName: 'PetBehavior',
-    tableName: 'pet_behavior'
+    modelName: 'pet_behavior',
+    tableName: 'pet_behavior',
+    timestamps: false
 });
 
 export default PetBehavior;

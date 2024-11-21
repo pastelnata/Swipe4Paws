@@ -6,6 +6,6 @@ const shelterRoutes = Router();
 const shelterController = new ShelterController();
 
 // Defines the routes
-shelterRoutes.get('/shelters', shelterController.getAllShelters); 
+shelterRoutes.get('/', shelterController.getAllShelters); 
 
 export default shelterRoutes;
