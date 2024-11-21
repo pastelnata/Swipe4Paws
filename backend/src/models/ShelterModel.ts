@@ -10,6 +10,7 @@ class Shelter extends Model {
     private city!: string;
     private postal_code!: number;
     private status!: 'Approved' | 'Pending' | 'Denied';
+    private photo!: string;
 };
 
 Shelter.init(
@@ -52,6 +53,10 @@ Shelter.init(
         },
         managed_by: {
             type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        photo: {
+            type: DataTypes.STRING(70),
             allowNull: true,
         }
     },
