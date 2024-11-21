@@ -1,1 +1,11 @@
-<p>Pet!</p>
+<div class="shelters">
+    <h1>Our partner shelters:</h1>
+    <div class="shelters-container">
+        <div *ngFor="let shelter of sheltersList" class="shelters-card">
+            <img src="{{shelter.photo}}" alt="Shelter Photo">
+            <h2>{{shelter.name}}</h2>
+            <p>{{shelter.address}}, {{shelter.city}}, </p>
+        </div> 
+    </div>
+
+</div>
