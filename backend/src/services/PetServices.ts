@@ -6,7 +6,8 @@ import Pet from "../models/PetModel";
 import { isValid, parseISO } from 'date-fns';
 
 class PetService {
-    public static async searchPets(query: string) {
+    
+    public static async searchPets(query: string): Promise<Pet[]> {
         try {
             query = query ? query.trim() : '';
             const parsedDate = parseISO(query);
@@ -43,6 +44,7 @@ class PetService {
             });
         } catch (error) {
             console.error("Error searching pets:", error);
+            throw error;
         }
     }
 }

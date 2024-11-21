@@ -1,12 +1,13 @@
+import { Request, Response } from 'express';
 import ModeratorService from "../services/ModeratorService";
 
 class ModeratorController {
-    async getAllMods () {
+    public async getAllMods(req: Request, res: Response) {
         try {
             const mods = await ModeratorService.getAllMods();
-            return mods;
+            res.json(mods);
         } catch (error) {
-            console.error("Error fetching mods:", error);
+            console.error("Error fetching moderators:", error);
         }
     }
 }

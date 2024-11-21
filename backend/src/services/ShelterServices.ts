@@ -7,6 +7,7 @@ class ShelterService {
             return shelters;
         } catch (error) {
             console.error("Error fetching shelters:", error);
+            throw error;
         }
     }
 }
