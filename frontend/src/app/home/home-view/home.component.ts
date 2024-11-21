@@ -181,8 +181,6 @@ export class HomeComponent implements OnInit {
     this.currentOptions.push(id);
   }
 
- 
-
   toggleFilterOptions() {
     this.showFilterOptions = !this.showFilterOptions;
   }

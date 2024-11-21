@@ -3,14 +3,16 @@ import Pet from "../models/PetModel";
 import PetService from "../services/PetServices";
 
 class PetController {
+
     public async getAllPets (req: Request, res: Response) {
         try {
-            const pets = await Pet.findAll();
+            const pets = await PetService.getAllPets();
             res.json(pets);
         } catch (error) {
             console.error("Error fetching pets:", error);
         }
     } 
+
     //update call
     public async updatePet (req: Request, res: Response) {
         try {
@@ -24,6 +26,7 @@ class PetController {
             console.error("Error updating pet:", error);
         }
     }
+
     //delete call
     public async deletePet (req: Request, res: Response) {
         try {

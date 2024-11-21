@@ -53,15 +53,12 @@ Pet.init(
     },
     {
         sequelize,
+        modelName: 'Pet',
         tableName: 'pet',
         timestamps: true,
         createdAt: 'date_added',
         updatedAt: false,
     }
 );
-
-Pet.belongsTo(Shelter, { foreignKey: 'shelterid' });
-Pet.hasMany(PetBehavior, { foreignKey: 'petid' });
-
 
 export default Pet;

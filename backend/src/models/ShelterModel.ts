@@ -52,6 +52,7 @@ Shelter.init(
     },
     {
         sequelize,
+        modelName: 'Shelter',
         tableName: 'shelter',
         timestamps: false,
     }

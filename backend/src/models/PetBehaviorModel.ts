@@ -1,5 +1,6 @@
 import { Model, DataTypes } from 'sequelize';
 import sequelize from '../config/sequelize';
+import Pet from './PetModel';
 
 class PetBehavior extends Model {}
 
@@ -17,7 +18,7 @@ PetBehavior.init({
 },
 { 
     sequelize, 
-    modelName: 'pet_behavior',
+    modelName: 'PetBehavior',
     tableName: 'pet_behavior'
 });
 
