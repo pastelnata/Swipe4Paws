@@ -48,7 +48,12 @@ Shelter.init(
         },
         status: {
             type: DataTypes.ENUM('Approved', 'Pending', 'Rejected'),
+            allowNull: false,
         },
+        managed_by: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        }
     },
     {
         sequelize,

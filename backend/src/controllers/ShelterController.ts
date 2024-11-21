@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import Shelter from "../models/ShelterModel";
+import ShelterService from "../services/ShelterServices";
 
 class ShelterController {
     public async getAllShelters (req: Request, res: Response) {
         try {
-            const shelters = await Shelter.findAll();
+            const shelters = await ShelterService.getAllShelters();
             res.json(shelters);
         } catch (error) {
             console.error("Error fetching shelters:", error);

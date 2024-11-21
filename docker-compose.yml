@@ -13,7 +13,7 @@ services:
       - app-network
 
   backend:
-    image: swipe4paws-backend
+    image: swipe4paws-backend:latest
     build:
       context: .
       dockerfile: backend/Dockerfile
@@ -32,7 +32,7 @@ services:
       - app-network
 
   frontend:
-    image: swipe4paws-frontend
+    image: swipe4paws-frontend:latest
     build:
       context: .
       dockerfile: frontend/Dockerfile
