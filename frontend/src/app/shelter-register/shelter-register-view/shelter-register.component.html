@@ -1,56 +1,105 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+</head>
 <body>
-<div class="container">
-  <img src="./assets/shelter-register.png">
-  <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
-    <input 
-    type="text" 
-    id="name" 
-    name="name" [(ngModel)]="name" 
-    placeholder="Enter your shelter name" 
-    required/>
+  <div class="container">
+    <img src="./assets/shelter-register.jpg" />
+    <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+      <div class="input-wrapper">
+        <i class="fa-solid fa-user"></i>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="name"
+          placeholder="Enter your shelter name"
+          required
+        />
+      </div>
 
-    <input 
-      type="email" 
-      name="email" [(ngModel)]="email" 
-      placeholder="Enter your email" 
-      required/>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-envelope"></i>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          required
+        />
+      </div>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-city"></i>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          [(ngModel)]="city"
+          placeholder="Enter your city"
+        />
+      </div>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-city"></i>
+        <input
+          type="number"
+          name="postal_code"
+          [(ngModel)]="postal_code"
+          placeholder="Enter your postal code"
+          required
+        />
+      </div>
 
-    <input 
-    type="text" 
-    id="city"
-    name="city" [(ngModel)]="city" 
-    placeholder="Enter your city" />
-    
-    <input 
-      type="number" 
-      name="postal_code" 
-      [(ngModel)]="postal_code" 
-      placeholder="Enter your postal code" 
-      required/>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-location-dot"></i>
+        <input
+          type="text"
+          name="address"
+          [(ngModel)]="address"
+          placeholder="Enter your address"
+          required
+        />
+      </div>
 
-    <input 
-    type="text"
-    name="address" [(ngModel)]="address" 
-    placeholder="Enter your address" 
-    required/>
-    
-    <div class="error" *ngIf="registerForm.controls['password']?.errors?.['minlength'] && registerForm.controls['password']?.touched">
-      <p>Password must be at least 6 characters long.</p>
-    </div>
-    <input 
-      type="password"
-      name="password" [(ngModel)]="password" 
-      minlength="6"
-      placeholder="Enter your password"
-      required/>
-    <input 
-      type="password" 
-      name="confirmPassword" [(ngModel)]="confirmPassword" 
-      placeholder="Confirm your password"
-      required/>
+      <div
+        class="error"
+        *ngIf="registerForm.controls['password']?.errors?.['minlength'] && registerForm.controls['password']?.touched"
+      >
+        <p>Password must be at least 6 characters long.</p>
+      </div>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          minlength="6"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+      <div class="input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="password"
+          name="confirmPassword"
+          [(ngModel)]="confirmPassword"
+          placeholder="Confirm your password"
+          required
+        />
+      </div>
 
-    <button type="submit" [disabled]="registerForm.invalid" [ngClass]="{'disabled-button': registerForm.invalid}">Sign Up</button>
-    <div class="user-signup">
-      <span>Are you a user? </span><a href="/register">Sign up here</a>
-    </div>
-  </form>
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid"
+        [ngClass]="{ 'disabled-button': registerForm.invalid }"
+      >
+        Sign Up
+      </button>
+      <div class="user-signup">
+        <span>Are you a user? </span><a href="/register">Sign up here</a>
+      </div>
+    </form>
+  </div>
+</body>
