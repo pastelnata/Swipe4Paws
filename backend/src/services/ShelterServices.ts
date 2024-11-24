@@ -17,7 +17,7 @@ class ShelterService {
     password: string,
     address: string,
     postal_code: number,
-    city: string
+    city: string,
   ): Promise<string> {
     try {
       console.log("Creating shelter", email);

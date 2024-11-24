@@ -3,16 +3,23 @@ import { DataTypes, Model } from "sequelize";
 import jwt from "jsonwebtoken";
 
 class Shelter extends Model {
-  private shelterid!: number;
-  private email!: string;
+    private shelterid!: number;
+    private email!: string;
+    private name!: string;
+    private password!: string;
+    private address!: string;
+    private city!: string;
+    private postal_code!: number;
+    private status!: 'Approved' | 'Pending' | 'Denied';
+    private photo!: string;
 
-  public generateToken(): string {
-    console.log("Generating token for shelter:", this.email);
-    const payload = { shelterid: this.shelterid, email: this.email };
-    const secret = "123456";
-    return jwt.sign(payload, secret);
-  }
-}
+    public generateToken(): string {
+      console.log("Generating token for shelter:", this.email);
+      const payload = { shelterid: this.shelterid, email: this.email };
+      const secret = "123456";
+      return jwt.sign(payload, secret);
+    }
+};
 
 Shelter.init(
   {
@@ -53,6 +60,10 @@ Shelter.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    photo: {
+      type: DataTypes.STRING(70),
+      allowNull: true,
+    }
   },
   {
     sequelize,
