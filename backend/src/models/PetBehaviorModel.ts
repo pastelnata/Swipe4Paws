@@ -1,26 +1,36 @@
-import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/sequelize';
-import Pet from './PetModel';
+import { Model, DataTypes } from "sequelize";
+import sequelize from "../config/sequelize";
 
-class PetBehavior extends Model {}
+class PetBehavior extends Model {
+  private behaviorid!: number;
+  private petid!: number;
+  private userid!: number;
+  private behavior!: string;
+}
 
-PetBehavior.init({
-  behaviorid: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
+PetBehavior.init(
+  {
+    behaviorid: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    petid: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    userid: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    behavior: DataTypes.STRING,
   },
-  petid: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  behavior: DataTypes.STRING,
-},
-{ 
-    sequelize, 
-    modelName: 'pet_behavior',
-    tableName: 'pet_behavior',
-    timestamps: false
-});
+  {
+    sequelize,
+    modelName: "PetBehavior",
+    tableName: "pet_behavior",
+    timestamps: false,
+  }
+);
 
 export default PetBehavior;

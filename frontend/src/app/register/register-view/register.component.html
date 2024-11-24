@@ -1,0 +1,66 @@
+<body>
+<div class="container">
+  <img src="./assets/user-register.jpg">
+  <form (ngSubmit)="register(registerForm)" #registerForm="ngForm">
+    <input 
+    type="text" 
+    id="username" 
+    name="username" [(ngModel)]="username" 
+    placeholder="Enter your username" 
+    required/>
+    
+    <input 
+      type="email" 
+      name="email" [(ngModel)]="email" 
+      placeholder="Enter your email" 
+      required
+      />
+    <div class="error" *ngIf="registerForm.controls['password']?.errors?.['minlength'] && registerForm.controls['password']?.touched">
+      <p>Password must be at least 6 characters long.</p>
+    </div>
+    <input 
+      type="password"
+      #passwordInput
+      name="password" [(ngModel)]="password" 
+      minlength="6"
+      (focus)="onPasswordFocus()" 
+      placeholder="Enter your password"
+      required/>
+    <input 
+      type="password" 
+      name="confirmPassword" [(ngModel)]="confirmPassword" 
+      #confirmPasswordInput
+      (focus)="onPasswordFocus()" 
+      placeholder="Confirm your password"
+      required/>
+
+    <mat-form-field class="filter-options">
+      <mat-select [(ngModel)]="selectedFilters" name="selectedFilters" placeholder="Select your pet preferences" multiple>
+        <mat-option *ngFor="let option of filterOptions" [value]="option">{{ option }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button type="submit" [disabled]="registerForm.invalid" [ngClass]="{'disabled-button': registerForm.invalid}">Sign Up</button>
+    <div class="shelter-signup">
+      <span>Are you a shelter? </span><a href="/register/shelter">Sign up here</a>
+    </div>
+  </form>
+  <div class="image"></div>
+  <div class="ear-l"></div>
+  <div class="ear-r"></div>
+  <div class="panda-face">
+    <div class="blush-l"></div>
+    <div class="blush-r"></div>
+    <div class="eye-l">
+      <div class="eyeball-l"></div>
+    </div>
+    <div class="eye-r">
+      <div class="eyeball-r"></div>
+    </div>
+    <div class="nose"></div>
+    <div class="mouth"></div>
+  </div>
+  <div #handL class="hand-l"></div>
+  <div #handR class="hand-r"></div>
+</div>
+</body>

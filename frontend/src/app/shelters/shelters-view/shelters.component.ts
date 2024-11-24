@@ -46,6 +46,4 @@ export class SheltersComponent {
     const shelter = this.sheltersList[index];
     window.location.replace(`http://localhost:4200/shelters/${shelter.shelterid}`);
   }
-
-
 }

@@ -15,9 +15,9 @@ CREATE TABLE shelter (
     "password" VARCHAR(255) NOT NULL,
     "address" VARCHAR(255) NOT NULL,
     city VARCHAR(100),
-    postal_code VARCHAR(10) NOT NULL,
+    postal_code INT NOT NULL,
     photo VARCHAR(255),
-    "status" VARCHAR(10) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected'))
+    "status" VARCHAR(9) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected'))
 );
 
 CREATE TABLE pet (
@@ -34,11 +34,12 @@ CREATE TABLE pet (
 );
 
 CREATE TABLE pet_behavior (
-    petid INT NOT NULL,
-    behaviorid SERIAL,
+    petid INT,
+    userid INT,
+    behaviorid SERIAL PRIMARY KEY,
     behavior VARCHAR(255),
-    PRIMARY KEY (petid, behaviorid),
-    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE
+    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES "user"(userid) ON DELETE CASCADE
 );
 
 CREATE TABLE moderator (

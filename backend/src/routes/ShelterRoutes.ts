@@ -6,6 +6,7 @@ const shelterRoutes = Router();
 const shelterController = new ShelterController();
 
 // Defines the routes
-shelterRoutes.get('/', shelterController.getAllShelters); 
+shelterRoutes.get('/', (req, res) => shelterController.getAllShelters(req, res)); 
+shelterRoutes.post('/register', (req,res) => shelterController.createShelter(req,res));
 
 export default shelterRoutes;

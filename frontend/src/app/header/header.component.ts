@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,14 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class HeaderComponent {
   
   @Output() toggleProfileBar = new EventEmitter<void>();
+
+  constructor(private router: Router) { }
   
   profileClicked() {
     this.toggleProfileBar.emit();
   }
 
+  logoClicked() {
+    this.router.navigateByUrl('/');
+  }
 }
