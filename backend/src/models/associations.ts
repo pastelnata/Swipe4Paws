@@ -16,4 +16,9 @@ Shelter.hasMany(Pet, { foreignKey: 'shelterid' });
 Moderator.hasMany(Shelter, { foreignKey: 'managed_by' });
 Shelter.belongsTo(Moderator, { foreignKey: 'managed_by'});
 
+// user & preferences relations
+User.hasMany(PetBehavior, { as: 'preferences', foreignKey: 'userid' });
+PetBehavior.belongsTo(User, { as: 'user', foreignKey: 'userid' });
+
+
 export { Pet, PetBehavior, Shelter, Moderator, User };

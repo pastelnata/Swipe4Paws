@@ -1,6 +1,7 @@
 import { Model, DataTypes } from "sequelize";
 import jwt from "jsonwebtoken";
 import sequelize from "../config/sequelize";
+import { PetBehavior } from "./associations";
 
 class User extends Model {
   private userid!: number;

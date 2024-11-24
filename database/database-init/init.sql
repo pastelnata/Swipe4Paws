@@ -33,11 +33,12 @@ CREATE TABLE pet (
 );
 
 CREATE TABLE pet_behavior (
-    petid INT NOT NULL,
-    behaviorid SERIAL,
+    petid INT,
+    userid INT,
+    behaviorid SERIAL PRIMARY KEY,
     behavior VARCHAR(255),
-    PRIMARY KEY (petid, behaviorid),
-    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE
+    FOREIGN KEY (petid) REFERENCES pet(petid) ON DELETE CASCADE,
+    FOREIGN KEY (userid) REFERENCES "user"(userid) ON DELETE CASCADE
 );
 
 CREATE TABLE moderator (
