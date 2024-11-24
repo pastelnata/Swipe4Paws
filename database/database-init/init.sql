@@ -15,8 +15,8 @@ CREATE TABLE shelter (
     "password" VARCHAR(255) NOT NULL,
     "address" VARCHAR(255) NOT NULL,
     city VARCHAR(100),
-    postal_code VARCHAR(10) NOT NULL,
-    "status" VARCHAR(10) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected'))
+    postal_code INT NOT NULL,
+    "status" VARCHAR(9) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected'))
 );
 
 CREATE TABLE pet (

@@ -5,6 +5,7 @@ const userRoutes = Router();
 const userController = new UserController();
 
 // Defines the routes
-userRoutes.get('/', userController.getAllUsers); 
+userRoutes.get('/', (req, res) => userController.getAllUsers(req, res));
+userRoutes.post('/register', (req, res) => userController.createUser(req, res));
 
 export default userRoutes;

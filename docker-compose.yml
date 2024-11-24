@@ -30,6 +30,15 @@ services:
       - database
     networks:
       - app-network
+    develop:
+      watch:
+        - action: sync
+          path: ./backend
+          target: /Swipe4Paws/backend
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
 
   frontend:
     image: swipe4paws-frontend:latest
@@ -44,6 +53,17 @@ services:
       - "4200:4200"
     networks:
       - app-network
+    volumes:
+      - /Swipe4Paws/frontend/node_modules
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /Swipe4Paws/frontend
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
 
 volumes:
   postgres-data:

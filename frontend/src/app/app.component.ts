@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home-view/home.component';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation-view/navigation.component';
 import { HeaderComponent } from "./header/header.component";
 import { HomeModule } from './home/home.module';
@@ -14,7 +13,6 @@ import { ProfileBarModule } from './profile-bar/profile-bar.module';
   imports: [
     RouterOutlet, 
     CommonModule,
-    HomeComponent, 
     NavigationComponent, 
     HeaderComponent, 
     HomeModule, 
@@ -25,6 +23,17 @@ import { ProfileBarModule } from './profile-bar/profile-bar.module';
 })
 export class AppComponent {
   title = 'swipe4paws';
+  showFooter: boolean = true;
+  showHeader: boolean = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+      this.showFooter = event.url !== '/register' && event.url !== '/register/shelter';
+      this.showHeader = event.url !== '/register' && event.url !== '/register/shelter';
+      }
+    });
+  }
 
   isProfileBarVisible: boolean = false;
 
