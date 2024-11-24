@@ -16,6 +16,7 @@ CREATE TABLE shelter (
     "address" VARCHAR(255) NOT NULL,
     city VARCHAR(100),
     postal_code VARCHAR(10) NOT NULL,
+    photo VARCHAR(255),
     "status" VARCHAR(10) NOT NULL CHECK (status IN ('Pending', 'Approved', 'Rejected'))
 );
 
@@ -63,12 +64,12 @@ INSERT INTO moderator (email, username, "password") VALUES
 ('moderator2@gmail.com', 'moderator2', 'moderator2');
 
 -- Mock data for the shelter table
-INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status") VALUES
-('shelter1@example.com', 1, 'Sunny Shelter', 'password_1', '123 Street, City', 'Copenhagen', '1000', 'Approved'),
-('shelter2@example.com', 1, 'Happy Tails', 'password_2', '456 Avenue, City', 'Aarhus', '2000', 'Approved'),
-('shelter3@example.com', 1, 'Furry Friends', 'password_3', '789 Road, City', 'Odense', '3000', 'Approved'),
-('shelter4@example.com', 1, 'Paws Place', 'password_4', '101 Blvd, City', 'Aalborg', '4000', 'Approved'),
-('shelter5@example.com', 1, 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved');
+INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status", photo) VALUES
+('shelter1@example.com', 1, 'Sunny Shelter', 'password_1', '123 Street, City', 'Copenhagen', '1000', 'Approved', './assets/shelter1.jpg'),
+('shelter2@example.com', 1, 'Happy Tails', 'password_2', '456 Avenue, City', 'Aarhus', '2000', 'Pending','./assets/shelter2.jpg'),
+('shelter3@example.com', 1, 'Furry Friends', 'password_3', '789 Road, City', 'Odense', '3000', 'Approved', './assets/shelter1.jpg'),
+('shelter4@example.com', 1, 'Paws Place', 'password_4', '101 Blvd, City', 'Aalborg', '4000', 'Rejected','./assets/shelter2.jpg'),
+('shelter5@example.com', 1, 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved', './assets/shelter1.jpg');
 
 
 -- Mock data for the pet table
