@@ -1,123 +1,150 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    height: 100vh;
-    width: 98.5vw;
-    background-color: rgb(104, 143, 117);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(104, 143, 117);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
 }
 
 /* ERROR MESSAGE */
 
 .error {
-    color: #ff0000;
-    font-size: 0.8em;
-    margin-top: 0.2em;
+  color: #ff0000;
+  font-size: 0.8em;
+  margin-top: 0.2em;
 }
 
 /* FORM */
 
 .container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 100vw;
-    margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100vw;
+  margin-top: 20px;
 }
 
 .container img {
-    height: 100%;
-    width: 50%;
+  height: 100%;
+  width: 100%;
 }
 
 form {
-    height: 100%;
-    background-color: #ffffff;
-    padding: 0 3.1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 0em 0.5em 0.5em 0em;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 0 3.1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0em 0.5em 0.5em 0em;
 }
 
 form input {
-    font-size: 0.95em;
-    font-weight: 400;
-    color: #3f3554;
-    padding: 0.3em;
-    border: none;
-    border-bottom: 0.12em solid #3f3554;
-    outline: none;
+  font-size: 0.95em;
+  font-weight: 400;
+  color: #3f3554;
+  padding: 0.3em;
+  border: none;
+  border-bottom: 0.12em solid #3f3554;
+  outline: none;
 }
 
 form input:focus {
-    border-color: rgb(86, 125, 99);
+  border-color: rgb(86, 125, 99);
 }
 
 form input::placeholder {
-    color: #b4b5b3;
+  color: #b4b5b3;
 }
 
 form input:not(:last-child) {
-    margin-bottom: 0.9em;
+  margin-bottom: 0.9em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+}
+
+.input-wrapper i {
+    position: absolute;
+    left: 5px;
+    color: #aaa;
+}
+
+.input-wrapper input {
+    padding-left: 30px;
+}
+
+.input-wrapper input:focus {
+  border-color: rgb(86, 125, 99);
+}
+
+.input-wrapper input::placeholder {
+  color: #b4b5b3;
 }
 
 .filter-options {
-    width: 100%;
-    height: 4.5rem;
+  width: 100%;
+  height: 4.5rem;
 }
 
 form button {
-    font-size: 0.95em;
-    padding: 0.8em 0;
-    width: 18.6em;
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    background-color: rgb(86, 125, 99);
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: 600;
-    cursor: pointer;
-    letter-spacing: 0.15em;
-    margin-top: 0.8em;
-    transition: transform ease 0.3s;
+  font-size: 0.95em;
+  padding: 0.8em 0;
+  width: 18.6em;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: rgb(86, 125, 99);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.15em;
+  margin-top: 0.8em;
+  transition: transform ease 0.3s;
 }
 
 form button:hover {
-    transform: scale(1.02) translateY(-1px);
+  transform: scale(1.02) translateY(-1px);
 }
 
 form button.disabled-button {
-    background-color:rgb(86, 125, 99);
-    color: white;
-    cursor: default;
-    opacity: 0.6;
+  background-color: rgb(86, 125, 99);
+  color: white;
+  cursor: default;
+  opacity: 0.6;
 }
 
 form button.disabled-button:hover {
-    transform: none;
+  transform: none;
 }
 
 .user-signup {
-    font-size: 0.8em;
-    color: #3f3554;
-    margin-top: 0.5em;
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  font-size: 0.8em;
+  color: #3f3554;
+  margin-top: 0.5em;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
 }
 
 .user-signup span {
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
