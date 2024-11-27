@@ -1,3 +1,7 @@
+* {
+    z-index: 3;
+}
+
 .header {
     position: sticky;
     top: 0;
