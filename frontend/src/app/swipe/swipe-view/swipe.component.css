@@ -1,0 +1,42 @@
+.swipe-field {
+    position: static;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.swipe-window {
+    position: relative;
+    height: 600px;
+    width: 350px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    overflow: hidden;
+    border: 0.5px solid rgb(53, 85, 64);
+}
+
+.swipe-window:hover {
+    cursor: pointer;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.swipe-description {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 30px;
+    bottom: 0%;
+}
+
+.pet-image {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
