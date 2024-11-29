@@ -1,1 +1,60 @@
-<p>login works!</p>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <form (ngSubmit)="login(loginForm)" #loginForm="ngForm">
+      <h1 class="login-heading">Login</h1>
+      <!-- Email Input -->
+      <div class="input-wrapper">
+        <i class="fa-solid fa-envelope"></i>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="email"
+          placeholder="Enter your email"
+          required />
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-wrapper">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Enter your password"
+          required />
+      </div>
+
+      <!-- Forgot Password -->
+      <div class="forgot-link">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <!-- Login Button -->
+      <button type="submit" [disabled]="loginForm.invalid" [ngClass]="{'disabled-button': loginForm.invalid}">
+        Login
+      </button>
+
+      <!-- Error Message -->
+      <p *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </p>
+
+      <!-- Social platforms Login Section -->
+      <p>or login with social platforms</p>
+      <div class="social-icons">
+        <a><i class="fa-brands fa-google"></i></a>
+        <a><i class="fa-brands fa-facebook-square"></i></a>
+        <a><i class='fa-brands fa-instagram'></i></a>
+      </div>
+
+      <!-- Registration Redirect -->
+      <div class="register-link">
+        <span>Don't have an account?</span>
+        <a href="/register">Register</a>
+      </div>
+    </form>
+  </div>
+</body>
