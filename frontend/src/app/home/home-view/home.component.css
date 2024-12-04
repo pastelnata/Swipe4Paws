@@ -31,13 +31,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 15px; 
+    gap: 5vh; 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 15px; 
     z-index: 2;
 }
 
@@ -48,8 +47,8 @@
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
+    border-radius: 30px;
+    padding: 4vh;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -59,8 +58,8 @@
     background-color: rgba(200, 200, 200, 0.8);
 }
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 25vh;
+    height: 25vh;
 }
 
 .icon-button {
@@ -76,52 +75,10 @@
 }
 
 .icon-label {
-    font-size: 14px;
-    margin-top: 4px;
+    font-size: 2rem;
+    padding-top: 2vh;
     color: #333;
 }
-
-
-
-#button-container button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border: none;
-    border-radius: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#button-container button:hover {
-    background-color: rgba(200, 200, 200, 0.8);
-}
-.icon {
-    width: 100px;
-    height: 100px;
-}
-
-.icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.icon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.icon-label {
-    font-size: 14px;
-    margin-top: 4px;
-    color: #333;
-}
-
 
 
 /*FILTERS */
