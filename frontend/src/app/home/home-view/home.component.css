@@ -6,7 +6,7 @@
 #main {
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    height: 45vh;
     position: relative;
 }
 
@@ -48,7 +48,7 @@
     background-color: rgba(255, 255, 255, 0.8);
     border: none;
     border-radius: 30px;
-    padding: 4vh;
+    padding: 5vh;
     font-size: 1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -58,8 +58,8 @@
     background-color: rgba(200, 200, 200, 0.8);
 }
 .icon {
-    width: 25vh;
-    height: 25vh;
+    width: 20vh;
+    height: 20vh;
 }
 
 .icon-button {
@@ -87,7 +87,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 6vh 8vh 4vh 8vh;
+    margin: 6vh 8vh 0vh 8vh;
     z-index: 1000;
 }
 
@@ -326,6 +326,23 @@ option {
 .secondary:hover {
     background-color:rgb(242, 182, 255) ;
     border-color:rgb(242, 182, 255) ;
+}
+
+/* Pet listing */
+
+.pets-headder{
+    color:  rgb(86, 125, 99);
+    font-family: Inter;
+    font-size: 49.92px;
+    font-weight: 900;
+    line-height: 69.89px;
+    text-align: left;
+    margin: 0vh 0vh 4vh 8vh;
+    text-decoration: underline;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+
 }
 
 #pet-listing-container {

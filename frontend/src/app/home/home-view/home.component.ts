@@ -160,6 +160,13 @@ export class HomeComponent implements OnInit {
     buttonElement.style.maxWidth = 'max-content';
 
   }
+    //
+    scrollToSection(sectionId: string) {
+    const section = document.getElementById(sectionId);
+    if(!section) return;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start'});
+  }
+
   ///CRUD COMMANDS:
   loadListData(): void {
     this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
