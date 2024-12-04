@@ -95,7 +95,6 @@
     display: flex;
     flex-direction: column;
     width: 80vh;
-    z-index: 1000;
 }
 
 .filter-options-box.ng-star-inserted {

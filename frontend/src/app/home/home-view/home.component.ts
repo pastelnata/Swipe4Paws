@@ -160,7 +160,7 @@ export class HomeComponent implements OnInit {
     buttonElement.style.maxWidth = 'max-content';
 
   }
-    //
+    //Scroll function 
     scrollToSection(sectionId: string) {
     const section = document.getElementById(sectionId);
     if(!section) return;
