@@ -373,8 +373,9 @@ option {
 
 #pet-listing-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    padding: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(40vh, 1fr));
+    gap: 6vh;
+    padding: 0vh 8vh 8vh 8vh;
     background-color: rgb(255, 255, 255);
 }
+
