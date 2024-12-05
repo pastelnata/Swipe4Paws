@@ -58,8 +58,8 @@
     background-color: rgba(200, 200, 200, 0.8);
 }
 .icon {
-    width: 20vh;
-    height: 20vh;
+    width: 19vh;
+    height: 19vh;
 }
 
 .icon-button {
@@ -75,7 +75,7 @@
 }
 
 .icon-label {
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding-top: 2vh;
     color: #333;
 }
