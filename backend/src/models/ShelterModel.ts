@@ -1,6 +1,7 @@
 import sequelize from "../config/sequelize";
 import { DataTypes, Model } from "sequelize";
 import jwt from "jsonwebtoken";
+import TokenService from "../middleware/token";
 
 class Shelter extends Model {
   private shelterid!: number;
@@ -15,13 +16,8 @@ class Shelter extends Model {
   private role!: 'shelter';
 
   public generateToken(): string {
-    console.log("Generating token for shelter:", this.email);
-    const payload = { shelterid: this.shelterid, email: this.email, role: this.role };
-    const secret = process.env.JWT_KEY;
-    if (!secret) {
-      throw new Error("JWT key not found");
-    }
-    return jwt.sign(payload, secret);
+    console.log("Generating token for user:", this.email);
+    return TokenService.generateToken(this.shelterid, this.email, this.role);
   }
 };
 

@@ -13,6 +13,7 @@ import userGuard from "./auth/auth.guard";
 import shelterGuard from "./auth/auth.guard";
 import moderatorGuard from "./auth/auth.guard";
 import { ModeratorComponent } from "./moderator/moderator.component";
+import { SearchResultsComponent } from "./app/search-results/search-results.component";
 
 const routeConfig: Routes = [
     { path: '', component: HomeComponent, canActivate: [userGuard], title: 'Home Page' },
@@ -21,9 +22,10 @@ const routeConfig: Routes = [
     { path: 'shelters/:id', component: SheltersDetailsComponent, canActivate: [userGuard],title: 'Shelters' },
     { path: 'swipe', component: SwipeComponent, canActivate: [userGuard],title: 'Swipe' },
     { path: 'adopt', component: HomeComponent, canActivate: [userGuard],title: 'Adopt'},
+    { path: 'adopt/pets', component: SearchResultsComponent, canActivate: [userGuard],title: 'Search Results'},
     { path: 'petInfo/:id', component: PetsDetailsComponent, canActivate: [userGuard],title: 'Pet info' },
-    { path: 'register', component: RegisterComponent, canActivate: [userGuard],title: 'Sign Up' },
-    { path: 'register/shelter', component: ShelterRegisterComponent, canActivate: [userGuard],title: 'Shelter Sign Up' },
+    { path: 'register', component: RegisterComponent, title: 'Sign Up' },
+    { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
     { path: 'login', component: LoginComponent, canActivate: [userGuard],title: 'Login' },
     { path: 'shelter-manager', component: ShelterAppComponent, canActivate: [shelterGuard], title: 'Login' },
     { path: 'moderator', component: ModeratorComponent, canActivate: [moderatorGuard], title: 'Login' },

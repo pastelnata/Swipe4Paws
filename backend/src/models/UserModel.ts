@@ -2,6 +2,7 @@ import { Model, DataTypes } from "sequelize";
 import jwt from "jsonwebtoken";
 import sequelize from "../config/sequelize";
 import dotenv from "dotenv";
+import TokenService from "../middleware/token";
 
 dotenv.config();
 
@@ -12,12 +13,7 @@ class User extends Model {
 
   public generateToken(): string {
     console.log("Generating token for user:", this.email);
-    const payload = { userid: this.userid, email: this.email, role: this.role };
-    const secret = process.env.JWT_KEY;
-    if (!secret) {
-      throw new Error("JWT key not found");
-    }
-    return jwt.sign(payload, secret);
+    return TokenService.generateToken(this.userid, this.email, this.role);
   }
 }
 

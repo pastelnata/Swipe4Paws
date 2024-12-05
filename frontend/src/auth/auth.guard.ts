@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 export default class Auth {
   constructor(private router: Router) {}
+  
   getTokenPayload = () => {
     const token = localStorage.getItem('token');
     if (token) {

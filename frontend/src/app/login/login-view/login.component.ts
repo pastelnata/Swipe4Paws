@@ -16,8 +16,11 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
-
-  constructor(private loginService: LoginService, private auth: Auth) {}
+  auth!: Auth;
+  
+  constructor(private loginService: LoginService, private router: Router) { 
+    this.auth = new Auth(router);
+  }
 
   //to handle the login form submission
   async login(form: NgForm) {

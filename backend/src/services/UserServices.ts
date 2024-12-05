@@ -43,9 +43,10 @@ class UserService {
     try{
         const user = await User.findOne({ where: {username, password}});
         if(!user){
-            console.log('User is not found');
+            console.log('User not found');
+            return;
         }
-        return user;
+        return user.generateToken();
     }
     catch(error){
         console.error("Error in the loginUser,", error)
