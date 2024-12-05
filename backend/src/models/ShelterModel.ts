@@ -3,22 +3,26 @@ import { DataTypes, Model } from "sequelize";
 import jwt from "jsonwebtoken";
 
 class Shelter extends Model {
-    private shelterid!: number;
-    private email!: string;
-    private name!: string;
-    private password!: string;
-    private address!: string;
-    private city!: string;
-    private postal_code!: number;
-    private status!: 'Approved' | 'Pending' | 'Denied';
-    private photo!: string;
+  private shelterid!: number;
+  private email!: string;
+  private name!: string;
+  private password!: string;
+  private address!: string;
+  private city!: string;
+  private postal_code!: number;
+  private status!: 'Approved' | 'Pending' | 'Denied';
+  private photo!: string;
+  private role!: 'shelter';
 
-    public generateToken(): string {
-      console.log("Generating token for shelter:", this.email);
-      const payload = { shelterid: this.shelterid, email: this.email };
-      const secret = "123456";
-      return jwt.sign(payload, secret);
+  public generateToken(): string {
+    console.log("Generating token for shelter:", this.email);
+    const payload = { shelterid: this.shelterid, email: this.email, role: this.role };
+    const secret = process.env.JWT_KEY;
+    if (!secret) {
+      throw new Error("JWT key not found");
     }
+    return jwt.sign(payload, secret);
+  }
 };
 
 Shelter.init(

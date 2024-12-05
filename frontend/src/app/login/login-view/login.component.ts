@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
-
+import Auth from '../../../auth/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private auth: Auth) {}
 
   //to handle the login form submission
   async login(form: NgForm) {
@@ -31,8 +31,8 @@ export class LoginComponent {
       console.log('Login successful', response);
       // Save the token to localStorage or sessionStorage
       localStorage.setItem('token', response.token);
-      // Redirect to a protected route (for example, dashboard)
-      this.router.navigate(['/dashboard']);
+      //gets user role & redirects to certain page accordingly
+      this.auth.getUserRole();
     },
     error: (error) => {
       console.error('Login failed', error);

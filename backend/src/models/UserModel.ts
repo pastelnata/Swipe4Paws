@@ -1,16 +1,22 @@
 import { Model, DataTypes } from "sequelize";
 import jwt from "jsonwebtoken";
 import sequelize from "../config/sequelize";
-import { PetBehavior } from "./associations";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 class User extends Model {
   private userid!: number;
   private email!: string;
+  private role: string = "user";
 
   public generateToken(): string {
     console.log("Generating token for user:", this.email);
-    const payload = { userid: this.userid, email: this.email };
-    const secret = "123456";
+    const payload = { userid: this.userid, email: this.email, role: this.role };
+    const secret = process.env.JWT_KEY;
+    if (!secret) {
+      throw new Error("JWT key not found");
+    }
     return jwt.sign(payload, secret);
   }
 }

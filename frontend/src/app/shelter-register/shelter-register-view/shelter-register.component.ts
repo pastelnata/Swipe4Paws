@@ -40,7 +40,7 @@ export class ShelterRegisterComponent {
       try {
         await this.shelterRegisterService.createShelter(newShelter);
         console.log('Shelter created');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/shelter-app');
       } catch (error: any) {
         console.error('Error registering shelter:', error);
         // Display error message
