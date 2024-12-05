@@ -3,7 +3,9 @@
     background-color: rgb(224, 230, 226);
     border-radius: 31px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    max-height: 80vh;
+    max-height: 65vh;
+    overflow: hidden; 
+    box-sizing: border-box; 
 }
 
 .listing:hover {
@@ -13,23 +15,29 @@
 
 .pet-photo {
     width: 100%;
-    height: 30vh;
+    max-height: 30vh;
     object-fit: cover;
     object-position: center;
     border-radius: 31px;
 }
 
 .pet-name{
-    padding: 1vh 2vh 0vh 2vh;
+    padding: 1vh 2vh 2vh 2vh;
     color: #6C9D7C;
+    font-size: 5vw;
+    margin: 0;
 }
 
 .pet-description {
     padding: 0vh 2vh 0vh 2vh;
-    font-size: 20px;
     text-transform: capitalize;
-   
+    font-size: 20px;
+    margin: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 .pet-buttons {
     display: flex;
     justify-content: space-between;
@@ -39,8 +47,7 @@
 .petDetailButton{
     background-color: #6C9D7C;
     height: 6vh;
-    width: 10vh;
-    margin: 2px;
+    min-width: 10vh;
     border-radius: 30px;
     border-color: #6C9D7C;
     border-style: solid;
