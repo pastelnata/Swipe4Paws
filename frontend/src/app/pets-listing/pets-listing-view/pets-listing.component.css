@@ -1,28 +1,65 @@
-.pet-photo {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-    border: 2px solid black;
-}
-
-.pet-name, 
-.pet-description, 
-.pet-age 
-/* .pet-location  */
-{
-    color: black;
-    padding: 5px;
-}
 
 .listing {
-    background-color: rgb(187, 232, 203);
-    border-radius: 10px;
-    border: 2px solid black;
+    background-color: rgb(224, 230, 226);
+    border-radius: 31px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden; 
+    box-sizing: border-box; 
 }
 
+.listing:hover {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 10px 24px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}
+
+.pet-photo {
+    width: 100%;
+    max-height: 30vh;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 31px;
+}
+
+.pet-name{
+    padding: 1vh 2vh 2vh 2vh;
+    color: #6C9D7C;
+    font-size: 3.5vw;
+    margin: 0;
+}
+
+.pet-description {
+    padding: 0vh 2vh 0vh 2vh;
+    text-transform: capitalize;
+    font-size: 20px;
+    margin: 0;
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.pet-buttons {
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh;   
+}
+
+.petDetailButton{
+    background-color: #6C9D7C;
+    height: 6vh;
+    min-width: 10vh;
+    border-radius: 30px;
+    border-color: #6C9D7C;
+    border-style: solid;
+    color: white;
+}
+
+.petDetailButton:hover {
+   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4); 
+}
+
+
 .like-button i {
-    color: rgb(0, 0, 0);
+    color: #6C9D7C;
 }
 
 .like-button i:hover {
@@ -34,19 +71,19 @@
     border: none;
     cursor: pointer;
     outline: none;
-    padding: 10px;
+    font-size: 30px;
 }
 
 .like-button i.fa-solid {
     color: rgb(255, 0, 0);
 }
 
-.petDetailButton {
-    color: rgb(0, 0, 0);
-    margin-left: 15%;
-    margin-bottom: 2%;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 1%;
-    border-radius: 5px;
-    background-color: white;
-}
+
+
+
+
+
+
+
+
+
