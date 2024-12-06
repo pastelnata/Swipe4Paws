@@ -138,3 +138,6 @@ INSERT INTO pet_behavior (petid, behavior) VALUES
 (23, 'Reserved'),
 (24, 'Cuddly'),
 (25, 'Active');
+
+INSERT INTO "user" (email, username, "password") VALUES 
+('user1@gmail.com', 'user1', 'password1');
