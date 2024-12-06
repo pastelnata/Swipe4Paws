@@ -47,18 +47,10 @@ export class HomeComponent implements OnInit {
       color: new FormControl(''),
     });
     console.log(this.petsListingList);
+    
+    this.loadFavourites();
 
-    this.favouritesService.getAllFavourites().subscribe(
-      (favourites: FavoriteModel[]) => {
-        this.favourites = favourites;
-        console.log('Favourites loaded successfully:', this.favourites);
-        this.isFavouritesLoaded = true;
-      },
-      (error) => {
-        console.error('Error loading favourites:', error);
-        this.isFavouritesLoaded = true;
-      }
-    );
+
   }
 
   constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
@@ -282,6 +274,20 @@ export class HomeComponent implements OnInit {
     else if(this.sortOrder === "none"){
       this.loadListData();
     }
+  }
+
+  loadFavourites() {
+    this.favouritesService.getAllFavourites().subscribe(
+      (favourites: FavoriteModel[]) => {
+        this.favourites = favourites;
+        console.log('Favourites loaded successfully:', this.favourites);
+        this.isFavouritesLoaded = true;
+      },
+      (error) => {
+        console.error('Error loading favourites:', error);
+        this.isFavouritesLoaded = true;
+      }
+    );
   }
 
 
