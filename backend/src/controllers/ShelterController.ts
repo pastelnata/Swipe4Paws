@@ -11,6 +11,19 @@ class ShelterController {
     }
   }
 
+  public async getShelterById(req: Request, res: Response) {
+    try{
+      const shelterId = parseInt(req.params.id, 10); // Convert `id` to a number
+      if (isNaN(shelterId)) {
+        return res.status(400).json({ error: "Invalid shelter ID" });
+      }
+      const shelter = await ShelterService.getShelterById(shelterId);
+      res.json(shelter);
+    } catch (error) {
+      console.error("Error fetching shelter:", error);
+    }
+  }
+
   public async createShelter(req: Request, res: Response) {
     try {
       console.log(
