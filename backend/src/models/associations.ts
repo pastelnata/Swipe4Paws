@@ -3,6 +3,7 @@ import PetBehavior from './PetBehaviorModel';
 import Shelter from './ShelterModel';
 import Moderator from './ModeratorModel';
 import User from './UserModel';
+import Favorite from './FavoriteModel';
 
 // pet & pet behavior relations
 Pet.hasMany(PetBehavior, { as: 'behaviors', foreignKey: 'petid' });
@@ -20,5 +21,9 @@ Shelter.belongsTo(Moderator, { foreignKey: 'managed_by'});
 User.hasMany(PetBehavior, { as: 'preferences', foreignKey: 'userid' });
 PetBehavior.belongsTo(User, { as: 'user', foreignKey: 'userid' });
 
+// favorites & pet, user relations
+Favorite.belongsTo(Pet, { foreignKey: 'petid' });
+Favorite.belongsTo(User, { foreignKey: 'userid' });
 
-export { Pet, PetBehavior, Shelter, Moderator, User };
+
+export { Pet, PetBehavior, Shelter, Moderator, User, Favorite };

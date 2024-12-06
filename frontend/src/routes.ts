@@ -7,6 +7,7 @@ import { PetsDetailsComponent } from "./app/pets-details/pets-details-view/pets-
 import { RegisterComponent } from "./app/register/register-view/register.component";
 import { ShelterRegisterComponent } from "./app/shelter-register/shelter-register-view/shelter-register.component";
 import { SheltersDetailsComponent } from "./app/shelters/shelters-details/shelters-details.component";
+import { FavouritesComponent } from "./app/favourites/favourites-view/favourites-view.component";
 
 const routeConfig: Routes = [
     { path: '', component: HomeComponent, title: 'Home Page' },
@@ -17,7 +18,8 @@ const routeConfig: Routes = [
     { path: 'adopt', component: HomeComponent, title: 'Adopt'},
     { path: 'petInfo/:id', component: PetsDetailsComponent, title: 'Pet info' },
     { path: 'register', component: RegisterComponent, title: 'Sign Up' },
-    { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' }
+    { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
+    { path: 'favourites', component: FavouritesComponent, title: 'Favourites' }
 ];
 
 export default routeConfig;

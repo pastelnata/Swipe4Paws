@@ -49,7 +49,7 @@ CREATE TABLE moderator (
     "password" VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE favorites (
+CREATE TABLE favorite (
     petid INT,
     userid INT,
     PRIMARY KEY (petid, userid),

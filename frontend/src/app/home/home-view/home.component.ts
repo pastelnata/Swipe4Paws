@@ -8,6 +8,8 @@ import { HomeService } from '../home.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RedirectCommand } from '@angular/router';
+import { FavoriteModel } from '../../models/FavoriteModel';
+import { FavouritesService } from '../../favourites/favourites.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -31,10 +33,13 @@ export class HomeComponent implements OnInit {
   currentFilters: string[] = [];
   //we need a validation here so it cant be longer than 20 characters
   currentOptions: string[] = [];
+  favourites: FavoriteModel[] = [];
+  isFavouritesLoaded: boolean = false;
 
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),
   });
+
 
   ngOnInit(): void {
     this.loadListData();
@@ -42,9 +47,21 @@ export class HomeComponent implements OnInit {
       color: new FormControl(''),
     });
     console.log(this.petsListingList);
+
+    this.favouritesService.getAllFavourites().subscribe(
+      (favourites: FavoriteModel[]) => {
+        this.favourites = favourites;
+        console.log('Favourites loaded successfully:', this.favourites);
+        this.isFavouritesLoaded = true;
+      },
+      (error) => {
+        console.error('Error loading favourites:', error);
+        this.isFavouritesLoaded = true;
+      }
+    );
   }
 
-  constructor(private homeService: HomeService) {
+  constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
     
     this.currentOptions = this.getAllTheOptions();
   }
