@@ -1,0 +1,124 @@
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+
+#shelterPage{
+    background-color: #f4f4f4;
+    display: grid;
+    gap: 5vh;
+    grid-template-columns: 1fr;
+    padding: 5vh;
+}
+ /* Main card */
+.card{
+    justify-self: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.9s forwards;
+    padding: 5vh 5vh 8vh 5vh;
+    border-radius: 30px;
+    
+}
+/* Card animation */
+.card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+/* Shelter card + grid structure */
+.shelter-card{
+    display: grid;
+    grid-template-areas: 
+    "headder headder headder"
+    "image image description";
+    gap: 2vh;
+    
+}
+
+.card h1{
+    grid-area: headder;
+    justify-self: center;
+    font-size: 42px;
+    color: #679576;
+    
+}
+
+
+/* Image box */
+
+.image-box {
+    grid-area: image; 
+}
+
+.image-box img{
+    height: 40vh;
+    width: 80vh;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+.description-box {
+    display: flex;
+    flex-direction: column;
+    grid-area: description;
+    padding: 4vh;
+    gap: 4vh;
+    
+}
+
+/* Text styling */
+
+.description-box span{
+    font-size: 34px;
+    color: #679576;
+}
+
+/* Contact card */
+
+.contact-card{
+    padding: 5vh;
+}
+.contact-card h1{  
+    align-self: center;
+}
+
+.contact-form{
+    display: grid;
+    gap: 1vh;
+    grid-template-columns: 1fr;
+}
+
+.input-box{
+    border-radius: 5px;
+    border: 2px solid #679576;
+    width: 70vh;
+}
+
+.email-box{
+    
+}
+
+.massage-box{
+
+}
+
+.send-button{
+    background-color: #679576;
+    color: white;
+    width: 20vh;
+    justify-self: center;
+}
