@@ -38,6 +38,20 @@ class UserService {
       throw error;
     }
   }
+  //Receive user username and password form frontend and check if credentials are correct
+  static async loginUser(username: string, password: string) {
+    try{
+        const user = await User.findOne({ where: {username, password}});
+        if(!user){
+            console.log('User is not found');
+        }
+        return user;
+    }
+    catch(error){
+        console.error("Error in the loginUser,", error)
+        throw(error)
+    }
+  }
 }
 
 export default UserService;

@@ -5,14 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    ProfileBarViewComponent
+    
   ],
   imports: [
     CommonModule,
     MatIconModule
   ],
   exports: [
-    ProfileBarViewComponent
+    
   ]
 })
 export class ProfileBarModule { }

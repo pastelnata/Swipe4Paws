@@ -62,8 +62,8 @@ ul li a {
 }
 
 .wrapper.button {
-    display: inline-block; /* Добавлено для отображения кнопок в одну строку */
-    margin-bottom: 10px; /* Отступ между кнопками */
+    display: inline-block; 
+    margin-bottom: 10px; 
 }
 
 .wrapper.button:hover {
