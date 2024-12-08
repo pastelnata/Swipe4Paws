@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RedirectCommand } from '@angular/router';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -36,6 +37,8 @@ export class HomeComponent implements OnInit {
   favourites: FavoriteModel[] = [];
   isFavouritesLoaded: boolean = false;
 
+  popupVisible = false;
+
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),
   });
@@ -50,7 +53,7 @@ export class HomeComponent implements OnInit {
     
     this.loadFavourites();
 
-
+    this.popupVisible = true;
   }
 
   constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
@@ -186,6 +189,10 @@ export class HomeComponent implements OnInit {
 
   displayPetsDetails(index: number): void {
     new RedirectCommand(parseUrl(`petInfo/${index}`));
+  }
+
+  togglePopup() {
+    this.popupVisible = !this.popupVisible;
   }
   
   //removes filter and apply filters
