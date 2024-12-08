@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { PetsListing } from '../../models/pets-listing';
 import { HttpClient } from '@angular/common/http';
 import { MatIcon } from '@angular/material/icon';
+import { FavouritesService } from '../../favourites/favourites.service';
+import { FavoriteModel } from '../../models/FavoriteModel';
 
 @Component({
   selector: 'app-swipe',
@@ -13,13 +15,25 @@ import { MatIcon } from '@angular/material/icon';
   styleUrl: './swipe.component.css'
 })
 export class SwipeComponent {
-  constructor(private homeService: HomeService) {}
+  constructor(private homeService: HomeService, private favouritesService: FavouritesService) {}
 
   ngOnInit(): void {
+    // 1. loads the pets
     this.homeService.loadListData().subscribe(
-      (data: PetsListing[]) => {
-        this.isListLoaded = true;
-        this.getNewPet();
+      (petsListings: PetsListing[]) => {
+        // 2. loads the favourites
+        this.favouritesService.getAllFavourites().subscribe(
+          (favourites: FavoriteModel[]) => {
+            // 3. filters the list to only contain the pets without a like
+            this.homeService.petsListingList = petsListings.filter(
+              (petsListing) => !favourites.some((favourite) => petsListing.petid === favourite.petid)
+            )
+        
+            this.isListLoaded = true;
+            // randomly picks a pet from the list (that's the one that will be shown first)
+            this.getNewPet();
+          }
+        )
       }
     )
   }
@@ -43,7 +57,19 @@ export class SwipeComponent {
 
   likePet() {
     this.isLiked = true;
-    // LOGIC FOR LIKING A PET GOES HERE
+
+    // Database call
+    this.favouritesService.addFavourite(this.displayedPet.petid, 1) //for now userid set to 1 by default, waiting for login logic
+      .subscribe({
+        next: (response) => {
+          console.log('Favourite added:', response);
+        },
+        error: (error) => {
+          console.error('Error adding favourite:', error);
+        }
+      });
+
+    // Timeout needed for the animation to work
     setTimeout(() => {
       this.isLiked = false;
       this.homeService.petsListingList.splice(this.petSlot, 1);

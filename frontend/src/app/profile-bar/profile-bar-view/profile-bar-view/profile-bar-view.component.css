@@ -28,7 +28,7 @@
 }
 
 .popup-content {
-    position: fixed;
+    position: static;
     background-color: white;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -74,22 +74,27 @@
 }
 
 .popup-description {
-    margin-top: 20px;
-    position: relative;
-    box-sizing: content-box;
+    position: static;
+    box-sizing: border-box;
+    height: 90vh;
     width: 100%;
-    height: 80%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .popup-description-top {
+    margin-top: 20px;
     flex-grow: 1;
     display: flex;
+    gap: 5px;
     flex-direction: column;
 }
 
 .popup-description-bottom {
+    position: static;
+    bottom: 0;
+    margin-bottom: 20px;
     margin-top: auto;
     display: flex;
     flex-direction: column;

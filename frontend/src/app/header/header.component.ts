@@ -21,4 +21,8 @@ export class HeaderComponent {
   logoClicked() {
     this.router.navigateByUrl('/');
   }
+
+  favouritesClicked() {
+    this.router.navigateByUrl('/favourites');
+  }
 }

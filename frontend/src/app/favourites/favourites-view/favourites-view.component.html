@@ -1,0 +1,18 @@
+<h1 id="favourites">Favourites</h1>
+<div id="pet-listing-container" *ngIf="isFavouritesLoaded && !isFavouritesEmpty">
+    <div class="listing-wrapper" *ngFor="let petListing of favouritesPetListings; index as i">
+        <app-pets-listing
+            [petsListing]="petListing" 
+            [favourites]="favourites">
+        </app-pets-listing>
+    </div>
+</div>
+
+<div class="blank-container" id="loading-container" *ngIf="!isFavouritesLoaded">
+    <!--Some front end pro can add a loading circle here if bored-->
+</div>
+
+<div class="blank-container" id="no-favourites-container" *ngIf="isFavouritesLoaded && isFavouritesEmpty">
+    <h1>Nothing to see here!</h1>
+    <h3>Find the pets you like through <a href="/adopt">adopt</a> and <a href="/swipe">swipe</a>!</h3>
+</div>

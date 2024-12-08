@@ -4,6 +4,7 @@ import petRoutes from "./routes/PetRoutes";
 import shelterRoutes from "./routes/ShelterRoutes";
 import userRoutes from "./routes/UserRoutes";
 import modRoutes from "./routes/ModRoutes";
+import favoriteRoutes from "./routes/FavoriteRoutes";
 
 const port = process.env.PORT || 3000;
 
@@ -34,3 +35,6 @@ app.use('/users', userRoutes);
 
 // Moderators
 app.use('/mods', modRoutes);
+
+// Favorites
+app.use('/favorites', favoriteRoutes)
