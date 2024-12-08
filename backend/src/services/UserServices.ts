@@ -15,7 +15,7 @@ class UserService {
       console.error("Error fetching Users:", error);
       throw error;
     }
-  }
+ }
 
   public static async createUser( //creates new user with following parameters
     username: string,
