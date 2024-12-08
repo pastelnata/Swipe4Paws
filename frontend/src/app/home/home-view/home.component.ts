@@ -25,7 +25,7 @@ import { FavouritesService } from '../../favourites/favourites.service';
 })
 export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
-  showFilterOptions: boolean = false;
+  showFilterOptions: boolean = true;
   nameFilter: string = '';
   typeFilter: string = '';
   genderFilter: string = '';

@@ -38,37 +38,43 @@
                         <div class="filter-by-type">
                             <button class="secondary" type="button" 
                             [ngStyle]="{
-                                'backgroundColor' : typeFilter === 'cat' ? 'rgb(233, 160, 255)' : '',
+                                'backgroundColor' : typeFilter === 'cat' ? ' rgba(86, 125, 99, 0.512)' : '',
                                 'borderColor' : typeFilter === 'cat' ? ' rgb(233, 160, 255)' : ''}" 
                             (click)="filterByType('cat')">
                                 Cats
                             </button>
                             <button class="secondary" type="button" 
-                            [ngStyle]="{'backgroundColor' : typeFilter === 'dog' ? 'rgb(233, 160, 255)' : '',
+                            [ngStyle]="{'backgroundColor' : typeFilter === 'dog' ? 'rgba(86, 125, 99, 0.512)' : '',
                              'borderColor' : typeFilter === 'dog' ? ' rgb(233, 160, 255)' : ''}"  
                              (click)="filterByType('dog')">
                              Dogs
                             </button>
+                            <button class="secondary" type="button" 
+                            [ngStyle]="{'backgroundColor' : typeFilter === 'other' ? 'rgba(86, 125, 99, 0.512)' : '',
+                             'borderColor' : typeFilter === 'other' ? ' rgb(233, 160, 255)' : ''}"  
+                             (click)="filterByType('other')">
+                             Others
+                            </button>
                         </div>
                         <div class="filter-by-gender"> 
                             <button class="secondary" type="button" 
-                            [ngStyle]="{'backgroundColor' : genderFilter === 'Male' ? 'rgb(233, 160, 255)' : '',
+                            [ngStyle]="{'backgroundColor' : genderFilter === 'Male' ? 'rgba(86, 125, 99, 0.512)' : '',
                              'borderColor' : genderFilter === 'Male' ? ' rgb(233, 160, 255)' : ''}" 
                             (click)="filterByGender('Male')">
                             Male
                         </button>
                             <button class="secondary" type="button"
                             (click)="filterByGender('Female')"
-                             [ngStyle]="{'backgroundColor' : genderFilter === 'Female' ? 'rgb(233, 160, 255)' : '',
+                             [ngStyle]="{'backgroundColor' : genderFilter === 'Female' ? 'rgba(86, 125, 99, 0.512)' : '',
                              'borderColor' : genderFilter === 'Female' ? ' rgb(233, 160, 255)' : ''}">
                              Female
-                            </button>
+                        </button>
                         </div>
-                        <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
+                        
                     </div>
                 
                     <div class="add-filters">
-                        <form [formGroup]="selectFiltersForm" (ngSubmit)="onSubmit()" >
+                        <form class="add-filters-form" [formGroup]="selectFiltersForm" (ngSubmit)="onSubmit()" >
                             <select formControlName="color" id="selectFilters" aria-placeholder="Add filter" id="myOptions">
                                 <option  *ngIf="currentOptions.length === 0">No options!</option>
                                 <option *ngIf="currentOptions.length !== 0">Chose filter:</option>
@@ -81,6 +87,9 @@
 
                     <div class="current-filters">
                         <span *ngIf="currentFilters.length === 0">No filters!</span>
+                    </div>
+                    <div class="reset-box">
+                        <button id="Reset" class="secondary" type="button" (click)="resetFilters()">Reset</button>
                     </div>
             </div>
         </div>
