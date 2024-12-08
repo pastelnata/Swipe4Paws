@@ -1,45 +1,53 @@
-import { CanActivateFn } from '@angular/router';
-import { Router } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
+import { AuthService } from './auth.service';
+import { Observable, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
-export default class Auth {
-  constructor(private router: Router) {}
-  
-  getTokenPayload = () => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Decode the token to get the payload
-      return JSON.parse(atob(token.split('.')[1]));
-    }
-    return null;
-  };
-  
-  userGuard: CanActivateFn = (route, state) => {
-    const payload = this.getTokenPayload();
-    // returns true if payload exists and the role is user
-    return payload && payload.role === 'user';
-  };
-  
-  shelterGuard: CanActivateFn = (route, state) => {
-    const payload = this.getTokenPayload();
-    return payload && payload.role === 'shelter';
-  };
-  
-  moderatorGuard: CanActivateFn = (route, state) => {
-    const payload = this.getTokenPayload();
-    return payload && payload.role === 'moderator';
-  }
+export const userGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  return authService.getTokenPayload().pipe(
+    map((payload) => {
+      if (payload && payload.role === 'user') {
+        return true;
+      } else {
+        return false;
+      }
+    }),
+    catchError(() => {
+      return of(false);
+    })
+  );
+};
 
-  getUserRole() {
-    const payload = this.getTokenPayload();
-    const role = payload?.role
-    if (role === 'user') {
-      this.router.navigateByUrl('/');
-    }
-    else if (role === 'shelter') {
-      this.router.navigateByUrl('/shelter-app');
-    }
-    else if (role === 'moderator') {
-      this.router.navigateByUrl('/moderator');
-    }
-  }
-}
+export const shelterGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  return authService.getTokenPayload().pipe(
+    map((payload) => {
+      if (payload && payload.role === 'shelter') {
+        return true;
+      } else {
+        return false;
+      }
+    }),
+    catchError(() => {
+      return of(false);
+    })
+  );
+};
+
+export const moderatorGuard: CanActivateFn = (route, state) => {
+  const authService = inject(AuthService);
+  return authService.getTokenPayload().pipe(
+    map((payload) => {
+      if (payload && payload.role === 'moderator') {
+        return true;
+      } else {
+        return false;
+      }
+    }),
+    catchError(() => {
+      return of(false);
+    })
+  );
+};

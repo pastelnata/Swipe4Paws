@@ -1,22 +1,25 @@
 import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 class TokenService {
   public static generateToken(id: number, email: string, role: string): string {
-    console.log("Generating token for user:", email);
-    const payload = { userid: id, email: email, role: role };
+    const payload = { id: id, email: email, role: role };
     const privateKeyPath = process.env.PRIVATE_KEY_PATH;
 
-    if (!privateKeyPath) {
-      throw new Error("JWT key not found");
+    if (!privateKeyPath || !fs.existsSync(privateKeyPath)) {
+      throw new Error(`JWT private key file not found at path: ${privateKeyPath}`);
     }
-
     // returns the contents of the file as a string
     const privateKey = fs.readFileSync(path.resolve(privateKeyPath), "utf8");
     // creates the jwt using the payload and private key
     // uses the algorithm RS256 to produce a signature that is a JSON Web Signature (JWS)
-    return jwt.sign(payload, privateKey, { algorithm: "RS256" });
+    const token = jwt.sign(payload, privateKey, { algorithm: "RS256" });
+    console.log('token created in token service:', token); // debug line
+    return token;
   }
 
   public static verifyToken(token: string) {

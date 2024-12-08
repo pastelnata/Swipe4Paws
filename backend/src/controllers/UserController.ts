@@ -17,9 +17,9 @@ class UserController {
     try {
       const { username, email, password, preferences } = req.body;
       const token = await UserService.createUser(username, email, password, preferences);
-      console.log("token:", token);
       console.log(preferences);
-      res.json(token);
+      console.log('token (controller)', token);
+      res.json({token});
     } catch (error) {
       console.error("Error creating user:", error);
       res.json("Error creating user");
