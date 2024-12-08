@@ -11,6 +11,17 @@ class ShelterService {
     }
   }
 
+
+  public static async getShelterById(id: number) {
+    try{
+      const shelter = await Shelter.findOne({where: { shelterid: id}, });
+      return shelter;
+    } catch (error) {
+      console.error("Error fetching shelter by id", error);
+      throw error;
+    }
+  }
+
   static async createShelter(
     name: string,
     email: string,
