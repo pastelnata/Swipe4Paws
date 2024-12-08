@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit {
   favourites: FavoriteModel[] = [];
   isFavouritesLoaded: boolean = false;
 
+  popupVisible = false;
+
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),
   });
@@ -62,6 +64,7 @@ export class HomeComponent implements OnInit {
      this.loadFavourites(id);
     })
 
+    this.popupVisible = true;
 
     const token = this.loginService.getToken();
     console.log(`Token: ${token}`);
@@ -226,6 +229,10 @@ export class HomeComponent implements OnInit {
     new RedirectCommand(parseUrl(`petInfo/${index}`));
   }
 
+  togglePopup() {
+    this.popupVisible = !this.popupVisible;
+  }
+  
   //removes filter and apply filters
   removeFilter(id: string): void {
     const elementToDelete: HTMLElement = document.getElementById(
