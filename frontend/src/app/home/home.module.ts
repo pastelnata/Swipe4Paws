@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {FormsModule} from '@angular/forms';
-import { PopupModule } from '../popup/popup.module';
 
 @NgModule({
   declarations: [
@@ -12,8 +11,7 @@ import { PopupModule } from '../popup/popup.module';
     CommonModule,
     MatSelectModule,
     MatExpansionModule,
-    FormsModule,
-    PopupModule
+    FormsModule
   ]
 })
 export class HomeModule { }

@@ -13,6 +13,7 @@ import { shelterGuard, userGuard, moderatorGuard } from './auth/auth.guard';
 import { FavouritesComponent } from './app/favourites/favourites-view/favourites-view.component';
 import { LoginComponent } from './app/login/login-view/login.component';
 import { FunFactsViewComponent } from "./app/fun-facts/fun-facts-view/fun-facts-view.component";
+import { PetAddComponent } from "./app/add-pets/pet-add/pet-add.component";
 
 const routeConfig: Routes = [
   {

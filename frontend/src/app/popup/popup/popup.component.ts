@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-popup',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css'
 })
@@ -33,6 +38,5 @@ export class PopupComponent implements OnInit {
   popupClose(): void {
     this.showPopup = false;
     console.log("Closed");
-    this.startPopupTimer();
   }
 }

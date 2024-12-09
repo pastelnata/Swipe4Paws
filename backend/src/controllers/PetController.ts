@@ -74,6 +74,16 @@ class PetController {
       res.json({ error: "Error searching pets" });
     }
   }
+
+  public async addPet(req: Request, res: Response) {
+    try {
+      const pet = await Pet.create(req.body);
+      res.json(pet);
+    } catch (error) {
+      console.error("Error adding pet:", error);
+      res.status(500).json({ error: "Failed to add pet" });
+    }
+  }
 }
 
 export default PetController;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PetsListing } from '../models/pets-listing';
 import { HttpClient } from '@angular/common/http';
-import { Observable,BehaviorSubject  } from 'rxjs';
+import { Observable, BehaviorSubject  } from 'rxjs';
 import { Router } from '@angular/router';
 import { HomeModule } from './home.module';
 
