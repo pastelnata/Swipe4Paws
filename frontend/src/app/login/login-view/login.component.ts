@@ -17,12 +17,13 @@ export class LoginComponent {
   email: string = '';
   password: string = '';
   errorMessage: string = '';
+  username: string = '';
   auth: AuthService;
 
   constructor(
+    private router: Router,
     private loginService: LoginService,
-    private http: HttpClient,
-    private router: Router
+    private http: HttpClient
   ) {
     this.auth = new AuthService(this.http, this.router);
   }
@@ -39,13 +40,24 @@ export class LoginComponent {
         console.log('Login successful', response);
         // Save the token to localStorage or sessionStorage
         localStorage.setItem('token', response.token);
-        //gets user role & redirects to certain page accordingly
+        // Redirect to a protected route (for example, dashboard)
         this.auth.getUserRole();
       },
       error: (error) => {
         console.error('Login failed', error);
         this.errorMessage = 'Invalid email or password';
+        //error handling
+        if (error.status == 401) {
+          this.errorMessage = 'Invalid username or password';
+        } else {
+          this.errorMessage = 'An error occurred while logging in';
+        }
       },
     });
+    // logout() {
+    //   this.loginService.logoutUser(); //clear token
+    //   this.router.navigate(['/']); //redirect to login page
+    // } //add <button (click)="logout()">Logout</button>
+
   }
 }

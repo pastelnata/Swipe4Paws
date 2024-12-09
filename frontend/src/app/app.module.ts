@@ -27,6 +27,10 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserModule,
     MatIconModule,
     HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    MatIconModule,
+
   ],
 })
 export class AppModule {}

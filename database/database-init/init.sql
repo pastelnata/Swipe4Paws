@@ -49,7 +49,7 @@ CREATE TABLE moderator (
     "password" VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE favorites (
+CREATE TABLE favorite (
     petid INT,
     userid INT,
     PRIMARY KEY (petid, userid),
@@ -59,10 +59,14 @@ CREATE TABLE favorites (
 
 
 -- MOCK DATA --
+--
+INSERT INTO "user" (email, username, "password") VALUES 
+('user1@gmail.com', 'user1', 'password1'),
+('user2@gmail.com', 'user2', 'password2');
 -- Mock data for the moderator table
 INSERT INTO moderator (email, username, "password") VALUES
-('moderator@gmail.com', 'moderator', 'moderator'),
-('moderator2@gmail.com', 'moderator2', 'moderator2');
+('moderator@gmail.com', 'moderator', '$2b$10$LBtK0B0.PEIhnbC5jTiGPuByCvtLQFFvmSERAmSZrxErlldZhF5Wq'),
+('moderator2@gmail.com', 'moderator2', '$2b$10$EFtxG8UcLBwbLI9yyrD3c.fABrO3yBHCXj4NUwytZuUIWunqmH50S');
 
 -- Mock data for the shelter table
 INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status", photo) VALUES

@@ -1,1 +1,34 @@
-<p>shelters-details works!</p>
+
+<section id="shelterPage">
+    <div class="shelter-card card">
+        
+        <h1>{{currentShelter.name}}</h1>
+        
+        <div class="image-box">
+            <img src="{{currentShelter.photo}}">
+        </div>
+        <div class="description-box">
+            <span>About shelter:</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dicta debitis! Quam commodi pariatur modi libero dicta neque nam eum officiis, eveniet vel id officia explicabo facere magni. Qui, maiores.
+            </p>
+            <div class="bottom-info">
+                <div class="email">
+                    <span>Email</span>
+                    <p> - {{currentShelter.email}}</p>
+                </div>
+                <div class="address">
+                    <span>Address</span>
+                    <p> - {{currentShelter.address}}: {{currentShelter.city}}, {{currentShelter.postal_code}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-card card">
+        <h1>Contact us:</h1>
+        <form class="contact-form">
+            <input class="email-box input-box" type="email" placeholder="Enter your email address">
+            <textarea class="meassage-box input-box" placeholder="Enter your message"></textarea>
+            <button class="send-button input-box" type="submit">Send</button>
+        </form>
+    </div>
+</section>

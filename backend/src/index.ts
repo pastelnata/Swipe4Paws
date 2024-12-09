@@ -5,16 +5,17 @@ import shelterRoutes from "./routes/ShelterRoutes";
 import userRoutes from "./routes/UserRoutes";
 import modRoutes from "./routes/ModRoutes";
 import authRoutes from "./routes/authRoutes";
-
+import favoriteRoutes from "./routes/FavoriteRoutes";
+//sets the port for the server to listen on
 const port = process.env.PORT || 3000;
 
 // server setup
 app.get('/', (req, res) => {
-  res.send('Hello from the backend!');
+  res.send('Hello from the backend!'); //health check for backed server
 });
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`); //check terminal if the server has started successfully
 });
 
 
@@ -38,3 +39,6 @@ app.use('/mods', modRoutes);
 
 // Auth
 app.use('/auth', authRoutes);
+
+// Favorites
+app.use('/favorites', favoriteRoutes)

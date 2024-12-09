@@ -15,6 +15,19 @@ class Shelter extends Model {
   private photo!: string;
   private role!: 'shelter';
 
+    //access password for checking in shelterservices.ts (for login)
+  public getPassword(): string {
+    return this.password; 
+  }
+
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public getShelterId(): number {
+    return this.shelterid;
+  }
+
   public generateToken(): string {
     console.log("Generating token for user:", this.email);
     return TokenService.generateToken(this.shelterid, this.email, this.role);

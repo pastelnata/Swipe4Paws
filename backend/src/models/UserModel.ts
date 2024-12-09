@@ -10,6 +10,21 @@ class User extends Model {
   private userid!: number;
   private email!: string;
   private role: string = "user";
+  private username!: string;
+  private password!: string;
+
+  //access password for checking in UserServices.ts (for login)
+  public getPassword(): string {
+    return this.password; 
+  }
+  //get access to email for checking in login (UserServices.ts)
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public getUserId(): number {
+    return this.userid;
+  }
 
   public generateToken(): string {
     try {

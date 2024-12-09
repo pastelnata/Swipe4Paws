@@ -1,5 +1,8 @@
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
 </head>
 <body>
   <div class="container">
@@ -13,8 +16,19 @@
           name="email"
           [(ngModel)]="email"
           placeholder="Enter your email"
-          required />
+          required
+        />
       </div>
+      <!-- Username -->
+      <!-- <div class="input-wrapper">
+        <i class="fa-solid fa-user"></i>
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Enter your username"
+          required />
+      </div> -->
 
       <!-- Password Input -->
       <div class="input-wrapper">
@@ -24,7 +38,8 @@
           name="password"
           [(ngModel)]="password"
           placeholder="Enter your password"
-          required />
+          required
+        />
       </div>
 
       <!-- Forgot Password -->
@@ -33,7 +48,11 @@
       </div>
 
       <!-- Login Button -->
-      <button type="submit" [disabled]="loginForm.invalid" [ngClass]="{'disabled-button': loginForm.invalid}">
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        [ngClass]="{ 'disabled-button': loginForm.invalid }"
+      >
         Login
       </button>
 
@@ -47,7 +66,7 @@
       <div class="social-icons">
         <a><i class="fa-brands fa-google"></i></a>
         <a><i class="fa-brands fa-facebook-square"></i></a>
-        <a><i class='fa-brands fa-instagram'></i></a>
+        <a><i class="fa-brands fa-instagram"></i></a>
       </div>
 
       <!-- Registration Redirect -->

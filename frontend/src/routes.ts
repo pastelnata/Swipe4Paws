@@ -7,10 +7,11 @@ import { PetsDetailsComponent } from './app/pets-details/pets-details-view/pets-
 import { RegisterComponent } from './app/register/register-view/register.component';
 import { ShelterRegisterComponent } from './app/shelter-register/shelter-register-view/shelter-register.component';
 import { SheltersDetailsComponent } from './app/shelters/shelters-details/shelters-details.component';
-import { LoginComponent } from './app/login/login-view/login.component';
 import { ShelterAppComponent } from './shelter-app/shelter-app.component';
 import { ModeratorComponent } from './moderator/moderator.component';
 import { shelterGuard, userGuard, moderatorGuard } from './auth/auth.guard';
+import { FavouritesComponent } from './app/favourites/favourites-view/favourites-view.component';
+import { LoginComponent } from './app/login/login-view/login.component';
 
 const routeConfig: Routes = [
   {
@@ -55,18 +56,6 @@ const routeConfig: Routes = [
     canActivate: [userGuard],
     title: 'Pet info',
   },
-  { path: 'register', component: RegisterComponent, title: 'Sign Up' },
-  {
-    path: 'register/shelter',
-    component: ShelterRegisterComponent,
-    title: 'Shelter Sign Up',
-  },
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate: [userGuard],
-    title: 'Login',
-  },
   {
     path: 'shelter-manager',
     component: ShelterAppComponent,
@@ -79,6 +68,15 @@ const routeConfig: Routes = [
     canActivate: [moderatorGuard],
     title: 'Login',
   },
+  { 
+    path: 'favourites', 
+    component: FavouritesComponent, 
+    canActivate: [userGuard],
+    title: 'Favourites' 
+  },
+  { path: 'login', component: LoginComponent, title: 'Login' },
+  { path: 'register', component: RegisterComponent, title: 'Sign Up' },
+  { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' }
 ];
 
 export default routeConfig;

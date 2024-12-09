@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -11,7 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 export class ProfileBarViewComponent {
   @Output() close = new EventEmitter<void>();
 
+  constructor(private router: Router) { }
+
   onClose() {
     this.close.emit();
+  }
+
+  redirectToFavourites() {
+    this.router.navigate(['/favourites'])
   }
 }
