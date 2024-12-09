@@ -10,6 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RedirectCommand } from '@angular/router';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
+import { PopupComponent } from '../../popup/popup/popup.component';
+import { PetAddComponent } from '../../add-pets/pet-add/pet-add.component';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +21,9 @@ import { FavouritesService } from '../../favourites/favourites.service';
     PetsListingComponent,
     MatSelectModule,
     MatExpansionModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PopupComponent,
+    PetAddComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
@@ -38,6 +42,10 @@ export class HomeComponent implements OnInit {
   isFavouritesLoaded: boolean = false;
 
   popupVisible = false;
+
+  onPetAdded(newPet: PetsListing) {
+    this.petsListingList.unshift(newPet);
+  }
 
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),

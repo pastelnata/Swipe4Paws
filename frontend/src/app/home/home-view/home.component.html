@@ -1,4 +1,5 @@
 <app-popup *ngIf="popupVisible"></app-popup>
+<app-pet-add (petAdded)="onPetAdded($event)"></app-pet-add>
 <section id="main">
     <img #backgroundPic id="background-pic" class="background-pic show" src="/assets/main-background.png" alt="Main Background">
     <video #catVideo class="background-video" src="/assets/cat-video.mp4" muted loop></video>

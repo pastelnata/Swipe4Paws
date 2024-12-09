@@ -1,3 +1,7 @@
+* {
+    z-index: 5;
+}
+
 #popup-container {
     align-items: center;
     justify-content: center;

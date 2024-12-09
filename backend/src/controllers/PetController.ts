@@ -57,6 +57,7 @@ class PetController {
       res.json(pet);
     } catch (error) {
       console.error("Error adding pet:", error);
+      res.status(500).json({ error: "Failed to add pet" });
     }
   }
 }

@@ -1,0 +1,28 @@
+<div class="addPetContainer">
+    <form (ngSubmit)="onSubmit(petForm)" #petForm="ngForm">
+        <label for="name">Name:</label>
+        <input id="name" name="name" class="formData" ngModelrequired>
+
+        <label for="type">Type:</label>
+        <input id="type" name="type" class="formData" ngModel required>
+
+        <label for="race">Race:</label>
+        <input id="race" name="race" class="formData" ngModel>
+
+        <label for="gender" class="formData">Gender:</label><br>
+        <select id="gender" name="gender" ngModel>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unknown">Unknown</option>
+        </select><br>
+
+        <label for="age" class="formData">Age:</label>
+        <input id="age" name="age" type="number" ngModel>
+
+        <label for="photo" class="formData">Photo URL:</label>
+        <input id="photo" name="photo" type="url" ngModel>
+
+        <button type="submit" id="addPetButton">Add Pet</button>
+        <!--<button id="addPetButton" (click)="petAdding()">Add pet</button>-->
+    </form>
+</div>
