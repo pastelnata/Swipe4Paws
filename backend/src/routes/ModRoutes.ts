@@ -5,6 +5,10 @@ const modRoutes = Router();
 const modController = new ModeratorController();
 
 // Defines the routes
-modRoutes.get('/', modController.getAllMods); 
+modRoutes.get('/', (req, res) => modController.getAllMods(req, res)); 
+//modRoutes.get('/:id', (req, res) => modController.getModeratorById(req, res));
+//modRoutes.post('/register', (req, res) => modController.createMod(req, res));
+//modRoutes.post('/login', (req, res) => modController.loginMod(req,res));
+//modRoutes.post('/logout', (req, res) => modController.logoutMod(req,res));
 
 export default modRoutes;

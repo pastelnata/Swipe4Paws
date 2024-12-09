@@ -13,9 +13,22 @@ class Shelter extends Model {
     private status!: 'Approved' | 'Pending' | 'Denied';
     private photo!: string;
 
+    //access password for checking in shelterservices.ts (for login)
+  public getPassword(): string {
+    return this.password; 
+  }
+
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public getShelterId(): number {
+    return this.shelterid;
+  }
+
     public generateToken(): string {
       console.log("Generating token for shelter:", this.email);
-      const payload = { shelterid: this.shelterid, email: this.email };
+      const payload = { shelterid: this.shelterid, email: this.email, role: "shelter" };
       const secret = "123456";
       return jwt.sign(payload, secret);
     }
