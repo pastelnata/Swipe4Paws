@@ -33,6 +33,7 @@ import { LoginService } from '../../login/login.service';
 })
 export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
+  notfilteredList: PetsListing[] = [];
   showFilterOptions: boolean = false;
   nameFilter: string = '';
   typeFilter: string = '';
@@ -51,7 +52,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadListData();
     this.selectFiltersForm = new FormGroup({
-      color: new FormControl(''),
+    color: new FormControl(''),
     });
     console.log(this.petsListingList);
 
@@ -65,7 +66,7 @@ export class HomeComponent implements OnInit {
     private favouritesService: FavouritesService,
     private loginService: LoginService
   ) {
-    this.currentOptions = this.getAllTheOptions();
+    this.getLoadedList();
   }
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
@@ -116,9 +117,13 @@ export class HomeComponent implements OnInit {
 
   //Create html object filters
 
-  getAllTheOptions() {
-    return this.homeService.getAllTheOptions();
+  RetriveFilterOptions(){
+    this.currentOptions = this.notfilteredList
+    .map(pet => pet.behaviors.map(b => b.behavior)) // Extract nested behavior strings
+    .flat(); // Flatten the nested arrays
+    console.log("Pets behaviors list correctly loaded" + this.currentOptions);
   }
+
 
   onSubmit() {
     const selectedOption = this.selectFiltersForm.get('color')?.value;
@@ -134,7 +139,7 @@ export class HomeComponent implements OnInit {
         buttonElement.classList.add('filter-select-button');
         buttonElement.style.display = 'flex';
 
-        //Applies styles manualy becouse class does not work for some reson
+        //Applies styles manualy becaouse the ApplyStyles house class does not work for some reson
         this.ApplyStyles(buttonElement);
 
         //add onclick event
@@ -156,8 +161,9 @@ export class HomeComponent implements OnInit {
         this.applyFilters();
         //resets the form
         this.selectFiltersForm.reset();
-      } else {
-        console.log('Already added!');
+      }
+      else{
+        alert('Already added!');
       }
     }
   }
@@ -188,8 +194,25 @@ export class HomeComponent implements OnInit {
   loadListData(): void {
     this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
       this.petsListingList = filteredPetsList;
-      console.log(this.petsListingList);
+      console.log(this.petsListingList + " in home component.ts");
+      console.log(this.currentOptions + "In home component.ts");
+      if(this.currentOptions.length == 0){
+        this.RetriveFilterOptions();
+      }
     });
+  }
+
+  getLoadedList() {
+    this.homeService.loadListData().subscribe(
+      (data: PetsListing[]) => {
+        console.log("Loaded Pets Data in home service:", data); // Log the data to check if it's correct
+        this.notfilteredList = data;
+        this.applyFilters();
+      },
+      (error: any) => {
+        console.error("Error loading pets data:", error); // Log any errors that might occur
+      }
+    );
   }
 
   displayPetsDetails(index: number): void {
@@ -205,6 +228,16 @@ export class HomeComponent implements OnInit {
     this.currentFilters = this.currentFilters.filter((filter) => filter !== id);
     this.applyFilters();
     this.currentOptions.push(id);
+  }
+
+  //Remove all behavior filters 
+  removeAllFilters(): void {
+    const currentFiltersDiv: HTMLDivElement = document.querySelector(
+      '.current-filters'
+    ) as HTMLDivElement;
+    currentFiltersDiv.innerHTML = '';
+    this.currentFilters = [];
+    this.applyFilters();
   }
 
   toggleFilterOptions() {
@@ -226,6 +259,7 @@ export class HomeComponent implements OnInit {
     this.typeFilter = '';
     this.genderFilter = '';
     this.homeService.resetFilters();
+    this.removeAllFilters();
     this.loadListData();
   }
 
@@ -289,6 +323,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // Loades favorites
   loadFavourites() {
     this.favouritesService.getAllFavourites().subscribe(
       (favourites: FavoriteModel[]) => {
@@ -296,7 +331,7 @@ export class HomeComponent implements OnInit {
         console.log('Favourites loaded successfully:', this.favourites);
         this.isFavouritesLoaded = true;
       },
-      (error) => {
+      (error: any) => {
         console.error('Error loading favourites:', error);
         this.isFavouritesLoaded = true;
       }
