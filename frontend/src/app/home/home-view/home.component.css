@@ -12,10 +12,10 @@
 
 .background-video, #background-pic {
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     width: 100%;
-    height: 100%; 
+    height: 100%;
     object-fit: cover;
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -31,7 +31,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    gap: 5vh; 
+    gap: 5vh;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -129,10 +129,31 @@
 
 }
 
+
 .reset-box{
     align-self: flex-end;
     padding: 1vh;
 }
+
+select {
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-left:10vh ;
+    width: 10vh;
+    padding: 0px 5px 0px 5px;
+    border-color: rgb(86, 125, 99);
+    border-style: solid;
+    border-radius: 5px;
+    max-height: 40px;
+    min-width: min-content;
+  }
+
+  select:focus {
+    outline: none;
+  }
+
 
 
 /* Top row add filters box - one on the rigth */
@@ -155,6 +176,9 @@
 /* Chose filter */
 
 select {
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     -webkit-appearance: none; 
     -moz-appearance: none; 
@@ -195,9 +219,9 @@ option {
     gap: 8px;
     margin: 10px 2px 10px 2px;
     max-height: fit-content;
-    min-width: fit-content;
+    min-width: min-content;
     flex-wrap: wrap;
-    
+
 }
 
 .filter-select-button{
@@ -212,9 +236,9 @@ option {
     border-radius: 10px;
     padding: 5px;
     max-height: 30px;
-    min-width: fit-content;
+    min-width: min-content;
     max-width: max-content;
-    
+
 }
 
 /* Sort by */
@@ -235,9 +259,9 @@ option {
     gap: 8px;
     margin: 10px 2px 10px 2px;
     max-height: fit-content;
-    min-width: fit-content;
+    min-width: min-content;
     flex-wrap: wrap;
-    
+
 }
 
 .filter-select-button{
@@ -252,9 +276,9 @@ option {
     border-radius: 10px;
     padding: 5px;
     max-height: 30px;
-    min-width: fit-content;
+    min-width: min-content;
     max-width: max-content;
-    
+
 }
 
 /* Sort by */
