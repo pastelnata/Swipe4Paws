@@ -53,12 +53,6 @@ export class HomeComponent implements OnInit {
     this.selectFiltersForm = new FormGroup({
     color: new FormControl(''),
     });
-<<<<<<< HEAD
-    this.loadFavourites();
-  }
-
-  constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
-=======
     console.log(this.petsListingList);
 
     this.loadFavourites();
@@ -70,10 +64,7 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private favouritesService: FavouritesService,
     private loginService: LoginService
-  ) {
-    this.currentOptions = this.getAllTheOptions();
->>>>>>> f71c836504b86b9eb7b397c9c1a9e8c25edb3f83
-  }
+  ) {}
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('catVideo') catVideo!: ElementRef<HTMLVideoElement>;
@@ -167,14 +158,9 @@ export class HomeComponent implements OnInit {
         this.applyFilters();
         //resets the form
         this.selectFiltersForm.reset();
-<<<<<<< HEAD
       }
       else{
         alert('Already added!');
-=======
-      } else {
-        console.log('Already added!');
->>>>>>> f71c836504b86b9eb7b397c9c1a9e8c25edb3f83
       }
     }
   }
