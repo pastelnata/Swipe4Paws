@@ -24,7 +24,12 @@ export class PetsListingComponent implements OnInit {
   isLiked = false;
 
   constructor(private favouritesService: FavouritesService) {}
-  
+
+  getBehaviorString(): string {
+    return this.petsListing.behaviors.map(b => b.behavior).join(', ');
+  }
+
+
   ngOnInit(): void {
     // Checking if the pet is favourited
     this.favourites.forEach(favourite => {
