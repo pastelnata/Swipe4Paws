@@ -33,6 +33,7 @@ import { LoginService } from '../../login/login.service';
 })
 export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
+  notfilteredList: PetsListing[] = [];
   showFilterOptions: boolean = false;
   nameFilter: string = '';
   typeFilter: string = '';
@@ -64,7 +65,9 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private favouritesService: FavouritesService,
     private loginService: LoginService
-  ) {}
+  ) {
+    this.getLoadedList();
+  }
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
   @ViewChild('catVideo') catVideo!: ElementRef<HTMLVideoElement>;
@@ -115,7 +118,7 @@ export class HomeComponent implements OnInit {
   //Create html object filters
 
   RetriveFilterOptions(){
-    this.currentOptions = this.petsListingList
+    this.currentOptions = this.notfilteredList
     .map(pet => pet.behaviors.map(b => b.behavior)) // Extract nested behavior strings
     .flat(); // Flatten the nested arrays
     console.log("Pets behaviors list correctly loaded" + this.currentOptions);
@@ -192,10 +195,24 @@ export class HomeComponent implements OnInit {
     this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
       this.petsListingList = filteredPetsList;
       console.log(this.petsListingList + " in home component.ts");
-      this.RetriveFilterOptions();
       console.log(this.currentOptions + "In home component.ts");
+      if(this.currentOptions.length == 0){
+        this.RetriveFilterOptions();
+      }
     });
-    
+  }
+
+  getLoadedList() {
+    this.homeService.loadListData().subscribe(
+      (data: PetsListing[]) => {
+        console.log("Loaded Pets Data in home service:", data); // Log the data to check if it's correct
+        this.notfilteredList = data;
+        this.applyFilters();
+      },
+      (error: any) => {
+        console.error("Error loading pets data:", error); // Log any errors that might occur
+      }
+    );
   }
 
   displayPetsDetails(index: number): void {
@@ -211,6 +228,16 @@ export class HomeComponent implements OnInit {
     this.currentFilters = this.currentFilters.filter((filter) => filter !== id);
     this.applyFilters();
     this.currentOptions.push(id);
+  }
+
+  //Remove all behavior filters 
+  removeAllFilters(): void {
+    const currentFiltersDiv: HTMLDivElement = document.querySelector(
+      '.current-filters'
+    ) as HTMLDivElement;
+    currentFiltersDiv.innerHTML = '';
+    this.currentFilters = [];
+    this.applyFilters();
   }
 
   toggleFilterOptions() {
@@ -232,6 +259,7 @@ export class HomeComponent implements OnInit {
     this.typeFilter = '';
     this.genderFilter = '';
     this.homeService.resetFilters();
+    this.removeAllFilters();
     this.loadListData();
   }
 
