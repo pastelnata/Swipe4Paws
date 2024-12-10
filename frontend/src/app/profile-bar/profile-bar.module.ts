@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    ProfileBarViewComponent
+    
   ],
   imports: [
     CommonModule,
@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
-    ProfileBarViewComponent
+    
   ]
 })
 export class ProfileBarModule { }
