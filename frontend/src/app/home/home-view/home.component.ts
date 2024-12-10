@@ -25,7 +25,7 @@ import { FavouritesService } from '../../favourites/favourites.service';
 })
 export class HomeComponent implements OnInit {
   petsListingList: PetsListing[] = [];
-  showFilterOptions: boolean = true;
+  showFilterOptions: boolean = false;
   nameFilter: string = '';
   typeFilter: string = '';
   genderFilter: string = '';
@@ -44,18 +44,12 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.loadListData();
     this.selectFiltersForm = new FormGroup({
-      color: new FormControl(''),
+    color: new FormControl(''),
     });
-    console.log(this.petsListingList);
-    
     this.loadFavourites();
-
-
   }
 
   constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
-    
-    this.currentOptions = this.getAllTheOptions();
   }
 
 
@@ -110,9 +104,13 @@ export class HomeComponent implements OnInit {
 
   //Create html object filters
 
-  getAllTheOptions() {
-    return this.homeService.getAllTheOptions();
+  RetriveFilterOptions(){
+    this.currentOptions = this.petsListingList
+    .map(pet => pet.behaviors.map(b => b.behavior)) // Extract nested behavior strings
+    .flat(); // Flatten the nested arrays
+    console.log("Pets behaviors list correctly loaded" + this.currentOptions);
   }
+
 
   onSubmit() {
     const selectedOption = this.selectFiltersForm.get('color')?.value;
@@ -127,7 +125,7 @@ export class HomeComponent implements OnInit {
         buttonElement.classList.add('filter-select-button');
         buttonElement.style.display = 'flex';
 
-        //Applies styles manualy becouse class does not work for some reson
+        //Applies styles manualy becaouse the ApplyStyles house class does not work for some reson
         this.ApplyStyles(buttonElement);
         
         //add onclick event
@@ -146,7 +144,7 @@ export class HomeComponent implements OnInit {
         this.selectFiltersForm.reset();
       }
       else{
-        console.log('Already added!');
+        alert('Already added!');
       }
 
 
@@ -180,8 +178,11 @@ export class HomeComponent implements OnInit {
   loadListData(): void {
     this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
       this.petsListingList = filteredPetsList;
-      console.log(this.petsListingList);
+      console.log(this.petsListingList + " in home component.ts");
+      this.RetriveFilterOptions();
+      console.log(this.currentOptions + "In home component.ts");
     });
+    
   }
 
   displayPetsDetails(index: number): void {
@@ -276,6 +277,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // Loades favorites
   loadFavourites() {
     this.favouritesService.getAllFavourites().subscribe(
       (favourites: FavoriteModel[]) => {
@@ -283,7 +285,7 @@ export class HomeComponent implements OnInit {
         console.log('Favourites loaded successfully:', this.favourites);
         this.isFavouritesLoaded = true;
       },
-      (error) => {
+      (error: any) => {
         console.error('Error loading favourites:', error);
         this.isFavouritesLoaded = true;
       }
