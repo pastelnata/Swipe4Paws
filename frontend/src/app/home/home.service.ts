@@ -60,9 +60,10 @@ export class HomeService {
         ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase()
         : true;
 
+      const behaviors = pet.behaviors.map(b => b.behavior).join(', ');
       const petMatchesBehavior = this.currentFilters.length === 0
         ? true
-        : this.currentFilters.every(filter => pet.behaviors.includes({behavior: filter}));
+        : this.currentFilters.every(filter => behaviors.includes(filter));
 
       return (
         petMatchesName &&
