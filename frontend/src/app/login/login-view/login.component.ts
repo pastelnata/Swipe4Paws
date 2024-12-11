@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,8 +18,15 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
   username: string = '';
+  auth: AuthService;
 
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private http: HttpClient
+  ) {
+    this.auth = new AuthService(this.http, this.router);
+  }
 
   //to handle the login form submission
   async login(form: NgForm) {
@@ -32,7 +41,7 @@ export class LoginComponent {
         // Save the token to localStorage or sessionStorage
         localStorage.setItem('token', response.token);
         // Redirect to a protected route (for example, dashboard)
-        this.router.navigate(['/']);
+        this.auth.getUserRole();
       },
       error: (error) => {
         console.error('Login failed', error);

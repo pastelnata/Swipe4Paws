@@ -26,7 +26,7 @@ class UserController {
       );
       console.log("token:", token);
       console.log(preferences);
-      res.status(201).json(token); //return token after user creation
+      res.json({token});
     } catch (error) {
       console.error("Error creating user:", error);
       res.status(500).json("Error creating user");

@@ -4,6 +4,7 @@ import { PetsListing } from '../../models/pets-listing';
 import { NavigationService } from '../navigation.service';
 import { HomeComponent } from '../../home/home-view/home.component';
 import { HomeService } from '../../home/home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -18,11 +19,12 @@ export class NavigationComponent {
   allPets: PetsListing[] = [];
   searchedPets: PetsListing[] = [];
 
-  constructor(private navigationService: NavigationService, private homeService: HomeService) {}
+  constructor(private navigationService: NavigationService, private router: Router) {}
 
   onKeyDown(event: KeyboardEvent) {
     if (event.key === "Enter") {
       this.searchPets((event.target as HTMLInputElement).value);
+      this.router.navigateByUrl('/adopt/pets');
     }
   }
 

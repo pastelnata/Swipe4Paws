@@ -1,11 +1,15 @@
 import { Model, DataTypes } from "sequelize";
 import jwt from "jsonwebtoken";
 import sequelize from "../config/sequelize";
-import { PetBehavior } from "./associations";
+import dotenv from "dotenv";
+import TokenService from "../middleware/token";
+
+dotenv.config();
 
 class User extends Model {
   private userid!: number;
   private email!: string;
+  private role: string = "user";
   private username!: string;
   private password!: string;
 
@@ -23,10 +27,13 @@ class User extends Model {
   }
 
   public generateToken(): string {
-    console.log("Generating token for user:", this.email);
-    const payload = { userid: this.userid, email: this.email, role: "user" };
-    const secret = "123456";
-    return jwt.sign(payload, secret);
+    try {
+      console.log("Generating token for user:", this.email);
+      return TokenService.generateToken(this.userid, this.email, this.role);
+    } catch (error) {
+      console.error("Error generating token:", error);
+      throw error;
+    }
   }
 }
 
