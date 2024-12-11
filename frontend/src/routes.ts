@@ -9,6 +9,7 @@ import { ShelterRegisterComponent } from "./app/shelter-register/shelter-registe
 import { SheltersDetailsComponent } from "./app/shelters/shelters-details/shelters-details.component";
 import { FavouritesComponent } from "./app/favourites/favourites-view/favourites-view.component";
 import { LoginComponent } from "./app/login/login-view/login.component";
+import { FunFactsViewComponent } from "./app/fun-facts/fun-facts-view/fun-facts-view.component";
 
 const routeConfig: Routes = [
     { path: '', component: HomeComponent, title: 'Home Page' },
@@ -22,6 +23,7 @@ const routeConfig: Routes = [
     { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
     { path: 'favourites', component: FavouritesComponent, title: 'Favourites' },
     { path: 'login', component: LoginComponent, title: 'Login' },
+    { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts'}
 ];
 
 export default routeConfig;
