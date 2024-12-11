@@ -4,6 +4,7 @@ import { PetsListing } from '../../models/pets-listing';
 import { CommonModule } from '@angular/common';
 import { HomeService } from '../../home/home.service';
 import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-pets-details',
   standalone: true,

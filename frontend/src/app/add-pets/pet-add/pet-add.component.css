@@ -3,7 +3,7 @@
 }
 
 .addPetContainer {
-    align-items: center;
+    align-content: center;
     justify-content: center;
     position: fixed;
     background-color: aqua;

@@ -12,7 +12,7 @@ export class PetAddService {
 
   constructor(private http: HttpClient) { }
 
-  addPet(pet: PetsListing): Observable<PetsListing> {
-    return this.http.post<PetsListing>(this.apiURL, pet);
+  addPet(newPet: PetsListing): Observable<PetsListing> {
+    return this.http.post<PetsListing>(this.apiURL, newPet);
   }
 }
