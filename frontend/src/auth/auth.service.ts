@@ -44,7 +44,7 @@ export class AuthService {
         if (role === 'user') {
           this.router.navigateByUrl('/');
         } else if (role === 'shelter') {
-          this.router.navigateByUrl('/shelter-app');
+          this.router.navigateByUrl('/shelter-manager');
         } else if (role === 'moderator') {
           this.router.navigateByUrl('/moderator');
         }

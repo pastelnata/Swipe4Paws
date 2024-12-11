@@ -16,6 +16,8 @@ export class HeaderComponent {
   
   profileClicked() {
     this.toggleProfileBar.emit();
+    localStorage.removeItem('token');
+    console.log('Logged out');
   }
 
   logoClicked() {

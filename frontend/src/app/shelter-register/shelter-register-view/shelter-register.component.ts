@@ -40,7 +40,6 @@ export class ShelterRegisterComponent {
       try {
         await this.shelterRegisterService.createShelter(newShelter);
         console.log('Shelter created');
-        this.router.navigateByUrl('/shelter-app');
       } catch (error: any) {
         console.error('Error registering shelter:', error);
         // Display error message
@@ -57,7 +56,6 @@ export class ShelterRegisterComponent {
       address: this.address,
       postal_code: this.postal_code,
       city: this.city,
-      token: '',
     };
     return newShelter;
   }

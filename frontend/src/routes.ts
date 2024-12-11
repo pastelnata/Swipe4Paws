@@ -17,43 +17,36 @@ const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    canActivate: [userGuard],
     title: 'Home Page',
   },
   {
     path: 'about-us',
     component: AboutUsComponent,
-    canActivate: [userGuard],
     title: 'About Us',
   },
   {
     path: 'shelters',
     component: SheltersComponent,
-    canActivate: [userGuard],
     title: 'Shelters',
   },
   {
     path: 'shelters/:id',
     component: SheltersDetailsComponent,
-    canActivate: [userGuard],
     title: 'Shelters',
   },
   {
     path: 'swipe',
     component: SwipeComponent,
-    canActivate: [userGuard],
     title: 'Swipe',
   },
   {
     path: 'adopt',
     component: HomeComponent,
-    canActivate: [userGuard],
     title: 'Adopt',
   },
   {
     path: 'petInfo/:id',
     component: PetsDetailsComponent,
-    canActivate: [userGuard],
     title: 'Pet info',
   },
   {
