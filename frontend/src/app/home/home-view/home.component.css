@@ -90,44 +90,50 @@
     margin: 6vh 8vh 0vh 8vh;
     z-index: 1000;
 }
+/* Box that shows up after clicking filters */
 
 .filter-by-container {
     display: flex;
     flex-direction: column;
-    width: 80vh;
+    max-width: 55vh;
 }
+
+/* Filter options box */
 
 .filter-options-box.ng-star-inserted {
     display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
-    padding: 10px;
+    padding: 1vh;
     border: 1px solid rgb(86, 125, 99);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 1px 20px 20px 20px;
-    max-width: 600px;
-    min-width: min-content;
-    max-height: 200px;
-    min-height: fit-content;
+    min-width: fit-content;
   }
-  /* top rowww inside a filter containers filters */
+  /* top row inside a filter containers filters */
 .top-row-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .filter-basic-options {
-    display: flex;
-    gap: 10px;
-    margin: 10px 0px 10px 0px;
+    display: grid;
+    gap: 1vh;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5vh;
+}
+
+.filter-by-type, .filter-by-gender{
+    background-color: rgba(86, 125, 99, 0.512);
+    padding: 1vh;
+    border-radius: 20px;
+
 }
 
 
+.reset-box{
+    align-self: flex-end;
+    padding: 1vh;
+}
 
 select {
     -ms-appearance: none;
@@ -148,38 +154,42 @@ select {
     outline: none;
   }
 
-  select:hover {
-    cursor: pointer;
-  }
 
-option {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    text-align: center;
-    color:rgb(86, 125, 99);
-  }
+
+/* Top row add filters box - one on the rigth */
 
 .add-filters {
     display: flex;
-    gap: 10px;
-    margin: 10px 0px 10px 0px;
+    gap: 1vh;
+    padding:1vh;
+    align-self: flex-start;
 }
 
 
+/* Add behavior filterS:` */
+
+.add-filters-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Chose filter */
 
 select {
     -ms-appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    margin-left:10vh ;
-    width: 10vh;
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    -ms-appearance: none;
+    margin-left:2vh ;
+    width: 25vh;
     padding: 0px 5px 0px 5px;
     border-color: rgb(86, 125, 99);
     border-style: solid;
     border-radius: 5px;
-    max-height: 40px;
-    min-width: min-content;
+    max-height: 4vh;
   }
 
   select:focus {
@@ -311,20 +321,17 @@ option {
 }
 
 .secondary {
-    height: 30px;
-    width: 60px;
-    margin: 2px;
-    border-radius: 10%;
-    background-color:rgb(246, 215, 253) ;
-    border-color:rgb(246, 215, 253) ;
-    background-color:rgb(246, 215, 253) ;
-    border-color:rgb(246, 215, 253) ;
-    border-style: solid;
+    height: 4vh;
+    width: 7vh;
+    margin: 0.2vh;
+    border-radius: 20px;
+    background-color: rgba(86, 125, 99, 0);
+    border: none;
     color: white;
 }
 .secondary:hover {
-    background-color:rgb(242, 182, 255) ;
-    border-color:rgb(242, 182, 255) ;
+    background-color: rgba(86, 125, 99, 0.512) ;
+    border: none;
 }
 
 /* Pet listing */

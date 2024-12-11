@@ -1,3 +1,4 @@
+import { behavior } from "./behaviorModel";
 export interface PetsListing {
     petid: number, 
     date_added: Date, 
@@ -6,7 +7,7 @@ export interface PetsListing {
     age: number, 
     type: string, 
     race: string, 
-    behavior: string[],
+    behaviors: behavior[],
     photo: string,
     shelterid: number,
 }
