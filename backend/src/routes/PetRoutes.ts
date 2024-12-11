@@ -15,7 +15,6 @@ petRoutes.delete('/:id', isShelter, petController.deletePet);
 petRoutes.get('/search', petController.searchPets);
 /*
 petRoutes.post('/', petController.addPet);
-petRoutes.post('/add', (req, res) => petController.addPet(req, res));
 petRoutes.put('/:id', petController.updatePet);
 petRoutes.delete('/:id', petController.deletePet); */
 

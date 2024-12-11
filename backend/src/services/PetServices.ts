@@ -58,6 +58,16 @@ class PetService {
         }
     }
 
+    static async addPet(newPetData: any) {
+        try {
+            const newPet = await Pet.create(newPetData);
+            return newPet;
+        } catch (error) {
+            console.error("Error adding new pet:", error);
+            throw error;
+        }
+    }
+
     private static async getValidConditions(word: string): Promise<any[]> {
         const parsedDate = parseISO(word);
         const isValidDate = isValid(parsedDate);
