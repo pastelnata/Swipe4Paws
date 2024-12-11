@@ -80,17 +80,18 @@ INSERT INTO shelter (email, managed_by, "name", "password", "address", city, pos
 -- Mock data for the pet table
 INSERT INTO pet (shelterid, "name", type, race, gender, age, date_added, photo) VALUES
 -- Pets for Shelter 1
-(1, 'Max', 'dog','Labrador', 'Male', 5, '2024-01-01 08:00:00','./assets/kitty1.jpg'),
-(1, 'Bella', 'dog','Beagle', 'Female', 3, '2024-02-15 09:30:00','./assets/kitty1.jpg'),
-(1, 'Charlie', 'dog','Bulldog', 'Unknown', 2, '2024-03-20 10:45:00','./assets/kitty1.jpg'),
-(1, 'Milo','dog' ,'Poodle', 'Male', 4, '2024-04-05 11:00:00','./assets/kitty1.jpg'),
-(1, 'Luna', 'dog','Golden Retriever', 'Female', 6, '2024-05-10 12:15:00','./assets/kitty1.jpg'),
+(1, 'Snowball', 'cat', 'Smart', 'Male', 2, '2024-06-01 10:00:00', './assets/pets/snowball.jpg'),
+(1, 'Mittens', 'cat', 'Curious', 'Male', 1, '2024-07-15 11:30:00', './assets/pets/kocurek.jpg'), 
+(1, 'Ryszard', 'parrot', 'Sociable', 'Male', 3, '2024-08-20 12:00:00', './assets/pets/ryszard.jpg'), 
+(1, 'Whiskers', 'cat', 'Calm', 'Male', 1, '2024-09-05 14:00:00', './assets/pets/koteczka.jpg'), 
+(1, 'Maciej', 'dog', 'Elegant', 'Male', 5, '2024-10-10 15:15:00', './assets/pets/maciej.jpg'), 
+
 
 -- Pets for Shelter 2
-(2, 'Rocky', 'dog','German Shepherd', 'Female', 4, '2024-06-01 13:30:00','./assets/kitty1.jpg'),
-(2, 'Daisy', 'dog','Pomeranian', 'Male', 2, '2024-07-10 14:00:00','./assets/kitty1.jpg'),
-(2, 'Simba', 'dog','Siamese Cat', 'Unknown', 3, '2024-08-15 15:30:00','./assets/kitty1.jpg'),
-(2, 'Zoe', 'dog','Boxer', 'Female', 5, '2024-09-01 16:45:00','./assets/kitty1.jpg'),
+(2, 'Jumbo', 'hedgehog', 'Playful', 'Male', 2, '2024-12-10 19:30:00', './assets/pets/jumbo.jpg'),
+(2, 'Tiger', 'cat', 'Male', 'Male', 1, '2024-12-05 18:00:00', './assets/pets/kocurek2.jpg'), 
+(2, 'Lily', 'cat', 'Cautious', 'Female', 1, '2024-12-08 19:00:00', './assets/pets/koteczka2.jpg'),
+(2, 'Sadie', 'dog', 'Fearful', 'Female', 3, '2024-11-20 16:00:00', './assets/pets/tomasz.jpg'), 
 (2, 'Buddy', 'dog','Chihuahua', 'Male', 3, '2024-10-01 17:00:00','./assets/kitty1.jpg'),
 
 -- Pets for Shelter 3
@@ -118,27 +119,37 @@ INSERT INTO pet (shelterid, "name", type, race, gender, age, date_added, photo) 
 -- Mock data for the behavior table
 INSERT INTO pet_behavior (petid, behavior) VALUES
 (1, 'Playful'),
+(1, 'Energetic'),
 (2, 'Aggressive'),
+(2, 'Alert'),
 (3, 'Friendly'),
 (4, 'Shy'),
+(4, 'Curious'),
 (5, 'Curious'),
 (6, 'Loyal'),
+(6, 'Protective'),
 (7, 'Energetic'),
+(7, 'Friendly'),
 (8, 'Independent'),
+(8, 'Shy'),
 (9, 'Calm'),
+(9, 'Gentle'),
 (10, 'Protective'),
 (11, 'Affectionate'),
 (12, 'Gentle'),
 (13, 'Playful'),
 (14, 'Alert'),
 (15, 'Lively'),
+(16, 'Friendly'),
 (16, 'Curious'),
 (17, 'Relaxed'),
 (18, 'Loyal'),
 (19, 'Obedient'),
 (20, 'Sociable'),
+(20, 'Adventurous'),
 (21, 'Adventurous'),
 (22, 'Calm'),
 (23, 'Reserved'),
 (24, 'Cuddly'),
+(24, 'Playful'),
 (25, 'Active');
