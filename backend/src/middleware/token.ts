@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 class TokenService {
-  public static generateToken(id: number, email: string, role: string): string {
+  public static generateToken(id: number, email: string, username: string, role: string): string {
     const payload = { id: id, email: email, role: role };
     const privateKeyPath = process.env.PRIVATE_KEY_PATH;
 

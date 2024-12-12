@@ -24,7 +24,7 @@ class Moderator extends Model {
 
   public generateToken(): string {
     console.log("Generating token for user:", this.email);
-    return TokenService.generateToken(this.modid, this.email, this.role);
+    return TokenService.generateToken(this.modid, this.email, this.username, this.role);
   }
 }
 
