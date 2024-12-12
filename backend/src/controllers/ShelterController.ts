@@ -48,7 +48,7 @@ class ShelterController {
         city
       );
       console.log("token:", token);
-      res.json(token);
+      res.json({token});
     } catch (error) {
       console.error("Error creating shelter:", error);
       res.json("Error creating shelter");

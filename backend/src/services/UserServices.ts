@@ -40,9 +40,11 @@ class UserService {
           include: [{ model: PetBehavior, as: "preferences" }],
         }
       );
-      console.log("User created:", email);
-      console.log("Preferences added to user:", email, preferences);
-      return newUser.generateToken(); //jwt token generated once user created
+      if(newUser){
+        console.log("User created:", email);
+        console.log("Preferences added to user:", email, preferences);
+        return newUser.generateToken();
+      } else return '';
     } catch (error) {
       console.error("Error creating user:", error);
       throw error;

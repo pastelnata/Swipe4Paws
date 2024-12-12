@@ -108,6 +108,7 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "src/**/*.ts" // Make sure this points to your TypeScript files
+    "src/**/*.ts", // Make sure this points to your TypeScript files
+    "env.d.ts"
   ]
 }

@@ -47,3 +47,4 @@ Thumbs.db
 
 # Database sensitive info
 .env
+/backend/src/auth-keys/*.key

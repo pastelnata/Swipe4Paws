@@ -4,6 +4,7 @@ import petRoutes from "./routes/PetRoutes";
 import shelterRoutes from "./routes/ShelterRoutes";
 import userRoutes from "./routes/UserRoutes";
 import modRoutes from "./routes/ModRoutes";
+import authRoutes from "./routes/authRoutes";
 import favoriteRoutes from "./routes/FavoriteRoutes";
 //sets the port for the server to listen on
 const port = process.env.PORT || 3000;
@@ -35,6 +36,9 @@ app.use('/users', userRoutes);
 
 // Moderators
 app.use('/mods', modRoutes);
+
+// Auth
+app.use('/auth', authRoutes);
 
 // Favorites
 app.use('/favorites', favoriteRoutes)
