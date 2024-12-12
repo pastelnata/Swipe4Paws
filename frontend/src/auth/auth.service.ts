@@ -57,4 +57,18 @@ export class AuthService {
       },
     });
   }
+
+  getUsername(): string {
+    let username = '';
+    this.getTokenPayload().subscribe({
+      next: (token) => {
+        username = token?.username ?? '';
+        console.log('username:', username);
+      },
+      error: (error) => {
+        console.error('Error fetching token payload:', error);
+      }
+    });
+    return username;
+  }
 }

@@ -29,7 +29,7 @@ class User extends Model {
   public generateToken(): string {
     try {
       console.log("Generating token for user:", this.email);
-      return TokenService.generateToken(this.userid, this.email, this.role);
+      return TokenService.generateToken(this.userid, this.email, this.username, this.role);
     } catch (error) {
       console.error("Error generating token:", error);
       throw error;
