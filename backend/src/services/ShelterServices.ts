@@ -60,6 +60,7 @@ class ShelterService {
       throw error;
     }
   }
+
   //get shelter by id
   static async getSheltersById(shelterid: number): Promise<Shelter | null> {
     try {
@@ -70,6 +71,7 @@ class ShelterService {
       throw error;
     }
   }
+
   //allow update shelter info
   public static async updateShelter(
     shelterid: number,
@@ -94,6 +96,7 @@ class ShelterService {
       throw error;
     }
   }
+
   //login shelter
   public static async loginShelter(
     email: string,
@@ -118,6 +121,29 @@ class ShelterService {
       return shelter.generateToken();
     } catch (error) {
       console.error("Error logging in shelter:", error);
+      throw error;
+    }
+  }
+
+  public static async updateShelterStatus(
+    shelterid: number,
+    status: string
+  ): Promise<Shelter> {
+    try {
+      const shelter = await Shelter.findOne({
+        where: { shelterid: shelterid },
+      });
+      if (!shelter) {
+        throw new Error("Shelter not found");
+      }
+
+      await Shelter.update(
+        { status: status },
+        { where: { shelterid: shelterid } }
+      );
+      return shelter;
+    } catch (error) {
+      console.error("Error updating shelter status:", error);
       throw error;
     }
   }

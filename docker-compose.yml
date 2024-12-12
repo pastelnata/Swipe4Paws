@@ -26,6 +26,7 @@ services:
       DATABASE_NAME: ${DATABASE_NAME}
       PRIVATE_KEY_PATH: ${PRIVATE_KEY_PATH}
       PUBLIC_KEY_PATH: ${PUBLIC_KEY_PATH}
+      NODE_ENV: production
     ports:
       - "3000:3000"
     depends_on:
@@ -39,6 +40,7 @@ services:
         - action: sync
           path: ./backend
           target: /Swipe4Paws/backend
+          command: npm run dev:backend
           ignore:
             - node_modules/
         - action: rebuild
