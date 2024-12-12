@@ -65,8 +65,8 @@ INSERT INTO "user" (email, username, "password") VALUES
 ('user2@gmail.com', 'user2', 'password2');
 -- Mock data for the moderator table
 INSERT INTO moderator (email, username, "password") VALUES
-('moderator@gmail.com', 'moderator', '$2b$10$LBtK0B0.PEIhnbC5jTiGPuByCvtLQFFvmSERAmSZrxErlldZhF5Wq'),
-('moderator2@gmail.com', 'moderator2', '$2b$10$EFtxG8UcLBwbLI9yyrD3c.fABrO3yBHCXj4NUwytZuUIWunqmH50S');
+('moderator@gmail.com', 'moderator', '$2b$10$LBtK0B0.PEIhnbC5jTiGPuByCvtLQFFvmSERAmSZrxErlldZhF5Wq');
+--('moderator2@gmail.com', 'moderator2', '$2b$10$EFtxG8UcLBwbLI9yyrD3c.fABrO3yBHCXj4NUwytZuUIWunqmH50S');--
 
 -- Mock data for the shelter table
 INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status", photo) VALUES
@@ -74,7 +74,10 @@ INSERT INTO shelter (email, managed_by, "name", "password", "address", city, pos
 ('shelter2@example.com', 1, 'Happy Tails', 'password_2', '456 Avenue, City', 'Aarhus', '2000', 'Pending','./assets/shelter2.jpg'),
 ('shelter3@example.com', 1, 'Furry Friends', 'password_3', '789 Road, City', 'Odense', '3000', 'Approved', './assets/shelter1.jpg'),
 ('shelter4@example.com', 1, 'Paws Place', 'password_4', '101 Blvd, City', 'Aalborg', '4000', 'Rejected','./assets/shelter2.jpg'),
-('shelter5@example.com', 1, 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved', './assets/shelter1.jpg');
+('shelter5@example.com', 1, 'Animal Haven', 'password_5', '202 Lane, City', 'Esbjerg', '5000', 'Approved', './assets/shelter1.jpg'),
+('shelter6@example.com', 1, 'Cozy Corner', 'password_6', '303 Street, City', 'Roskilde', '6000', 'Pending', './assets/shelter2.jpg'),
+('shelter7@example.com', 1, 'Safe Haven', 'password_7', '404 Avenue, City', 'Horsens', '7000', 'Pending', './assets/shelter1.jpg'),
+('shelter8@example.com', 1, 'Pet Paradise', 'password_8', '505 Road, City', 'Randers', '8000', 'Pending', './assets/shelter2.jpg');
 
 
 -- Mock data for the pet table

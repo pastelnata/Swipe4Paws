@@ -1,5 +1,5 @@
 export interface SheltersListing {
-    shelterid: number,
+    shelterid?: number,
     email: string,
     name: string,
     password: string,
@@ -7,7 +7,7 @@ export interface SheltersListing {
     city: string,
     postal_code: number,
     status: string,
-    photo: string,
+    photo?: string,
 }
 
 
