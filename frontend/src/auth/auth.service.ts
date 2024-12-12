@@ -68,8 +68,19 @@ export class AuthService {
     return this.getTokenPayload().pipe(
       map((token) => token?.username ?? ''),
       catchError((error) => {
-        console.error('Error fetching token payload:', error);
+        console.error('Error getting username:', error);
         return of(''); // Return an empty string in case of an error
+      })
+    );
+    
+  }
+
+  getId(): Observable<number> {
+    return this.getTokenPayload().pipe(
+      map((token) => parseInt(token?.id) ?? ''),
+      catchError((error) => {
+        console.error('Error getting id:', error);
+        return of(0); // Return an empty string in case of an error
       })
     );
     
