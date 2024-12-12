@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 class ShelterService {
-  public static async getAllShelters() {
+  public static async getAllShelters(): Promise<Shelter[]> {
     try {
       const shelters = await Shelter.findAll();
       return shelters;
