@@ -12,6 +12,7 @@ import { ModeratorComponent } from './app/moderator/moderator-view/moderator.com
 import { shelterGuard, userGuard, moderatorGuard } from './auth/auth.guard';
 import { FavouritesComponent } from './app/favourites/favourites-view/favourites-view.component';
 import { LoginComponent } from './app/login/login-view/login.component';
+import { FunFactsViewComponent } from "./app/fun-facts/fun-facts-view/fun-facts-view.component";
 
 const routeConfig: Routes = [
   {
@@ -69,7 +70,8 @@ const routeConfig: Routes = [
   },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Sign Up' },
-  { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' }
+  { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
+  { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts'}
 ];
 
 export default routeConfig;

@@ -21,4 +21,8 @@ export class ProfileBarViewComponent {
   redirectToFavourites() {
     this.router.navigate(['/favourites'])
   }
+
+  redirectToFunFacts() {
+    this.router.navigate(['/fun-facts'])
+  }
 }
