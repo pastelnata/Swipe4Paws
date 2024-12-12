@@ -7,7 +7,7 @@ import { SheltersListing } from '../models/shelters-listing';
 })
 export class SheltersService {
 
-  baseURL =' http://localhost:3000/shelters';
+  baseURL = 'http://localhost:3000/shelters';
 
   sheltersList: SheltersListing[] = [];
 

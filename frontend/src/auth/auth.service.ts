@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://localhost:3000/auth';
@@ -13,20 +13,23 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getTokenPayload(): Observable<any> {
+    if (typeof localStorage === 'undefined') {
+      console.log('localStorage is not available.');
+      return of(null);
+    }
     const token = localStorage.getItem('token');
+
     if (token) {
       try {
-      console.log('token:', token)
+        console.log('token:', token);
         // Decode the token to get the payload
-        return this.http
-          .post(`${this.apiUrl}/token`, { })
-          .pipe(
-            map((response: any) => response.token),
-            catchError((error) => {
-              console.error(error);
-              return throwError(error);
-            })
-          );
+        return this.http.post(`${this.apiUrl}/token`, {}).pipe(
+          map((response: any) => response.token),
+          catchError((error) => {
+            console.error(error);
+            return throwError(error);
+          })
+        );
       } catch (error) {
         console.error('Invalid token:', error);
         return throwError(error);
@@ -51,7 +54,7 @@ export class AuthService {
       },
       error: (error) => {
         console.error('Error fetching token payload:', error);
-      }
+      },
     });
   }
 }
