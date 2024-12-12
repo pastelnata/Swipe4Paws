@@ -6,5 +6,6 @@ const behaviorController = new BehaviorController();
 
 // Defines the routes
 behaviorRoutes.get('/', (req, res) => behaviorController.getAllBehaviors(req, res));
+behaviorRoutes.post('/add', (req, res) => behaviorController.addBehavior(req, res));
 
 export default behaviorRoutes;
