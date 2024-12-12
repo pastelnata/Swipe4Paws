@@ -13,7 +13,7 @@ shelterRoutes.post('/register', async (req,res) => await shelterController.creat
 //shelterRoutes.post('/login', (req,res) => shelterController.loginShelter(req,res));
 //shelterRoutes.post('/logout', (req,res) => shelterController.logoutShelter(req,res));
 
-shelterRoutes.patch('/:id/', async (req, res) => {
+shelterRoutes.patch('/:id/', isModerator, async (req, res) => {
     try {
         await shelterController.updateShelterStatus(req, res);
     } 

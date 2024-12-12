@@ -5,8 +5,8 @@ const authRoutes = Router();
 
 authRoutes.post('/token', authMiddleware, (req, res) => {
     const token = res.locals.user;
-    console.log('token (routes):', token);
+    console.log('token:', token);
     res.json({ token });
-  });
+});
 
 export default authRoutes;
