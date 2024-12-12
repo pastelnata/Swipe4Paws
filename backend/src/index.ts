@@ -6,6 +6,7 @@ import userRoutes from "./routes/UserRoutes";
 import modRoutes from "./routes/ModRoutes";
 import authRoutes from "./routes/authRoutes";
 import favoriteRoutes from "./routes/FavoriteRoutes";
+import behaviorRoutes from "./routes/BehaviorRoutes";
 //sets the port for the server to listen on
 const port = process.env.PORT || 3000;
 
@@ -42,3 +43,6 @@ app.use('/auth', authRoutes);
 
 // Favorites
 app.use('/favorites', favoriteRoutes)
+
+//Behaviors
+app.use('/behaviors', behaviorRoutes)
