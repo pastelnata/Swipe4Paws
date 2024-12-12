@@ -4,7 +4,7 @@ import Shelter from './ShelterModel';
 import PetBehavior from './PetBehaviorModel';
 
 class Pet extends Model {
-    private petid!: number;
+    public petid!: number;
     private name!: string;
     private gender!: 'Male' | 'Female' | 'Unknown';
     private age!: number;
@@ -13,7 +13,6 @@ class Pet extends Model {
     private shelterid!: number;
     private photo!: string;
     private type!: string;
-    // private behavior!: string;
 }
 
 Pet.init(
@@ -42,10 +41,6 @@ Pet.init(
             type: DataTypes.STRING(70),
             allowNull: true,
         },
-        // behavior: {
-        //     type: DataTypes.STRING(70),
-        //     allowNull: true,
-        // },
         photo: {
             type: DataTypes.STRING(70),
             allowNull: true,
