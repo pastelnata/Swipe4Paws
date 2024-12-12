@@ -12,6 +12,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    if(token) return true;
+    return false;
+  }
+
   getTokenPayload(): Observable<any> {
     if (typeof localStorage === 'undefined') {
       console.log('localStorage is not available.');
@@ -58,17 +64,18 @@ export class AuthService {
     });
   }
 
-  getUsername(): string {
-    let username = '';
-    this.getTokenPayload().subscribe({
-      next: (token) => {
-        username = token?.username ?? '';
-        console.log('username:', username);
-      },
-      error: (error) => {
+  getUsername(): Observable<string> {
+    return this.getTokenPayload().pipe(
+      map((token) => token?.username ?? ''),
+      catchError((error) => {
         console.error('Error fetching token payload:', error);
-      }
-    });
-    return username;
+        return of(''); // Return an empty string in case of an error
+      })
+    );
+    
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }

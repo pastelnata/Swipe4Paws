@@ -7,7 +7,7 @@ dotenv.config();
 
 class TokenService {
   public static generateToken(id: number, email: string, username: string, role: string): string {
-    const payload = { id: id, email: email, role: role };
+    const payload = { id: id, email: email, username: username, role: role };
     const privateKeyPath = process.env.PRIVATE_KEY_PATH;
 
     if (!privateKeyPath || !fs.existsSync(privateKeyPath)) {
