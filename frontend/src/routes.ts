@@ -7,8 +7,8 @@ import { PetsDetailsComponent } from './app/pets-details/pets-details-view/pets-
 import { RegisterComponent } from './app/register/register-view/register.component';
 import { ShelterRegisterComponent } from './app/shelter-register/shelter-register-view/shelter-register.component';
 import { SheltersDetailsComponent } from './app/shelters/shelters-details/shelters-details.component';
-import { ShelterAppComponent } from './shelter-app/shelter-app.component';
-import { ModeratorComponent } from './moderator/moderator.component';
+import { ShelterAppComponent } from './app/shelter-app/shelter-app.component';
+import { ModeratorComponent } from './app/moderator/moderator-view/moderator.component';
 import { shelterGuard, userGuard, moderatorGuard } from './auth/auth.guard';
 import { FavouritesComponent } from './app/favourites/favourites-view/favourites-view.component';
 import { LoginComponent } from './app/login/login-view/login.component';
@@ -54,13 +54,13 @@ const routeConfig: Routes = [
     path: 'shelter-manager',
     component: ShelterAppComponent,
     canActivate: [shelterGuard],
-    title: 'Login',
+    title: 'Shelter Page',
   },
   {
     path: 'moderator',
     component: ModeratorComponent,
     canActivate: [moderatorGuard],
-    title: 'Login',
+    title: 'Moderator Page',
   },
   { 
     path: 'favourites', 

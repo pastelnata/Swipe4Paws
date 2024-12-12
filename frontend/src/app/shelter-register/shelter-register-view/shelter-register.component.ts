@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShelterRegisterService } from '../shelter-register.service';
-import { ShelterModel } from '../../models/ShelterModel';
+import { SheltersListing } from '../../models/shelters-listing';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -48,14 +48,15 @@ export class ShelterRegisterComponent {
     }
   }
 
-  registerShelter(): ShelterModel {
-    const newShelter: ShelterModel = {
+  registerShelter(): SheltersListing {
+    const newShelter: SheltersListing = {
       name: this.name,
       email: this.email,
       password: this.password,
       address: this.address,
       postal_code: this.postal_code,
       city: this.city,
+      status: 'Pending',
     };
     return newShelter;
   }
