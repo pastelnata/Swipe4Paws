@@ -1,15 +1,15 @@
 import PetController from "../controllers/PetController";
 import { Router } from "express";
-import authMiddleware from "../middleware/auth";
+import { isShelter } from "../middleware/auth";
 
 const petRoutes = Router();
 const petController = new PetController();
 
 // Defines the routes
 petRoutes.get('/', petController.getAllPets);
-petRoutes.post('/', authMiddleware, petController.addPet);
-petRoutes.put('/:id', authMiddleware, petController.updatePet);
-petRoutes.delete('/:id', authMiddleware, petController.deletePet);
+petRoutes.post('/', isShelter, petController.addPet);
+petRoutes.put('/:id', isShelter, petController.updatePet);
+petRoutes.delete('/:id', isShelter, petController.deletePet);
 petRoutes.get('/search', petController.searchPets);
 
 export default petRoutes;
