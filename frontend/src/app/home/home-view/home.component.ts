@@ -43,8 +43,18 @@ export class HomeComponent implements OnInit {
 
   popupVisible = false;
 
-  onPetAdded(newPet: PetsListing) {
-    this.petsListingList.unshift(newPet);
+  onPetAdded(newPet: PetsListing): void {
+    this.homeService.addPetToBackend(newPet).subscribe({
+      next: (savedPet) => {
+        //add to list
+        this.petsListingList.unshift(savedPet);
+        console.log('Pet successfully added to backend and UI:', savedPet);
+      },
+      error: (err) => {
+        console.error('Error adding pet to backend', err);
+      }
+    });
+    //this.petsListingList.unshift(newPet);
   }
 
   selectFiltersForm = new FormGroup({
