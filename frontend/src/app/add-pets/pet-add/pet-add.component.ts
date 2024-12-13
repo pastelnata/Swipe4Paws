@@ -35,7 +35,7 @@ export class PetAddComponent {
     });
   }
 
-  onAddPet(): void {
+  onSubmit(): void {
     if (this.petForm.invalid)  {
       console.log('Form is invalid');
       return;
@@ -43,27 +43,27 @@ export class PetAddComponent {
     //get pet data from the form
     const newPet: PetsListing = this.petForm.value;
 
-    if (!newPet.shelterid) {
-      console.log('Shelter ID is missing');
-      return;
-    }
-
-    //calls service to add pet
-    /*this.petDataService.addPet(newPet).subscribe({
+    ///send newPet object to service
+    this.petAddService.addPet(newPet).subscribe({
       next: (response) => {
-        console.log('New pet added sucessfully');
-        this.petAdded.emit(response);
+        console.log('Pet added successfully:', response);
+        this.petAdded.emit(newPet);
         this.petForm.reset();
       },
       error: (err) => {
-        console.error('Error adding pet:', err);
-      },
-    });*/
+        console.error('Error adding pet:', error);
+      }
+    });
+
+    //if (!newPet.shelterid) {
+    //  console.log('Shelter ID is missing');
+    //  return;
+    //}
   }
 }
 
-  /*onSubmit(form: any) {
-    if (form.valid) {
+  /*onSubmit(): void {
+    if (this.petForm.valid) {
       const formData = form.value;
 
       const newPet: PetsListing = {

@@ -90,6 +90,10 @@ export class HomeService {
     
   }
 
+  addPetToBackend(newPet: PetsListing): Observable<PetsListing> {
+    return this.http.post<PetsListing>('http://localhost:3000/pets', newPet);
+  }
+
   getList(): Observable<PetsListing[]> {
     return this.filteredPetsListSubject.asObservable(); // Return as Observable
   }

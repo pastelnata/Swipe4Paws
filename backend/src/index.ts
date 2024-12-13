@@ -19,7 +19,6 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`); //check terminal if the server has started successfully
 });
 
-
 // Database connection
 client.connect()
   .then(() => console.log('Connected to the database'))
