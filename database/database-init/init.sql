@@ -99,25 +99,25 @@ INSERT INTO pet (shelterid, "name", type, race, gender, age, date_added, photo) 
 
 -- Pets for Shelter 3
 (3, 'Bailey', 'parrot','blue parrot', 'Unknown', 4, '2024-11-01 18:15:00','./assets/pets/parot.jpg'),
-(3, 'Lily', 'cat','Persian Cat', 'Female', 6, '2024-12-01 19:30:00','./assets/kitty1.jpg'),
-(3, 'Rex', 'dog','Rottweiler', 'Male', 5, '2024-01-15 08:30:00','./assets/kitty1.jpg'),
-(3, 'Ruby', 'dog','Corgi', 'Female', 3, '2024-02-05 09:00:00','./assets/kitty1.jpg'),
-(3, 'Finn', 'dragon','Dachshund', 'Male', 2, '2024-03-10 10:15:00','./assets/kitty1.jpg'),
+(3, 'Mira', 'dog','Shiba Inu', 'Female', 8, '2024-12-01 19:30:00','./assets/pets/mira.JPG'),
+(3, 'Baloo', 'dog','Staffy', 'Male', 5, '2024-01-15 08:30:00','./assets/pets/baloo.jpg'),
+(3, 'Ruby', 'dog','Corgi', 'Female', 3, '2024-02-05 09:00:00','./assets/pets/sadCorgi.jpg'),
+(3, 'Finn', 'dragon','Dachshund', 'Male', 2, '2024-03-10 10:15:00','./assets/pets/dachshund.jpg'),
 
 -- Pets for Shelter 4
 (4, 'Mittens', 'cat','Maine Coon', 'Male', 1, '2024-04-25 11:45:00','./assets/pets/mittens.jpg'),
 (4, 'Hampter', 'dog','hamster', 'Male', 6, '2024-05-30 12:00:00','./assets/pets/hamper.png'),
 (4, 'Pawel', 'parrot','green parrot', 'Female', 3, '2024-06-20 13:30:00','./assets/pets/parrot.jpg'),
-(4, 'Chloe', 'dog','Pug', 'Female', 4, '2024-07-05 14:45:00','./assets/kitty1.jpg'),
-(4, 'Toby','dog' ,'Yorkshire Terrier', 'Male', 5, '2024-08-01 15:00:00','./assets/kitty1.jpg'),
+(4, 'Chloe', 'dog','Pug', 'Female', 4, '2024-07-05 14:45:00','./assets/pets/sadPug.jpg'),
+(4, 'Toby','dog' ,'Yorkshire Terrier', 'Male', 5, '2024-08-01 15:00:00','./assets/pets/yorkshire.jpg'),
 
 
 -- Pets for Shelter 5
 (5, 'Oliver', 'dog','British Shorthair', 'Male', 7, '2024-09-15 16:00:00','./assets/pets/goodBoy.jpg'),
 (5, 'Squrwiel', 'Squirrel','Great Dane', 'Female', 4, '2024-10-10 17:30:00','./assets/pets/squirel.jpg'),
-(5, 'Zeus', 'dog','Doberman', 'Male', 3, '2024-11-20 18:00:00','./assets/kitty1.jpg'),
-(5, 'Penny', 'dog','Basset Hound', 'Female', 4, '2024-12-05 19:00:00','./assets/kitty1.jpg'),
-(5, 'Oscar', 'cat','Bengal Cat', 'Male', 2, '2024-01-20 08:30:00','./assets/kitty1.jpg');
+(5, 'Martin', 'cat','Burmese', 'Male', 11, '2024-11-20 18:00:00','./assets/pets/martin.jpg'),
+(5, 'Penny', 'dog','Basset Hound', 'Female', 4, '2024-12-05 19:00:00','./assets/pets/bassetHound.png'),
+(5, 'Semjon', 'cat','Oriental Shorthair', 'Male', 2, '2024-01-20 08:30:00','./assets/pets/semjon.JPG');
 
 
 -- Mock data for the behavior table
