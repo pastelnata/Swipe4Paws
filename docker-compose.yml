@@ -40,7 +40,7 @@ services:
         - action: sync
           path: ./backend
           target: /Swipe4Paws/backend
-          command: npm run dev:backend
+          # command: npm run dev:backend
           ignore:
             - node_modules/
         - action: rebuild
