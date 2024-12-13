@@ -6,7 +6,6 @@ import { response } from 'express';
 import { error } from 'console';
 import { PetsListing } from '../../models/pets-listing';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PetDataService } from '../../pet-data/pet-data.service';
 
 @Component({
   selector: 'app-pet-add',
@@ -23,7 +22,7 @@ export class PetAddComponent {
   petForm: FormGroup;
   @Output() petAdded = new EventEmitter<PetsListing>();
 
-  constructor(private petDataService: PetDataService) {
+  constructor(private petAddService: PetAddService) {
     this.petForm = new FormGroup({
       name: new FormControl(''),
       type: new FormControl(''),
@@ -50,7 +49,7 @@ export class PetAddComponent {
     }
 
     //calls service to add pet
-    this.petDataService.addPet(newPet).subscribe({
+    /*this.petDataService.addPet(newPet).subscribe({
       next: (response) => {
         console.log('New pet added sucessfully');
         this.petAdded.emit(response);
@@ -59,7 +58,7 @@ export class PetAddComponent {
       error: (err) => {
         console.error('Error adding pet:', err);
       },
-    });
+    });*/
   }
 }
 
