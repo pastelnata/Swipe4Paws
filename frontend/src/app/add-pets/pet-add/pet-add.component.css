@@ -3,34 +3,44 @@
 }
 
 .addPetContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     align-content: center;
     justify-content: center;
     position: fixed;
-    background-color: aqua;
-    border: 4px solid black;
-    padding: 10%;
+    background-color: rgba(200, 200, 200);
+    border: 2px solid black;
+    padding: 3%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 5%;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 
 .formData {
-    align-items: center;
-    margin: 5px;
+    width: 29%;
+    margin: 10px;
+}
+
+.formDataSpace {
+    background-color: rgb(255, 255, 255);
+    width: 60%;
+    border: 1px solid black;
 }
 
 #addPetButton {
     margin: 5px;
-    margin-left: 30%;
+    margin-left: 35%;
     padding: 5px;
     border: 2px solid black;
     border-radius: 12%;
-    background-color: blueviolet;
+    background-color: rgb(86, 125, 99);
     border: 1px solid black;
+    color: black;
 }
 
 #addPetButton:hover {
-    background-color: aqua;
+    background-color: rgb(60, 86, 68);
 }
