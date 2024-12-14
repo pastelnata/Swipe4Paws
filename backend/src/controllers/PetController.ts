@@ -22,7 +22,7 @@ class PetController {
       console.log("Created Pet ID:", createdPetId);
 
       //Extract the behaviors from the request
-      console.log("Creaded pet behavir", req.body.behaviors);
+      console.log("Created pet behavior", req.body.behaviors);
       const addedPetBehaviors = req.body.behaviors
 
       // Iterate the list of behaviors from request and 
@@ -74,9 +74,6 @@ class PetController {
       res.json({ error: "Error searching pets" });
     }
   }
-
-
-
 }
 
 export default PetController;
