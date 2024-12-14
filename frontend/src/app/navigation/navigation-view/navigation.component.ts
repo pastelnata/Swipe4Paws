@@ -19,16 +19,28 @@ export class NavigationComponent {
   allPets: PetsListing[] = [];
   searchedPets: PetsListing[] = [];
 
-  constructor(private navigationService: NavigationService, private router: Router) {}
+  constructor(
+      private navigationService: NavigationService, 
+      private router: Router
+    , private homeService: HomeService
+  ) {}
 
   onKeyDown(event: KeyboardEvent) {
     if (event.key === "Enter") {
       this.searchPets((event.target as HTMLInputElement).value);
-      this.router.navigateByUrl('/adopt/pets');
+      this.scrollToSection("filter-buttons");
+      console.log("search bar pressed");
     }
   }
 
+  scrollToSection(sectionId: string) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   searchPets(query: string) {
-    this.navigationService.searchPets(query);
+    // this.navigationService.searchPets(query);
+    this.homeService.setSearchQuery(query);
   }
 }
