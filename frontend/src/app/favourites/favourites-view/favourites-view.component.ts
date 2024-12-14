@@ -5,6 +5,7 @@ import { PetsListingComponent } from "../../pets-listing/pets-listing-view/pets-
 import { CommonModule } from '@angular/common';
 import { FavouritesService } from '../favourites.service';
 import { HomeService } from '../../home/home.service';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-favourites',
@@ -14,10 +15,18 @@ import { HomeService } from '../../home/home.service';
   styleUrl: './favourites-view.component.css'
 })
 export class FavouritesComponent implements OnInit {
-  constructor(private favouritesService: FavouritesService, private homeService: HomeService) {}
+  constructor(private favouritesService: FavouritesService, private homeService: HomeService, private auth: AuthService) {}
+  
+  userid: number = 0;
 
   ngOnInit(): void {
-    this.loadAndFilterFavourites();
+
+    this.auth.getId().subscribe(
+      (id) => {
+        this.userid = id;
+        console.log(`Loaded userid ${this.userid}`);
+        this.loadAndFilterFavourites();
+    });
   }
 
   favourites: FavoriteModel[] = [];
@@ -26,7 +35,7 @@ export class FavouritesComponent implements OnInit {
   favouritesPetListings: PetsListing[] = [];
 
   loadAndFilterFavourites() {
-    this.favouritesService.getAllFavourites().subscribe(
+    this.favouritesService.getAllFavourites(this.userid).subscribe(
       (favourites: FavoriteModel[]) => {
         this.favourites = favourites;
         console.log('Favourites loaded successfully:', this.favourites);

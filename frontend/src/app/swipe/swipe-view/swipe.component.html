@@ -1,7 +1,4 @@
 <div class="swipe-field" >
-    <div class="arrow" *ngIf="isListLoaded" (click)="getNewPet()">
-        <mat-icon class="arrow-icon">west</mat-icon>
-    </div>
     <div class="swipe-window" *ngIf="isListLoaded" [ngClass]="{'swipe-left': isRejected, 'swipe-right': isLiked}">
          <div class="pet-image-container">
           <img [src]="displayedPet.photo" class="pet-image" alt="Pet image"/>
@@ -14,9 +11,6 @@
                 <mat-icon class="icon" id="favorite-icon" (click)="likePet()">favorite</mat-icon>
             </div>
         </div>
-    </div>
-    <div class="arrow" *ngIf="isListLoaded" (click)="getNewPet()">
-        <mat-icon class="arrow-icon" >east</mat-icon>
     </div>
     <div class="no-more-pets" *ngIf="petSlot===-1">
         <h1>Nothing to see here!</h1>
