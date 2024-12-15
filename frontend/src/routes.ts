@@ -38,6 +38,7 @@ const routeConfig: Routes = [
   {
     path: 'swipe',
     component: SwipeComponent,
+    canActivate: [userGuard],
     title: 'Swipe',
   },
   {

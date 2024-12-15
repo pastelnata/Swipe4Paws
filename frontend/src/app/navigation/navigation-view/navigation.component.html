@@ -9,7 +9,11 @@
     <ul class="nav-links">
         <li><a href="adopt">Adopt</a></li>
         <li><a href="about-us">About Us</a></li>
-        <li><a href="swipe">Swipe</a></li>
+        <li><a href="swipe" 
+               [class.disabled]="!isLoggedIn()" 
+               (click)="showAlertIfNotLoggedIn($event)">
+               Swipe
+            </a></li>
         <li><a href="shelters">Shelters</a></li>
     </ul>
 </nav>

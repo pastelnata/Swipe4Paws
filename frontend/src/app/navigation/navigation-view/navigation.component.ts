@@ -5,6 +5,7 @@ import { NavigationService } from '../navigation.service';
 import { HomeComponent } from '../../home/home-view/home.component';
 import { HomeService } from '../../home/home.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -20,10 +21,20 @@ export class NavigationComponent {
   searchedPets: PetsListing[] = [];
 
   constructor(
-      private navigationService: NavigationService, 
-      private router: Router
-    , private homeService: HomeService
+      private homeService: HomeService,
+    private authService: AuthService
   ) {}
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  showAlertIfNotLoggedIn(event: Event): void {
+    if (!this.isLoggedIn()) {
+      event.preventDefault();
+      alert('You are not logged in');
+    }
+  }
 
   onKeyDown(event: KeyboardEvent) {
     if (event.key === "Enter") {
