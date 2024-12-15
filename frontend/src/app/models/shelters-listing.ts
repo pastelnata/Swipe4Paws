@@ -8,6 +8,7 @@ export interface SheltersListing {
     postal_code: number,
     status: string,
     photo?: string,
+    description?: string,
 }
 
 
