@@ -10,7 +10,6 @@ const petController = new PetController();
 // Defines the routes
 petRoutes.get('/', petController.getAllPets);
 petRoutes.post('/', isShelter, petController.addPet);
-petRoutes.post('/add', (req, res) => petController.addPet(req, res));
 petRoutes.put('/:id', isShelter, petController.updatePet);
 petRoutes.delete('/:id', isShelter, petController.deletePet);
 petRoutes.get('/search', petController.searchPets);

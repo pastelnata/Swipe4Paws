@@ -13,7 +13,7 @@ class PetController {
     }
   }
 
-  public async addPet(req: Request, res: Response) {
+  /*public async addPet(req: Request, res: Response) {
     try {
       const pet = await Pet.create(req.body);
       res.json(pet);
@@ -34,7 +34,7 @@ class PetController {
     } catch (error) {
       console.error("Error adding pet:", error);
     }
-  }
+  }*/
 
   //update call
   public async updatePet(req: Request, res: Response) {
@@ -75,7 +75,7 @@ class PetController {
     }
   }
 
- /* public async addPet(req: Request, res: Response) {
+  public async addPet(req: Request, res: Response) {
     try {
       const newPet = req.body;
 
@@ -89,7 +89,7 @@ class PetController {
       console.error("Error adding pet:", error);
       res.status(500).json({ error: "Failed to add pet" });
     }
-  }*/
+  }
 }
 
 export default PetController;
