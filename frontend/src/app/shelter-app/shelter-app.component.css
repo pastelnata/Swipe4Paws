@@ -1,0 +1,136 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+}
+
+/* Add Pet Button Container */
+.add-button-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#add-btn {
+  background-color: #4f8b3d;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#add-btn:hover {
+  background-color: #45a049;
+}
+
+/* No Pets Available Message */
+h1 {
+  text-align: center;
+  color: #f44336; /* Red color for error message */
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+/* Pets Container */
+.pets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pets-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+/* Pet Card */
+.pets-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.pets-card:hover {
+  transform: scale(1.05);
+}
+
+/* Pet Image */
+.pets-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Pet Card Info */
+.pets-card-info {
+  padding: 15px;
+}
+
+.pets-card-info h2 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.pets-card-info p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+/* Buttons in Pet Card */
+.btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#edit-btn {
+  background-color: #4f8b3d;
+}
+
+#remove-btn {
+  background-color: #FF4742;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+#edit-btn:hover {
+  background-color: #45a049;
+}
+
+#remove-btn:hover {
+  background-color: #d32f2f;
+}
+
