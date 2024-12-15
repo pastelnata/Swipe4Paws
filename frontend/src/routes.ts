@@ -62,11 +62,11 @@ const routeConfig: Routes = [
     canActivate: [moderatorGuard],
     title: 'Moderator Page',
   },
-  { 
-    path: 'favourites', 
-    component: FavouritesComponent, 
+  {
+    path: 'favourites',
+    component: FavouritesComponent,
     canActivate: [userGuard],
-    title: 'Favourites' 
+    title: 'Favourites'
   },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Sign Up' },

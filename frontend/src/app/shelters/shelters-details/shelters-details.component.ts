@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SheltersService } from '../shelters.service';
 import { SheltersListing } from '../../models/shelters-listing';
+
 @Component({
   selector: 'app-shelters-details',
   standalone: true,
@@ -37,12 +38,12 @@ export class SheltersDetailsComponent {
     }else{
       console.log("Id not found!");
     }
-    
+
   }
 
   getShelterById(shelterId:number){
     console.log("Id received" + shelterId);
     this.shelterService.getShelterById(shelterId).subscribe((shelter: SheltersListing) => this.currentShelter = shelter );
-    
+
   }
 }
