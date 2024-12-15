@@ -43,6 +43,8 @@ export class SettingsComponent implements OnInit {
     this.updateUser(this.userid, this.settings.name, this.settings.password).subscribe(
       (response)=>{
         console.log(response);
+        this.settings.name = '';
+        this.settings.password = '';
       }
     )
   }
