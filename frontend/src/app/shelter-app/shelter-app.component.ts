@@ -45,6 +45,7 @@ export class ShelterAppComponent {
       photo: 'new-pet.jpg', // Placeholder photo URL
       shelterid: 1, // Example shelter ID
       date_added: new Date(),
+      description: ''
     };
 
     this.shelterAppService.addPet(newPet).subscribe({

@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
     private auth: AuthService
   ) {
 
-    this.getLoadedList();
+//  this.getLoadedList();
   }
 
   @ViewChild('dogVideo') dogVideo!: ElementRef<HTMLVideoElement>;
