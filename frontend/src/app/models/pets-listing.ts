@@ -10,4 +10,5 @@ export interface PetsListing {
     behaviors: behavior[],
     photo: string,
     shelterid: number,
+    description: string,
 }
