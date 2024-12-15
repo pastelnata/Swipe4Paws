@@ -44,7 +44,11 @@ Pet.init(
         photo: {
             type: DataTypes.STRING(70),
             allowNull: true,
-        }
+        },
+        description: {
+            type: DataTypes.STRING(255),
+            allowNull: true,
+          },
     },
     {
         sequelize,
