@@ -64,6 +64,21 @@ class UserController {
       res.status(500).json({ message: "Error logging in user" });
     }
   }
+
+  public async updateUser(req: Request, res: Response) {
+    try {
+      const { userId, username, password } = req.body;
+      const success = await UserService.updateUser(
+        userId,
+        username,
+        password
+      );
+      res.status(200).json({success});
+    } catch (error) {
+      console.error("Error creating user:", error);
+      res.status(500).json("Error updating user");
+    }
+  }
   //logout a user
   // public logoutUser(req: Request, res: Response): void {
   //   res

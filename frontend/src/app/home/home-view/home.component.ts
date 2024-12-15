@@ -19,7 +19,7 @@ import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
 import { LoginService } from '../../login/login.service';
 import { AuthService } from '../../../auth/auth.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-home',
@@ -31,7 +31,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatExpansionModule,
     ReactiveFormsModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

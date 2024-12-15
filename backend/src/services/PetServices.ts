@@ -3,12 +3,8 @@ import { parseISO, isValid } from 'date-fns';
 import { Pet, PetBehavior } from '../models/associations';
 
 class PetService {
-    static async getAllPets(page: number = 1, limit: number = 4) {
+    static async getAllPets () {
         try {
-            // Calculate the offset based on the page and limit
-            const offset = (page - 1) * limit;
-
-            // Fetch pets with pagination
             const pets = await Pet.findAll({
                 include: [
                     {
@@ -16,25 +12,13 @@ class PetService {
                         as: 'behaviors',
                         attributes: ['behavior']
                     }
-                ],
-                limit,    // Limit the number of pets per page
-                offset    // Offset based on the current page
+                ]
             });
-
-            // Get the total number of pets
-            const totalPets = await Pet.count();
-
-            return {
-                pets,
-                totalPets,
-                totalPages: Math.ceil(totalPets / limit),
-                currentPage: page
-            };
+            return pets;
         } catch (error) {
             console.error("Error fetching pets:", error);
-            throw error;  // Re-throw the error to be handled elsewhere
         }
-    }
+    } 
 
     static async searchPets(query: string) {
         try {

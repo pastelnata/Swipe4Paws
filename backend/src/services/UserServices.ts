@@ -64,17 +64,23 @@ class UserService {
   public static async updateUser(
     userid: number,
     username: string,
-    email: string,
-    password: string,
-    preferences: string[],
-    updatedData: Partial<User>
-  ): Promise<User | null> {
+    password: string
+  ): Promise<string> {
     try {
-      const user = await User.findOne({where: {userid, username, email, password, preferences}});
-      if (!user) return null;
+      const user = await User.findOne({where: {userid}});
+      if (!user) return 'user not found';
+      if (username){
+        user.changeUserName(username);
+      }
+      if(password){
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        password = hashedPassword;
+        user.changePassword(password);
+      }
 
-      await user.update(updatedData);
-      return user;
+      await user.save();
+      return 'user succesfully updated';
     } catch (error) {
       console.error("Error updating user:", error);
       throw error;

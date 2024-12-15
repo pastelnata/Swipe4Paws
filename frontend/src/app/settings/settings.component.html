@@ -3,26 +3,19 @@
   
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="name">Name:</label>
+        <label for="name">Change the name:</label>
         <input type="text" id="name" [(ngModel)]="settings.name" name="name" required />
       </div>
-  
+
+      <button type="submit">Save Settings</button>
+    </form>
+    
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="settings.email" name="email" required />
-      </div>
-  
-      <div class="form-group">
-        <label for="notifications">Enable Notifications:</label>
-        <input
-          type="checkbox"
-          id="notifications"
-          [(ngModel)]="settings.notifications"
-          name="notifications"
-        />
+        <label for="email">Change the password:</label>
+        <input type="email" id="email" [(ngModel)]="settings.password" name="password" required />
       </div>
   
       <button type="submit">Save Settings</button>
     </form>
   </div>
-  
