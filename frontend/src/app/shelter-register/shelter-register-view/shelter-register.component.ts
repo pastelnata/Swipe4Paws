@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ShelterRegisterService } from '../shelter-register.service';
-import { ShelterModel } from '../../models/ShelterModel';
+import { SheltersListing } from '../../models/shelters-listing';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -40,7 +40,6 @@ export class ShelterRegisterComponent {
       try {
         await this.shelterRegisterService.createShelter(newShelter);
         console.log('Shelter created');
-        this.router.navigateByUrl('/');
       } catch (error: any) {
         console.error('Error registering shelter:', error);
         // Display error message
@@ -49,15 +48,15 @@ export class ShelterRegisterComponent {
     }
   }
 
-  registerShelter(): ShelterModel {
-    const newShelter: ShelterModel = {
+  registerShelter(): SheltersListing {
+    const newShelter: SheltersListing = {
       name: this.name,
       email: this.email,
       password: this.password,
       address: this.address,
       postal_code: this.postal_code,
       city: this.city,
-      token: '',
+      status: 'Pending',
     };
     return newShelter;
   }

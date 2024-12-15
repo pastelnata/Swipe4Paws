@@ -1,9 +1,9 @@
 import { Favorite } from "../models/associations";
 
 class FavoriteService {
-  public static async getAllFavorites(): Promise<Favorite[]> {
+  public static async getAllFavorites(userId: number): Promise<Favorite[]> {
     try {
-      const favorites = await Favorite.findAll();
+      const favorites = await Favorite.findAll({ where: { userid: userId } });
       return favorites;
     } catch (error) {
       console.error("Error fetching favorites:", error);

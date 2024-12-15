@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
-import { ShelterModel } from '../models/ShelterModel';
+import { SheltersListing } from '../models/shelters-listing';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ShelterRegisterService {
-  constructor(private http: HttpClient) {}
+  private auth: AuthService;
+  constructor(private http: HttpClient, private router: Router) {
+    this.auth = new AuthService(this.http, this.router);
+  }
 
-  async createShelter(shelter: ShelterModel): Promise<any> {
+  async createShelter(shelter: SheltersListing): Promise<any> {
     this.http
       .post<{ token: string }>(
         'http://localhost:3000/shelters/register',
@@ -19,6 +24,7 @@ export class ShelterRegisterService {
           console.log(response);
           //save in browser storage
           localStorage.setItem('token', response.token);
+          this.auth.getUserRole();
         },
         error: (error) => {
           console.error(error);

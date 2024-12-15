@@ -1,0 +1,161 @@
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 100vh;
+    width: 100vw;
+    overflow-y: hidden;
+}
+
+h1 {
+    color: #679576;
+    font-size: 49;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 4vh;
+    margin: 0px;
+    text-align: center;
+    animation-delay: 0.2s;
+}
+
+
+/* BUTTONS */
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 10px;
+    gap: 10px;
+}
+
+.button-24 {
+    width: 100px;
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.button-24:hover,
+.button-24:active {
+  background-color: initial;
+  background-position: 0 0;
+}
+
+.button-24:active {
+  opacity: .5;
+}
+
+#deny-btn {
+    background: #FF4742;
+    border: 1px solid #FF4742;
+}
+
+#deny-btn:hover {
+    color: white;
+    background-color: #891f1b;
+}
+
+#approve-btn {
+    background: #4f8b3d;
+    border: 1px solid #4f8b3d;
+}
+
+#approve-btn:hover {
+    color: white;
+    background-color: #135200;
+
+}
+
+/* SHELTERS */
+
+.shelters-container {
+    display: grid;
+    gap: 5vh;
+    grid-template-columns: repeat(auto-fill, minmax(50vh, 1fr));
+    padding: 2vh 5.2vh 10vh 5.2vh;
+}
+
+.shelter-card{
+    position: relative;
+    display: grid;
+    margin-bottom: 15vh;
+    grid-template-columns: 1fr;
+    border-radius: 20px;
+}
+
+.shelter-card img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.shelter-card-info{
+    position: absolute;
+    inset-block-start: 65%;
+    width: 100%;
+    max-height: fit-content;
+    background-color: rgb(240, 240, 240);
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0px 0px 20px 20px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+
+.shelter-card-info h2{
+    color: #679576;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+    font-weight: bold;
+    text-align: center;
+    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+.shelter-card-info p{
+    color: #000000;
+    font-size: 16px;
+    margin: 0px;
+    padding-bottom: 1.1vh;
+    font-weight: bold;
+    text-align: center;
+    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+@media (max-width: 768px) {
+    .shelters-card {
+        margin-bottom: 70vh;
+        margin-left: 10vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .shelters-container {
+        gap: 20vh;
+    }
+}

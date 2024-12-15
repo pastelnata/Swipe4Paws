@@ -16,6 +16,7 @@ export class HeaderComponent {
   
   profileClicked() {
     this.toggleProfileBar.emit();
+    console.log('Logged out');
   }
 
   logoClicked() {

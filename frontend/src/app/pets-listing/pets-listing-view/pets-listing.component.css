@@ -3,8 +3,8 @@
     background-color: rgb(224, 230, 226);
     border-radius: 31px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    overflow: hidden; 
-    box-sizing: border-box; 
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .listing:hover {
@@ -14,7 +14,7 @@
 
 .pet-photo {
     width: 100%;
-    max-height: 30vh;
+    height: 30vh;
     object-fit: cover;
     object-position: center;
     border-radius: 31px;
@@ -40,7 +40,7 @@
 .pet-buttons {
     display: flex;
     justify-content: space-between;
-    padding: 2vh;   
+    padding: 2vh;
 }
 
 .petDetailButton{
@@ -54,7 +54,7 @@
 }
 
 .petDetailButton:hover {
-   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4); 
+   box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.4);
 }
 
 
@@ -76,6 +76,17 @@
 
 .like-button i.fa-solid {
     color: rgb(255, 0, 0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
 }
 
 

@@ -1,0 +1,20 @@
+
+    <body>
+    <h1 *ngIf="ifNoShelters">No shelters to check</h1>
+    <div class="shelters">
+        <div class="shelters-container">
+            <div *ngFor="let shelter of sheltersList; index as i" class="shelter-card">
+                <img src="{{shelter.photo}}" alt="Shelter Photo">
+                <div class="shelter-card-info">
+                    <h2>{{shelter.name}}</h2>
+                    <p>{{shelter.address}}, {{shelter.city}}, </p>
+                    <div class="btns">
+                        <button class="button-24" id="approve-btn" (click)="updateShelter(i, 'Approved')">Approve</button>
+                        <button class="button-24" id="deny-btn" (click)="updateShelter(i, 'Denied')">Deny</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
