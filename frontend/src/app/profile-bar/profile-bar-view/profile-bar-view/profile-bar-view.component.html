@@ -27,7 +27,7 @@
             <mat-icon>vpn_key</mat-icon>
             <p>Change password</p>
           </div>
-          <div class="description-group" *ngIf="isLoggedIn" (click)="logout()">
+          <div class="description-group" *ngIf="isLoggedIn" (click)="logout(); onClose();">
             <mat-icon class="logout-icon">logout</mat-icon>
             <p class="logout-icon">Log out</p>
           </div>

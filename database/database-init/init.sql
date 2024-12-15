@@ -61,8 +61,8 @@ CREATE TABLE favorite (
 -- MOCK DATA --
 --
 INSERT INTO "user" (email, username, "password") VALUES 
-('user1@gmail.com', 'user1', 'password1'),
-('user2@gmail.com', 'user2', 'password2');
+('user1@gmail.com', 'user1', '$2a$10$TxcmfrY7qJkpSRsyybQDwu3gPJdKuckdF1nmQDuMZRbqXTVBP4g1e'),
+('user2@gmail.com', 'user2', '$2a$10$ijbV39slbGLqzlnHPLTag.xwDuarrcMNvcDBfSQWIp3ONGXtToqeO');
 -- Mock data for the moderator table
 INSERT INTO moderator (email, username, "password") VALUES
 ('moderator@gmail.com', 'moderator', '$2b$10$LBtK0B0.PEIhnbC5jTiGPuByCvtLQFFvmSERAmSZrxErlldZhF5Wq');

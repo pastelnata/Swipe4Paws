@@ -18,6 +18,7 @@ import { RedirectCommand } from '@angular/router';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
 import { LoginService } from '../../login/login.service';
+import { AuthService } from '../../../auth/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
@@ -64,7 +65,12 @@ throw new Error('Method not implemented.');
     });
     console.log(this.petsListingList);
 
-    this.loadFavourites();
+
+    this.auth.getId().subscribe((id) => {
+     this.loadFavourites(id);
+    })
+
+
     const token = this.loginService.getToken();
     console.log(`Token: ${token}`);
   }
@@ -72,7 +78,8 @@ throw new Error('Method not implemented.');
   constructor(
     private homeService: HomeService,
     private favouritesService: FavouritesService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private auth: AuthService
   ) {
     this.getLoadedList();
   }
@@ -332,8 +339,8 @@ throw new Error('Method not implemented.');
   }
 
   // Loades favorites
-  loadFavourites() {
-    this.favouritesService.getAllFavourites().subscribe(
+  loadFavourites(userId: number) {
+    this.favouritesService.getAllFavourites(userId).subscribe(
       (favourites: FavoriteModel[]) => {
         this.favourites = favourites;
         console.log('Favourites loaded successfully:', this.favourites);
