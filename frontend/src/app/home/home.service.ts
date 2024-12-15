@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { PetsListing } from '../models/pets-listing';
 import { HttpClient } from '@angular/common/http';
-import { Observable,BehaviorSubject  } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class HomeService {
-
   public petsListingList: PetsListing[] = [];
-  private filteredPetsListSubject: BehaviorSubject<PetsListing[]> = new BehaviorSubject<PetsListing[]>([]);
+  private filteredPetsListSubject: BehaviorSubject<PetsListing[]> =
+    new BehaviorSubject<PetsListing[]>([]);
   private nameFilter: string = '';
   private typeFilter: string = '';
   private genderFilter: string = '';
@@ -20,7 +19,7 @@ export class HomeService {
   private currentOptions: string[] = []; //List of current behaviors of all pets so user can filter by them
   private query: string = '';
 
-  constructor(private http: HttpClient, private router: Router)  {
+  constructor(private http: HttpClient, private router: Router) {
     this.loadListData(); //cals api in future this can be on init or smthng
     this.getLoadedList(); //assignes data to the petsListingList
     this.resetFilters();
@@ -28,7 +27,12 @@ export class HomeService {
     console.log(this.petsListingList);
   }
 
-  setFilters(name: string, type: string, gender: string, currentFilters: string[]) {
+  setFilters(
+    name: string,
+    type: string,
+    gender: string,
+    currentFilters: string[]
+  ) {
     this.nameFilter = name;
     this.typeFilter = type;
     this.genderFilter = gender;
@@ -40,15 +44,19 @@ export class HomeService {
    Apply filters to the pets list
    If no filters are selected, the function returns the original list
    */
-   applyFilters() {   
-    const filtered = this.petsListingList.filter(pet => {
+  applyFilters() {
+    const filtered = this.petsListingList.filter((pet) => {
       const petMatchesName = this.nameFilter
         ? pet.name.toLowerCase().includes(this.nameFilter.toLowerCase())
         : true;
 
       let petMatchesType = false;
-      if (this.typeFilter === "other") {
-        if (!(pet.type.toLowerCase() === "cat" || pet.type.toLowerCase() === "dog")) {
+      if (this.typeFilter === 'other') {
+        if (
+          !(
+            pet.type.toLowerCase() === 'cat' || pet.type.toLowerCase() === 'dog'
+          )
+        ) {
           petMatchesType = true;
         }
       } else {
@@ -61,10 +69,11 @@ export class HomeService {
         ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase()
         : true;
 
-      const behaviors = pet.behaviors.map(b => b.behavior).join(', ');
-      const petMatchesBehavior = this.currentFilters.length === 0
-        ? true
-        : this.currentFilters.every(filter => behaviors.includes(filter));
+      const behaviors = pet.behaviors.map((b) => b.behavior).join(', ');
+      const petMatchesBehavior =
+        this.currentFilters.length === 0
+          ? true
+          : this.currentFilters.every((filter) => behaviors.includes(filter));
 
       return (
         petMatchesName &&
@@ -78,7 +87,6 @@ export class HomeService {
     console.log('Filtered Pets List in home service:', filtered);
   }
 
-
   resetFilters() {
     this.nameFilter = '';
     this.typeFilter = '';
@@ -86,7 +94,6 @@ export class HomeService {
     this.currentFilters = [];
     this.getLoadedList();
     this.applyFilters();
-    
   }
 
   getList(): Observable<PetsListing[]> {
@@ -101,48 +108,53 @@ export class HomeService {
   loadListData(): Observable<PetsListing[]> {
     return this.http.get<PetsListing[]>('http://localhost:3000/pets');
   }
-  
+
   //Search bar logic
   apiUrl = 'http://localhost:3000';
 
   setSearchQuery(query: string) {
     this.query = query;
-    console.log("Query: " + this.query);
+    console.log('Query: ' + this.query);
     this.getLoadedList();
   }
 
   searchPets(): Observable<PetsListing[]> {
-    console.log("SearchPets Clled")
-    return this.http.get<PetsListing[]>(`${this.apiUrl}/pets/search?q=${this.query}`);
+    console.log('SearchPets Clled');
+    return this.http.get<PetsListing[]>(
+      `${this.apiUrl}/pets/search?q=${this.query}`
+    );
   }
 
-
-
-
   getLoadedList() {
-    if(this.query !== '') {
+    if (this.query !== '') {
       this.searchPets().subscribe(
         (data: PetsListing[]) => {
-          console.log("Loaded searched Pets Data in home service:", data); // Log the data to check if it's correct
+          console.log('Loaded searched Pets Data in home service:', data); // Log the data to check if it's correct
           this.petsListingList = data;
           this.applyFilters();
-          this.query = "";
+          this.query = '';
         },
         (error: any) => {
-          console.error("Error loading pets data:", error); // Log any errors that might occur
+          console.error('Error loading pets data:', error); // Log any errors that might occur
         }
       );
-    }else{
+    } else {
       this.loadListData().subscribe(
         (data: PetsListing[]) => {
-          console.log("Loaded Pets Data in home service:", data); // Log the data to check if it's correct
+          console.log('Loaded Pets Data in home service:', data); // Log the data to check if it's correct
           this.petsListingList = data;
           this.applyFilters();
         },
         (error: any) => {
-          console.error("Error loading pets data:", error); // Log any errors that might occur
+          console.error('Error loading pets data:', error); // Log any errors that might occur
         }
       );
     }
-    }
+  }
+
+  scrollToSection(sectionId: string) {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
