@@ -119,4 +119,15 @@
                       >
         </app-pets-listing>
     </div>
+    
+    <mat-paginator 
+              [length]="100"
+              [pageSize]="10"
+              [showFirstLastButtons]="true"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              [pageIndex]="currentPage"
+              (page)="handlePageEvent($event)"
+              aria-label="Select page">
+
+</mat-paginator>
 </section>

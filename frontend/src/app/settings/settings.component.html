@@ -1,0 +1,28 @@
+<div class="settings-container">
+    <h2>Settings</h2>
+  
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" [(ngModel)]="settings.name" name="name" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" [(ngModel)]="settings.email" name="email" required />
+      </div>
+  
+      <div class="form-group">
+        <label for="notifications">Enable Notifications:</label>
+        <input
+          type="checkbox"
+          id="notifications"
+          [(ngModel)]="settings.notifications"
+          name="notifications"
+        />
+      </div>
+  
+      <button type="submit">Save Settings</button>
+    </form>
+  </div>
+  

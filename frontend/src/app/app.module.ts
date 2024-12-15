@@ -10,6 +10,8 @@ import { AuthInterceptor } from '../auth/auth.interceptor';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   providers: [
@@ -30,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     BrowserModule,
     MatIconModule,
+    MatPaginatorModule
 
   ],
 })
