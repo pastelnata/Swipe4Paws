@@ -20,7 +20,8 @@ export class SheltersDetailsComponent {
     city: '',
     postal_code: 0,
     status: '',
-    photo: ''
+    photo: '',
+    description: '',
 
   };
 
