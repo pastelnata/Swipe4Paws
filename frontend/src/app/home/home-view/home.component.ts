@@ -32,6 +32,9 @@ import { AuthService } from '../../../auth/auth.service';
     ReactiveFormsModule,
     PopupComponent,
     PetAddComponent
+    ReactiveFormsModule,
+    PopupComponent,
+    PetAddComponent
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],

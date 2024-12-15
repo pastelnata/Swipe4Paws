@@ -5,6 +5,7 @@ import { isShelter } from "../middleware/auth";
 const petRoutes = Router();
 const petController = new PetController();
 //const router = express.Router();
+//const router = express.Router();
 
 // Defines the routes
 petRoutes.get('/', petController.getAllPets);
