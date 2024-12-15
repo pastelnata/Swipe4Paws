@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
 import { FavouritesService } from '../../favourites/favourites.service';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { AuthService } from '../../../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pets-listing',
@@ -25,7 +26,7 @@ export class PetsListingComponent implements OnInit {
   isLiked = false;
   userid: number = 0;
 
-  constructor(private favouritesService: FavouritesService, private auth: AuthService) {}
+  constructor(private favouritesService: FavouritesService, private auth: AuthService, private router: Router) {}
 
   getBehaviorString(): string {
     return this.petsListing.behaviors.map(b => b.behavior).join(', ');
@@ -73,6 +74,11 @@ export class PetsListingComponent implements OnInit {
         }
       });
     }
+  }
+
+  redirectToPetDetails(petid: number) {
+    console.log('Redirecting to pet details:', petid);
+    this.router.navigateByUrl(`petInfo/${petid}`)
   }
 }
 

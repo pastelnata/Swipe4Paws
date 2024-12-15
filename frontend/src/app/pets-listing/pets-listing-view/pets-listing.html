@@ -10,7 +10,7 @@
     </div>
     <div class="pet-buttons">
         <a href="petInfo/{{petsListing.petid}}">
-          <button class="petDetailButton" type="button"> Pet Info</button>
+          <button class="petDetailButton" type="button" (click)="redirectToPetDetails(petsListing.petid)"> Pet Info</button>
         </a>
         <button (click)="$event.stopPropagation(); toggleLike()"
          class="like-button">
