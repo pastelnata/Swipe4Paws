@@ -50,7 +50,7 @@ export class LoginComponent {
         if (error.status == 401) {
           this.errorMessage = 'Invalid username or password';
         } else {
-          this.errorMessage = 'An error occurred while logging in';
+          this.errorMessage = 'Wrong username or password';
         }
       },
     });
