@@ -31,6 +31,7 @@ CREATE TABLE pet (
     age INT,
     date_added TIMESTAMP,
     photo VARCHAR(255),
+    description VARCHAR(255),
     FOREIGN KEY (shelterid) REFERENCES shelter(shelterid) ON DELETE CASCADE
 );
 
@@ -82,43 +83,43 @@ INSERT INTO shelter (email, managed_by, "name", "password", "address", city, pos
 
 
 -- Mock data for the pet table
-INSERT INTO pet (shelterid, "name", type, race, gender, age, date_added, photo) VALUES
+INSERT INTO pet (shelterid, "name", type, race, gender, age, date_added, photo, description) VALUES
 -- Pets for Shelter 1
-(1, 'Snowball', 'cat', 'Smart', 'Male', 2, '2024-06-01 10:00:00', './assets/pets/snowball.jpg'),
-(1, 'Mittens', 'cat', 'Curious', 'Male', 1, '2024-07-15 11:30:00', './assets/pets/kocurek.jpg'), 
-(1, 'Ryszard', 'parrot', 'Sociable', 'Male', 3, '2024-08-20 12:00:00', './assets/pets/ryszard.jpg'), 
-(1, 'Whiskers', 'cat', 'Calm', 'Male', 1, '2024-09-05 14:00:00', './assets/pets/koteczka.jpg'), 
-(1, 'Maciej', 'dog', 'Elegant', 'Male', 5, '2024-10-10 15:15:00', './assets/pets/maciej.jpg'), 
+(1, 'Snowball', 'cat', 'Smart', 'Male', 2, '2024-06-01 10:00:00', './assets/pets/snowball.jpg', 'Description of pet Snowball'),
+(1, 'Mittens', 'cat', 'Curious', 'Male', 1, '2024-07-15 11:30:00', './assets/pets/kocurek.jpg', 'Description of pet Mittens'), 
+(1, 'Ryszard', 'parrot', 'Sociable', 'Male', 3, '2024-08-20 12:00:00', './assets/pets/ryszard.jpg', 'Description of pet Ryszard'), 
+(1, 'Whiskers', 'cat', 'Calm', 'Male', 1, '2024-09-05 14:00:00', './assets/pets/koteczka.jpg', 'Description of pet Whiskers'), 
+(1, 'Maciej', 'dog', 'Elegant', 'Male', 5, '2024-10-10 15:15:00', './assets/pets/maciej.jpg', 'Description of pet Maciej'), 
 
 
 -- Pets for Shelter 2
-(2, 'Jumbo', 'hedgehog', 'Playful', 'Male', 2, '2024-12-10 19:30:00', './assets/pets/jumbo.jpg'),
-(2, 'Tiger', 'cat', 'Male', 'Male', 1, '2024-12-05 18:00:00', './assets/pets/kocurek2.jpg'), 
-(2, 'Lily', 'cat', 'Cautious', 'Female', 1, '2024-12-08 19:00:00', './assets/pets/koteczka2.jpg'),
-(2, 'Sadie', 'dog', 'Fearful', 'Female', 3, '2024-11-20 16:00:00', './assets/pets/tomasz.jpg'), 
-(2, 'Buddy', 'dog','Chihuahua', 'Male', 3, '2024-10-01 17:00:00','./assets/pets/robert.jpg'),
+(2, 'Jumbo', 'hedgehog', 'Playful', 'Male', 2, '2024-12-10 19:30:00', './assets/pets/jumbo.jpg', 'Description of pet Jumbo'),
+(2, 'Tiger', 'cat', 'Male', 'Male', 1, '2024-12-05 18:00:00', './assets/pets/kocurek2.jpg', 'Description of pet Tiger'), 
+(2, 'Lily', 'cat', 'Cautious', 'Female', 1, '2024-12-08 19:00:00', './assets/pets/koteczka2.jpg', 'Description of pet Lily'),
+(2, 'Sadie', 'dog', 'Fearful', 'Female', 3, '2024-11-20 16:00:00', './assets/pets/tomasz.jpg', 'Description of pet Sadie'), 
+(2, 'Buddy', 'dog','Chihuahua', 'Male', 3, '2024-10-01 17:00:00','./assets/pets/robert.jpg','Description of pet Buddy'),
 
 -- Pets for Shelter 3
-(3, 'Bailey', 'parrot','blue parrot', 'Unknown', 4, '2024-11-01 18:15:00','./assets/pets/parot.jpg'),
-(3, 'Mira', 'dog','Shiba Inu', 'Female', 8, '2024-12-01 19:30:00','./assets/pets/mira.JPG'),
-(3, 'Baloo', 'dog','Staffy', 'Male', 5, '2024-01-15 08:30:00','./assets/pets/baloo.jpg'),
-(3, 'Ruby', 'dog','Corgi', 'Female', 3, '2024-02-05 09:00:00','./assets/pets/sadCorgi.jpg'),
-(3, 'Finn', 'dragon','Dachshund', 'Male', 2, '2024-03-10 10:15:00','./assets/pets/dachshund.jpg'),
+(3, 'Bailey', 'parrot','blue parrot', 'Unknown', 4, '2024-11-01 18:15:00','./assets/pets/parot.jpg', 'Description of pet Bailey'),
+(3, 'Mira', 'dog','Shiba Inu', 'Female', 8, '2024-12-01 19:30:00','./assets/pets/mira.JPG','Description of pet Mira'),
+(3, 'Baloo', 'dog','Staffy', 'Male', 5, '2024-01-15 08:30:00','./assets/pets/baloo.jpg','Description of pet Baloo'),
+(3, 'Ruby', 'dog','Corgi', 'Female', 3, '2024-02-05 09:00:00','./assets/pets/sadCorgi.jpg','Description of pet Ruby'),
+(3, 'Finn', 'dragon','Dachshund', 'Male', 2, '2024-03-10 10:15:00','./assets/pets/dachshund.jpg','Description of pet Finn'),
 
 -- Pets for Shelter 4
-(4, 'Mittens', 'cat','Maine Coon', 'Male', 1, '2024-04-25 11:45:00','./assets/pets/mittens.jpg'),
-(4, 'Hampter', 'dog','hamster', 'Male', 6, '2024-05-30 12:00:00','./assets/pets/hamper.png'),
-(4, 'Pawel', 'parrot','green parrot', 'Female', 3, '2024-06-20 13:30:00','./assets/pets/parrot.jpg'),
-(4, 'Chloe', 'dog','Pug', 'Female', 4, '2024-07-05 14:45:00','./assets/pets/sadPug.jpg'),
-(4, 'Toby','dog' ,'Yorkshire Terrier', 'Male', 5, '2024-08-01 15:00:00','./assets/pets/yorkshire.jpg'),
+(4, 'Mittens', 'cat','Maine Coon', 'Male', 1, '2024-04-25 11:45:00','./assets/pets/mittens.jpg','Description of pet Mittens'),
+(4, 'Hampter', 'dog','hamster', 'Male', 6, '2024-05-30 12:00:00','./assets/pets/hamper.png','Description of pet Hampter'),
+(4, 'Pawel', 'parrot','green parrot', 'Female', 3, '2024-06-20 13:30:00','./assets/pets/parrot.jpg','Description of pet Pawel'),
+(4, 'Chloe', 'dog','Pug', 'Female', 4, '2024-07-05 14:45:00','./assets/pets/sadPug.jpg','Description of pet Chloe'),
+(4, 'Toby','dog' ,'Yorkshire Terrier', 'Male', 5, '2024-08-01 15:00:00','./assets/pets/yorkshire.jpg','Description of pet Toby'),
 
 
 -- Pets for Shelter 5
-(5, 'Oliver', 'dog','British Shorthair', 'Male', 7, '2024-09-15 16:00:00','./assets/pets/goodBoy.jpg'),
-(5, 'Squrwiel', 'Squirrel','Great Dane', 'Female', 4, '2024-10-10 17:30:00','./assets/pets/squirel.jpg'),
-(5, 'Martin', 'cat','Burmese', 'Male', 11, '2024-11-20 18:00:00','./assets/pets/martin.jpg'),
-(5, 'Penny', 'dog','Basset Hound', 'Female', 4, '2024-12-05 19:00:00','./assets/pets/bassetHound.png'),
-(5, 'Semjon', 'cat','Oriental Shorthair', 'Male', 2, '2024-01-20 08:30:00','./assets/pets/semjon.JPG');
+(5, 'Oliver', 'dog','British Shorthair', 'Male', 7, '2024-09-15 16:00:00','./assets/pets/goodBoy.jpg', 'Description of pet Oliver'),
+(5, 'Squrwiel', 'Squirrel','Great Dane', 'Female', 4, '2024-10-10 17:30:00','./assets/pets/squirel.jpg', 'Description of pet Squrwiel'),
+(5, 'Martin', 'cat','Burmese', 'Male', 11, '2024-11-20 18:00:00','./assets/pets/martin.jpg' ,'Description of pet Martin'),
+(5, 'Penny', 'dog','Basset Hound', 'Female', 4, '2024-12-05 19:00:00','./assets/pets/bassetHound.png','Description of pet Penny'),
+(5, 'Semjon', 'cat','Oriental Shorthair', 'Male', 2, '2024-01-20 08:30:00','./assets/pets/semjon.JPG','Description of pet Semjon');
 
 
 -- Mock data for the behavior table
