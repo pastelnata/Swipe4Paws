@@ -36,9 +36,6 @@ import { AuthService } from '../../../auth/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-handlePageEvent($event: PageEvent) {
-throw new Error('Method not implemented.');
-}
   petsListingList: PetsListing[] = [];
   notfilteredList: PetsListing[] = [];
   showFilterOptions: boolean = false;
@@ -46,7 +43,6 @@ throw new Error('Method not implemented.');
   typeFilter: string = '';
   genderFilter: string = '';
   sortOrder: string = '';
-  currentPage: string = "0";
   currentFilters: string[] = [];
   //we need a validation here so it cant be longer than 20 characters
   currentOptions: string[] = [];
@@ -350,6 +346,21 @@ throw new Error('Method not implemented.');
         this.isFavouritesLoaded = true;
       }
     );
+  }
+  pageSizeOptions = [4, 8, 16]; // Page size options
+  currentPage = 0; // Current page index
+  pageSize = this.pageSizeOptions[0]; // Default page size
+
+  // Get paginated pets
+  get paginatedPets() {
+    const startIndex = this.currentPage * this.pageSize;
+    return this.petsListingList.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  // Handle page size and page change
+  handlePageEvent(event: any) {
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
   }
 }
 function parseUrl(arg0: string): import('@angular/router').UrlTree {

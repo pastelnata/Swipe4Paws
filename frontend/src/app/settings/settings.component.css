@@ -1,40 +1,89 @@
-.settings-container {
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
+.form-group {
+    margin-bottom: 20px; /* Increase spacing for better readability */
+}
+
+label {
     display: block;
-    margin-bottom: 5px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  select {
+    margin-bottom: 8px; /* Slightly increase label spacing */
+    font-weight: bold; /* Highlight labels for better visibility */
+    color: #333; /* Use a darker shade for contrast */
+}
+
+input[type="text"],
+input[type="email"],
+select {
     width: 100%;
-    padding: 8px;
+    padding: 10px; /* Increase padding for better input size */
     margin-top: 5px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    border-radius: 8px; /* Use softer corners */
+    border: 1px solid #ccc; /* Use a lighter border color */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    font-size: 16px; /* Adjust font size for readability */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for focus effects */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    border-color: rgb(86, 125, 99); /* Highlight border on focus */
+    box-shadow: 0 0 5px rgb(55, 79, 63); /* Glow effect on focus */
+    outline: none; /* Remove default outline */
+}
+
+button {
+    padding: 12px 24px; /* Larger buttons for better usability */
+    background-color: rgb(86, 125, 99); /* Subtle green shade for buttons */
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px; /* Softer button corners */
+    font-size: 16px; /* Larger font for buttons */
     cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+button:hover {
+    background-color: rgb(55, 79, 63); /* Darker shade for hover */
+    transform: translateY(-2px); /* Slight elevation on hover */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for hover effect */
+}
+
+button:active {
+    transform: translateY(0); /* Reset elevation on click */
+    box-shadow: none; /* Remove shadow on click */
+}
+
+form {
+    max-width: 600px; /* Set a max width for better layout */
+    margin: 0 auto; /* Center align the form */
+    background: #f9f9f9; /* Add a light background color */
+    padding: 20px; /* Add padding around the form */
+    border-radius: 10px; /* Round form edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+body {
+    background-color: #f4f6f9; /* Light gray background for page */
+    color: #333; /* Darker text color for readability */
+    margin: 0;
+    padding: 20px;
+}
+
+.settings-container {
+    max-width: 650px; /* Adjust container width for responsiveness */
+    margin: 0 auto; /* Center the settings container */
+    padding: 30px;
+    border-radius: 12px; /* Rounded edges for a modern look */
+    background-color: #ffffff; /* White card-like background */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.settings-container h2 {
+    font-size: 28px; /* Bold and prominent header */
+    text-align: center; /* Center the header */
+    color: rgb(86, 125, 99); /* Accent color for settings header */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    margin-bottom: 20px; /* Space below the header */
+    letter-spacing: 1.5px; /* Add spacing between letters */
+    border-bottom: 2px solid #ddd; /* Underline for separation */
+    padding-bottom: 10px; /* Padding under header text */
+}

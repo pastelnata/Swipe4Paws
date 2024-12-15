@@ -7,15 +7,15 @@
         <input type="text" id="name" [(ngModel)]="settings.name" name="name" required />
       </div>
 
-      <button type="submit">Save Settings</button>
+      <button type="submit">Update the name</button>
     </form>
-    
+
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Change the password:</label>
         <input type="email" id="email" [(ngModel)]="settings.password" name="password" required />
       </div>
   
-      <button type="submit">Save Settings</button>
+      <button type="submit">Update the password</button>
     </form>
   </div>
