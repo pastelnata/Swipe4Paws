@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,11 @@ export class HeaderComponent {
   
   @Output() toggleProfileBar = new EventEmitter<void>();
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private auth: AuthService) { }
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
   
   profileClicked() {
     this.toggleProfileBar.emit();

@@ -117,8 +117,6 @@ export class HomeService {
   }
 
 
-
-
   getLoadedList() {
     if(this.query !== '') {
       this.searchPets().subscribe(
