@@ -69,6 +69,9 @@ const routeConfig: Routes = [
     canActivate: [userGuard],
     title: 'Favourites'
   },
+  {
+    path: 'pet-add', component: PetAddComponent, title: 'Add pet'
+  },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Sign Up' },
   { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
