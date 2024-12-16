@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,9 +10,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css'
 })
-export class PopupComponent implements OnInit {
-  showPopup = false;
-
+export class PopupComponent  {
+  @Input() showPopup = false;
+ 
+/*
   ngOnInit(): void {
     this.startPopupTimer();
   }
@@ -22,21 +23,21 @@ export class PopupComponent implements OnInit {
       this.showPopup = true;
     }, 1000)
   }
-
+*/
   popupPet(): void {
     this.showPopup = false;
     console.log("ShowedPet");
-    this.startPopupTimer();
+ // this.startPopupTimer();
   }
 
   popupPetLike(): void {
     this.showPopup = false;
     console.log("Liked");
-    this.startPopupTimer();
+ // this.startPopupTimer();
   }
 
   popupClose(): void {
     this.showPopup = false;
-    console.log("Closed");
+    console.log("Popup closed");
   }
 }

@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
   currentOptions: string[] = [];
   favourites: FavoriteModel[] = [];
   isFavouritesLoaded: boolean = false;
+  newPet!: PetsListing;
 
   popupVisible = false;
 
@@ -48,13 +49,24 @@ export class HomeComponent implements OnInit {
       next: (savedPet) => {
         //add to list
         this.petsListingList.unshift(savedPet);
+        //store added pet for popup
+        this.newPet = savedPet;
         console.log('Pet successfully added to backend and UI:', savedPet);
+        this.showPopup();
       },
       error: (err) => {
         console.error('Error adding pet to backend', err);
       }
     });
     //this.petsListingList.unshift(newPet);
+  }
+
+  showPopup(): void {
+    this.popupVisible = true;
+
+    setTimeout(() => {
+      this.popupVisible = false;
+    }, 4000);
   }
 
   selectFiltersForm = new FormGroup({
