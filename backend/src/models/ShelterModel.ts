@@ -14,6 +14,7 @@ class Shelter extends Model {
   private status!: 'Approved' | 'Pending' | 'Denied';
   private photo!: string;
   private role: string = 'shelter';
+  private description!: string;
 
     //access password for checking in shelterservices.ts (for login)
   public getPassword(): string {
@@ -76,7 +77,11 @@ Shelter.init(
     photo: {
       type: DataTypes.STRING(70),
       allowNull: true,
-    }
+    },
+    description: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
   },
   {
     sequelize,

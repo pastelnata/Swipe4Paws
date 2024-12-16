@@ -1,6 +1,6 @@
 <section class="listing">
-    <img class="pet-photo" [src]="petsListing.photo" 
-    alt="Photo of the {{petsListing.name}}"> 
+    <img class="pet-photo" [src]="petsListing.photo"
+    alt="Photo of the {{petsListing.name}}">
     <h1 class="pet-name">{{petsListing.name}}</h1>
     <div class="pet-description">
         <p>{{petsListing.gender}}, {{petsListing.type}}, {{petsListing.age}} years old,</p>
@@ -8,12 +8,15 @@
         <!-- <p class="pet-location">{{petsListing.city}}</p> -->
         <!-- <p class="time-in-shelter">{{petsListing.date_added}}</p> -->
     </div>
-    <div class="pet-buttons">   
-        <a href="petInfo/{{petsListing.petid}}"><button class="petDetailButton">Pet Info</button></a> 
-        <button (click)="$event.stopPropagation(); toggleLike()" class="like-button">
+    <div class="pet-buttons">
+        <a href="petInfo/{{petsListing.petid}}">
+          <button class="petDetailButton" type="button"> Pet Info</button>
+        </a>
+        <button (click)="$event.stopPropagation(); toggleLike()"
+         class="like-button" [class.disabled]="!isLoggedIn()">
+         <span class="sr-only">Like</span>
             <i [ngClass]="isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
         </button>
         <!--<p class="time-in-shelter">{{petsListing.postDate}}</p>-->
-       
     </div>
 </section>

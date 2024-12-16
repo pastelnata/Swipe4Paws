@@ -217,7 +217,7 @@ option {
     display: flex;
     flex-direction: row;
     gap: 8px;
-    margin: 10px 2px 10px 2px;
+    margin: 1vh 0.2vh 1vh 0.2vh;
     max-height: fit-content;
     min-width: min-content;
     flex-wrap: wrap;
@@ -328,6 +328,8 @@ option {
     background-color: rgba(86, 125, 99, 0);
     border: none;
     color: white;
+    min-width: min-content;
+    min-height: min-content;
 }
 .secondary:hover {
     background-color: rgba(86, 125, 99, 0.512) ;

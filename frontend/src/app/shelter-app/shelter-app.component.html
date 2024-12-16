@@ -1,1 +1,25 @@
-<p>shelter-app works!</p>
+<!-- Add Pet Button (placed above the pet list) -->
+<div class="add-button-container">
+  <button class="btn" id="add-btn" (click)="addPet()">Add a new pet</button>
+</div>
+
+<h1 *ngIf="ifNoPets">No pets available</h1>
+
+<div class="pets">
+  <div class="pets-container">
+    <!-- Iterate through the pets list -->
+    <div *ngFor="let pet of petsList; index as i" class="pets-card">
+      <img src="{{pet.photo}}" alt="Pet Photo">
+      <div class="pets-card-info">
+        <p>{{pet.age}} years old</p>
+        <p>{{pet.type}}, {{pet.gender}}</p>
+        <p>Date Added: {{pet.date_added | date: 'shortDate'}}</p>
+        <!-- Pet Buttons: manage and remove -->
+        <div class="btns">
+          <button class="btn" id="edit-btn" (click)="editPet(pet.petid, { name: 'New Name' })">Manage</button>
+          <button class="btn" id="remove-btn" (click)="removePet(i)">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
