@@ -190,11 +190,10 @@ export class HomeComponent implements OnInit {
     buttonElement.style.minWidth = 'fit-content';
     buttonElement.style.maxWidth = 'max-content';
   }
+
   //Scroll function
   scrollToSection(sectionId: string) {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.homeService.scrollToSection(sectionId);
   }
 
   ///CRUD COMMANDS:
@@ -271,7 +270,7 @@ export class HomeComponent implements OnInit {
   }
 
   filterByType(type: string) {
-    // this.homeService.filterByType(type);
+    this.homeService.setSearchQuery('');
     this.loadListData();
     this.typeFilter = type;
     this.applyFilters();
