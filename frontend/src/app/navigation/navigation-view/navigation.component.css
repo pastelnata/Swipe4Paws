@@ -18,6 +18,16 @@ nav {
     margin: 0;
 }
 
+.disabled {
+    color: grey;
+  }
+
+  a:hover.disabled {
+    color: grey;
+    cursor: default;
+    text-decoration: none;
+  }
+
 a {
     color: rgb(86, 125, 99);
     text-decoration: none;
