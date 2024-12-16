@@ -78,6 +78,19 @@
     color: rgb(255, 0, 0);
 }
 
+.disabled {
+    color: grey;
+    cursor: default;
+}
+
+.disabled i {
+    color: grey;
+}
+
+.disabled i:hover {
+    color: grey;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
