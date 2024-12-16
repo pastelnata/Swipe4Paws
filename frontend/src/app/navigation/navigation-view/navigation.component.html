@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
 </head>
-<nav id="nav">
+<nav id="nav" *ngIf="shouldShowNav()">
     <div class="search">
         <img src="assets/search-icon.png" alt="Search Icon">
         <input type="text" placeholder="Search for pets in Denmark" class="input-box" (keydown)="onKeyDown($event)">

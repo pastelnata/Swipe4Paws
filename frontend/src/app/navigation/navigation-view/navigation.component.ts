@@ -4,7 +4,7 @@ import { PetsListing } from '../../models/pets-listing';
 import { NavigationService } from '../navigation.service';
 import { HomeComponent } from '../../home/home-view/home.component';
 import { HomeService } from '../../home/home.service';
-import { Router } from '@angular/router';
+import { Router, RouterConfigOptions } from '@angular/router';
 import { AuthService } from '../../../auth/auth.service';
 
 @Component({
@@ -25,7 +25,13 @@ export class NavigationComponent {
       private homeService: HomeService,
     private authService: AuthService,
     private navigationService: NavigationService,
+    private router: Router
   ) {}
+
+  shouldShowNav(): boolean {
+    const currentUrl = this.router.url;
+    return !(currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/register/shelter' || currentUrl === '/moderator' || currentUrl === '/shelter-manager');
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();
