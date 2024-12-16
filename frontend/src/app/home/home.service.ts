@@ -120,7 +120,7 @@ export class HomeService {
     console.log("SearchPets Clled")
     return this.http.get<PetsListing[]>(`${this.apiUrl}/pets/search?q=${this.query}`);
   }
-
+/*
   getLoadedList() {
     this.loadListData().subscribe(
       (data: PetsListing[]) => {
@@ -134,8 +134,8 @@ export class HomeService {
       }
     );
   }
-
-  /*tLoadedList() {
+*/
+  getLoadedList() {
     if(this.query !== '') {
       this.searchPets().subscribe(
         (data: PetsListing[]) => {
@@ -160,5 +160,5 @@ export class HomeService {
         }
       );
     }
-    }*/
+    }
 }

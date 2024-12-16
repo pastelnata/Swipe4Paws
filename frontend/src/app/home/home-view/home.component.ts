@@ -230,7 +230,7 @@ export class HomeComponent implements OnInit {
       }
     });
   }
-/*s
+
   getLoadedList() {
     this.homeService.loadListData().subscribe(
       (data: PetsListing[]) => {
@@ -242,7 +242,7 @@ export class HomeComponent implements OnInit {
         console.error("Error loading pets data:", error); // Log any errors that might occur
       }
     );
-  }*/
+  }
 
   displayPetsDetails(index: number): void {
     new RedirectCommand(parseUrl(`petInfo/${index}`));
