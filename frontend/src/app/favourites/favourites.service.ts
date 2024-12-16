@@ -24,4 +24,12 @@ export class FavouritesService {
   getAllFavourites(): Observable<any> {
     return this.http.get<FavoriteModel[]>('http://localhost:3000/favorites/get');
   }
+
+  toggleFavourite(petId: number, userId: number, isLiked: Boolean): Observable<any> {
+    if (isLiked) {
+      return this.deleteFavourite(petId, userId);
+    } else {
+      return this.addFavourite(petId, userId);
+    }
+  }
 }

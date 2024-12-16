@@ -1,7 +1,10 @@
 <div *ngIf="showPopup" id="popup-container">
-    <h1>Notification: New pet added</h1>
-    <p>Pet info: basic info</p>
-    <button id="popupPetInfo" (click)="popupPet()">Pet info</button>
-    <button id="popupPetLike" (click)="popupPetLike()">Save to favorites</button>
-    <button id="popupPetLike" (click)="popupClose()">Close</button>
+    <h1> {{petName}} was just added </h1>
+    <img *ngIf="petPhoto" [src]="petPhoto" alt="{{ petName }}" class="petPhoto" />
+    <p>Age: {{petAge }}</p>
+    <button (click)="$event.stopPropagation(); toggleLike()" class="like-button">
+        <i [ngClass]="isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
+    </button>
+    <button id="popupPetInfo" class="popupButton" (click)="popupPet()">Pet info</button>
+    <button id="popupPetLike"class="popupButton" (click)="popupClose()">Close</button>
 </div>

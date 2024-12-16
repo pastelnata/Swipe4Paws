@@ -1,4 +1,10 @@
-<app-popup [showPopup]="popupVisible"></app-popup>
+<app-popup
+ [showPopup]="popupVisible"
+ [petName]="popupPetName"
+ [petAge]="popupPetAge"
+ [petPhoto]="popupPhoto"
+ [petId]="popupPetId">
+</app-popup>
 <!--<app-pet-add (petAdded)="onPetAdded($event)"></app-pet-add>
 <app-pet-add ></app-pet-add>
 <app-pets-details [petsListingList]="petsListingList$ | async"></app-pets-details>

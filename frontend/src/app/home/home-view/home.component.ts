@@ -43,16 +43,31 @@ export class HomeComponent implements OnInit {
   newPet!: PetsListing;
 
   popupVisible = false;
+  popupPetName: string | null = null;
+  popupPetAge: number | null = null;
+  popupPhoto: string | null = null;
+  popupPetId!: number;
 
   onPetAdded(newPet: PetsListing): void {
     this.homeService.addPetToBackend(newPet).subscribe({
       next: (savedPet) => {
         //add to list
-        this.petsListingList.unshift(savedPet);
-        //store added pet for popup
-        this.newPet = savedPet;
+        this.homeService.petsListingList.unshift(savedPet);
+        //check if pet fits the filters
+       this.homeService.applyFilters();
+
+       const filteredList = this.homeService.filteredPetsListSubject.value;
+
+       if (
+        this.homeService.typeFilter === '' &&
+        this.homeService.genderFilter === '' &&
+        this.homeService.currentFilters.length === 0
+       ) {
+        this.showPopup(savedPet);
+       } else  if (filteredList.some((pet: { petid: number; }) => pet.petid === savedPet.petid)) {
+        this.showPopup(savedPet);        
+       }    
         console.log('Pet successfully added to backend and UI:', savedPet);
-        this.showPopup();
       },
       error: (err) => {
         console.error('Error adding pet to backend', err);
@@ -61,12 +76,17 @@ export class HomeComponent implements OnInit {
     //this.petsListingList.unshift(newPet);
   }
 
-  showPopup(): void {
+  showPopup(pet: PetsListing): void {
+    this.popupPetName = pet.name;
+    this.popupPetAge = pet.age;
+    this.popupPhoto = pet.photo;
+    this.popupPetId = pet.petid;
+
     this.popupVisible = true;
 
     setTimeout(() => {
       this.popupVisible = false;
-    }, 4000);
+    }, 10000);
   }
 
   selectFiltersForm = new FormGroup({
@@ -83,7 +103,7 @@ export class HomeComponent implements OnInit {
     
     this.loadFavourites();
 
-    this.popupVisible = true;
+    this.popupVisible = false;
   }
 
   constructor(private homeService: HomeService, private favouritesService: FavouritesService) {
@@ -224,6 +244,8 @@ export class HomeComponent implements OnInit {
   togglePopup() {
     this.popupVisible = !this.popupVisible;
   }
+
+
   
   //removes filter and apply filters
   removeFilter(id: string): void {

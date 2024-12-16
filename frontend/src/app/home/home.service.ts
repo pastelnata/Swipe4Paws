@@ -10,13 +10,13 @@ import { HomeModule } from './home.module';
 export class HomeService {
 
   public petsListingList: PetsListing[] = [];
-  private filteredPetsListSubject: BehaviorSubject<PetsListing[]> = new BehaviorSubject<PetsListing[]>([]);
-  private filteredPetsList: PetsListing[] = [];
+  public filteredPetsListSubject: BehaviorSubject<PetsListing[]> = new BehaviorSubject<PetsListing[]>([]);
+  public filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
-  private typeFilter: string = '';
-  private genderFilter: string = '';
+  public typeFilter: string = '';
+  public genderFilter: string = '';
   private sortOrder: string = '';
-  private currentFilters: string[] = [];
+  public currentFilters: string[] = [];
   private currentOptions: string[] = ["good with children", "aggressive", "good with other pets", "lazy", "friendly", "playfull", "active", "energetic"];
 
   constructor(private http: HttpClient)  {
