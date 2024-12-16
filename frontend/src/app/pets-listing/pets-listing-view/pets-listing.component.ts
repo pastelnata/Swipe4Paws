@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core'
 import { FavouritesService } from '../../favourites/favourites.service';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { AuthService } from '../../../auth/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterConfigOptions, RouteReuseStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-pets-listing',
@@ -24,14 +24,26 @@ export class PetsListingComponent implements OnInit {
   @Input() favourites: FavoriteModel[] = [];
   faHeart = faHeart;
   isLiked = false;
-  userid: number = 0;
+  userid!: number;
 
-  constructor(private favouritesService: FavouritesService, private auth: AuthService, private router: Router) {}
+  constructor(private favouritesService: FavouritesService, private auth: AuthService, private router: Router) {
+    this.auth.getTokenPayload().subscribe({
+      next: (token) => {
+        this.userid = token.userid;
+      },
+      error: (error) => {
+        console.log('not logged in', error);
+      }
+    })
+  }
 
   getBehaviorString(): string {
     return this.petsListing.behaviors.map(b => b.behavior).join(', ');
   }
 
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
 
   ngOnInit(): void {
     // Checking if the pet is favourited
@@ -50,8 +62,11 @@ export class PetsListingComponent implements OnInit {
   }
 
   toggleLike() {
+    if (!this.isLoggedIn()) {
+      alert('You are not logged in');
+      return;
+    }
     this.isLiked = !this.isLiked;
-    
     if (this.isLiked) {
       this.favouritesService.addFavourite(this.petsListing.petid, this.userid)
       .subscribe({

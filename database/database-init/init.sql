@@ -71,15 +71,17 @@ INSERT INTO moderator (email, username, "password") VALUES
 --('moderator2@gmail.com', 'moderator2', '$2b$10$EFtxG8UcLBwbLI9yyrD3c.fABrO3yBHCXj4NUwytZuUIWunqmH50S');--
 
 -- Mock data for the shelter table
+
 INSERT INTO shelter (email, managed_by, "name", "password", "address", city, postal_code, "status", photo, description) VALUES
-('shelter1@example.com', 1, 'Sunny Shelter', '$2a$10$IvwJDtrvlXHOJDuvQA/LouLkRV/gQgjqs6Yu72l10g9WFlV9iXhNS', '123 Street, City', 'Copenhagen', '1000', 'Approved', './assets/shelter1.jpg', 'Description of shelter 1'),
-('shelter2@example.com', 1, 'Happy Tails', '$2a$10$4s9rBJli64BmSbWt9KHfjOM2QSB.u3fO5U3CeMnkD8q6EqvHToPkW', '456 Avenue, City', 'Aarhus', '2000', 'Pending','./assets/shelter2.jpg', 'Description of shelter 2'),
-('shelter3@example.com', 1, 'Furry Friends', '$2a$10$88SVNiRZ.ZDNniowWNWnNebtEJbAzmzqJmkEpREkHVIiND7PzzYny', '789 Road, City', 'Odense', '3000', 'Approved', './assets/shelter1.jpg', 'Description of shelter 3'),
-('shelter4@example.com', 1, 'Paws Place', '$2a$10$BIE9G.WFlbFV3Y8s2qYt0emb.DQ5TapgdjNHzD1oF/jAHSZFOsEYO', '101 Blvd, City', 'Aalborg', '4000', 'Rejected','./assets/shelter2.jpg', 'Description of shelter 4'),
-('shelter5@example.com', 1, 'Animal Haven', '$2a$10$VByK.0p6z32jHRFIPRICu.Zb4BORGx3XPgDvZ0jiCJD4yVC9cy2Wm', '202 Lane, City', 'Esbjerg', '5000', 'Approved', './assets/shelter1.jpg', 'Description of shelter 5'),
-('shelter6@example.com', 1, 'Cozy Corner', '$2a$10$YSIUKztAM8CAcLzdrOO7wehXcL/LMuCBCAVGBIwOEXjg7X6h9wpCC', '303 Street, City', 'Roskilde', '6000', 'Pending', './assets/shelter2.jpg', 'Description of shelter 6'),
-('shelter7@example.com', 1, 'Safe Haven', '$2a$10$rnvSZOSMiFKEJKdbgk.kTuuyBM2YZrxk/GIH93Uk9OOFU.oJG4csW', '404 Avenue, City', 'Horsens', '7000', 'Pending', './assets/shelter1.jpg', 'Description of shelter 7'),
-('shelter8@example.com', 1, 'Pet Paradise', '$2a$10$jLFVgBx2MAvcIcPJJsSfCumYDIpHG3ESyH63fd9O6yeAnsNIIC.zG', '505 Road, City', 'Randers', '8000', 'Pending', './assets/shelter2.jpg', 'Description of shelter 8');
+('shelter1@example.com', 1, 'Sunny Shelter', '$2a$10$IvwJDtrvlXHOJDuvQA/LouLkRV/gQgjqs6Yu72l10g9WFlV9iXhNS', 'Sonderbo 23', 'Copenhagen', '1000', 'Approved', './assets/shelter1.jpg', 'Description of shelter 1'),
+('shelter2@example.com', 1, 'Dansk dyreværn Århus', '$2a$10$4s9rBJli64BmSbWt9KHfjOM2QSB.u3fO5U3CeMnkD8q6EqvHToPkW', 'Tingskoven 5', 'Aarhus', '2000', 'Approved','./assets/shelter2.jpg', 'Description of shelter 2'),
+('shelter3@example.com', 1, 'Dyrenes beskyttelse', '$2a$10$88SVNiRZ.ZDNniowWNWnNebtEJbAzmzqJmkEpREkHVIiND7PzzYny', 'Darupvej 131', 'Roskilde', '4000', 'Approved', './assets/shelter3.jpg', 'Description of shelter 3'),
+('shelter4@example.com', 1, 'Tøstrup kattehjem & dyrevaern', '$2a$10$BIE9G.WFlbFV3Y8s2qYt0emb.DQ5TapgdjNHzD1oF/jAHSZFOsEYO', 'Sjørupgårdvej 15', 'Tøstrup', '8581', 'Rejected','./assets/shelter4.jpg', 'Description of shelter 4'),
+('shelter5@example.com', 1, 'Fulglebjerg internat', '$2a$10$VByK.0p6z32jHRFIPRICu.Zb4BORGx3XPgDvZ0jiCJD4yVC9cy2Wm', 'Sandvedvej 36', 'Fuglebjerg', '4250', 'Approved', './assets/shelter5.jpg', 'Description of shelter 5'),
+('shelter6@example.com', 1, 'Fyns internat', '$2a$10$YSIUKztAM8CAcLzdrOO7wehXcL/LMuCBCAVGBIwOEXjg7X6h9wpCC', 'Store Landevej 33', 'Ejby', '5592', 'Pending', './assets/shelter6.jpg', 'Description of shelter 6'),
+('shelter7@example.com', 1, 'Inges Kattehjem', '$2a$10$rnvSZOSMiFKEJKdbgk.kTuuyBM2YZrxk/GIH93Uk9OOFU.oJG4csW', 'Ejbydalsvej 260', 'Glostrup', '2600', 'Pending', './assets/shelter7.jpg', 'Description of shelter 7'),
+('shelter8@example.com', 1, 'Pindsvinevennerne i Danmark', '$2a$10$jLFVgBx2MAvcIcPJJsSfCumYDIpHG3ESyH63fd9O6yeAnsNIIC.zG', 'Harekærgårdsvej 7', 'Kirke Hyllinge', '4070', 'Pending', './assets/shelter8.jpg', 'Description of shelter 8');
+
 
 
 -- Mock data for the pet table
