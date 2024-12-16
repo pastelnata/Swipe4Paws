@@ -23,7 +23,8 @@ export class NavigationComponent {
 
   constructor(
       private homeService: HomeService,
-    private authService: AuthService
+    private authService: AuthService,
+    private navigationService: NavigationService,
   ) {}
 
   isLoggedIn(): boolean {
