@@ -80,7 +80,7 @@ INSERT INTO shelter (email, managed_by, "name", "password", "address", city, pos
 ('shelter5@example.com', 1, 'Fulglebjerg internat', '$2a$10$VByK.0p6z32jHRFIPRICu.Zb4BORGx3XPgDvZ0jiCJD4yVC9cy2Wm', 'Sandvedvej 36', 'Fuglebjerg', '4250', 'Pending', './assets/shelter5.jpg', 'Description of shelter 5'),
 ('shelter6@example.com', 1, 'Fyns internat', '$2a$10$YSIUKztAM8CAcLzdrOO7wehXcL/LMuCBCAVGBIwOEXjg7X6h9wpCC', 'Store Landevej 33', 'Ejby', '5592', 'Pending', './assets/shelter6.jpg', 'Description of shelter 6'),
 ('shelter7@example.com', 1, 'Inges Kattehjem', '$2a$10$rnvSZOSMiFKEJKdbgk.kTuuyBM2YZrxk/GIH93Uk9OOFU.oJG4csW', 'Ejbydalsvej 260', 'Glostrup', '2600', 'Pending', './assets/shelter7.jpg', 'Description of shelter 7'),
-('shelter8@example.com', 1, 'Pindsvinevennerne i Danmark', '$2a$10$jLFVgBx2MAvcIcPJJsSfCumYDIpHG3ESyH63fd9O6yeAnsNIIC.zG', 'Harekærgårdsvej 7', 'Kirke Hyllinge', '4070', 'Pending', './assets/shelter8.jpg', 'Description of shelter 8');
+('shelter8@example.com', 1, 'Pindsvinevennerne i Danmark', '$2a$10$jLFVgBx2MAvcIcPJJsSfCumYDIpHG3ESyH63fd9O6yeAnsNIIC.zG', 'Harekærgårdsvej 7', 'Kirke Hyllinge', '4070', 'Rejected', './assets/shelter8.jpg', 'Description of shelter 8');
 
 
 
