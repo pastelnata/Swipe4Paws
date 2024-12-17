@@ -1,0 +1,65 @@
+<div class="settings-container" *ngIf="!isShelter">
+  <h2>Settings</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Change the name:</label>
+      <input type="text" id="name" [(ngModel)]="settings.name" name="name" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Change the email:</label>
+      <input type="email" id="email" [(ngModel)]="settings.email" name="email" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Change the password:</label>
+      <input type="password" id="password" [(ngModel)]="settings.password" name="password" />
+    </div>
+
+    <button type="submit">Update Settings</button>
+  </form>
+</div>
+<div class="settings-container" *ngIf="isShelter">
+  <h2>Shelter Settings</h2>
+  
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+    <label for="shelterName">Shelter Name:</label>
+    <input type="text" id="shelterName" [(ngModel)]="shelterSettings.name" name="shelterName" />
+    </div>
+
+    <div class="form-group">
+    <label for="shelterEmail">Email:</label>
+    <input type="email" id="shelterEmail" [(ngModel)]="shelterSettings.email" name="shelterEmail" />
+    </div>
+
+    <div class="form-group">
+    <label for="shelterPassword">Password:</label>
+    <input type="password" id="shelterPassword" [(ngModel)]="shelterSettings.password" name="shelterPassword" />
+    </div>
+
+    <div class="form-group">
+    <label for="shelterAddress">Address:</label>
+    <input type="text" id="shelterAddress" [(ngModel)]="shelterSettings.address" name="shelterAddress" />
+    </div>
+
+    <div class="form-group">
+    <label for="shelterCity">City:</label>
+    <input type="text" id="shelterCity" [(ngModel)]="shelterSettings.city" name="shelterCity" />
+    </div>
+
+    <div class="form-group">
+    <label for="shelterPostalCode">Postal Code:</label>
+    <input type="number" id="shelterPostalCode" [(ngModel)]="shelterSettings.postalCode" name="shelterPostalCode" />
+    </div>
+
+
+    <div class="form-group">
+    <label for="shelterDescription">Description:</label>
+    <textarea id="shelterDescription" [(ngModel)]="shelterSettings.description" name="shelterDescription"></textarea>
+    </div>
+
+    <button type="submit">Update Shelter Settings</button>
+  </form>
+</div>
