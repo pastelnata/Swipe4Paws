@@ -13,7 +13,8 @@ class PetController {
     }
   }
 
-  public async addPet(req: Request, res: Response) {
+
+/*public async addPet(req: Request, res: Response) {
     try {
       const pet = await Pet.create(req.body);
       res.json(pet);
@@ -35,7 +36,7 @@ class PetController {
       console.error("Error adding pet:", error);
     }
   }
-
+*/
   //update call
   public async updatePet(req: Request, res: Response) {
     try {
@@ -70,6 +71,22 @@ class PetController {
     } catch (error) {
       console.error("Error searching pets:", error);
       res.json({ error: "Error searching pets" });
+    }
+  }
+
+  public async addPet(req: Request, res: Response) {
+    try {
+      const newPet = req.body;
+
+      if (!newPet.shelterid) {
+        return res.status(400).json({ message: 'Shelter ID is required' });
+      }
+
+      const pet = await PetService.addPet(newPet);
+      res.status(201).json(pet);
+    } catch (error) {
+      console.error("Error adding pet:", error);
+      res.status(500).json({ error: "Failed to add pet" });
     }
   }
 
