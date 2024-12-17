@@ -20,6 +20,16 @@ class PetService {
         }
     } 
 
+    static async getPetById(petid: number): Promise<Pet | null> {
+        try {
+          const pet = await Pet.findOne({ where: { petid } });
+          return pet;
+        } catch (error) {
+          console.error("Error fetching pets by ID", error);
+          throw error;
+        }
+      }
+
     static async searchPets(query: string) {
         try {
             // Split the query into individual words, trim each word (removes empty spaces), and filter out empty words
