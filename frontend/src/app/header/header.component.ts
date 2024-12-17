@@ -20,9 +20,16 @@ export class HeaderComponent {
     return this.auth.isLoggedIn();
   }
 
-  shouldShowIcons(): boolean {
+  
+
+  shouldShowFavIcon(): boolean {
     const currentUrl = this.router.url;
-    return !(currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/register/shelter' || currentUrl === '/moderator');
+    return !(currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/register/shelter' || currentUrl === '/moderator' || currentUrl === '/shelter-manager');
+  }
+
+  shouldShowUserIcon(): boolean {
+    const currentUrl = this.router.url;
+    return !(currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/register/shelter');
   }
   
   profileClicked() {
