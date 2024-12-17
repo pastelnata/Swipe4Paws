@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { PetsListing } from '../models/pets-listing';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable,  BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class HomeService {
   public petsListingList: PetsListing[] = [];
-  private filteredPetsListSubject: BehaviorSubject<PetsListing[]> =
+  public filteredPetsListSubject: BehaviorSubject<PetsListing[]> =
     new BehaviorSubject<PetsListing[]>([]);
+    // public filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
-  private typeFilter: string = '';
-  private genderFilter: string = '';
-  private sortOrder: string = '';
-  private currentFilters: string[] = [];
+  public typeFilter: string = '';
+  public genderFilter: string = '';
+  private sortOrder: string = ''; 
+  public currentFilters: string[] = [];
   private currentOptions: string[] = []; //List of current behaviors of all pets so user can filter by them
   private query: string = '';
 
@@ -39,6 +41,8 @@ export class HomeService {
     this.currentFilters = currentFilters;
     this.applyFilters();
   }
+
+  behaviors: string = "";
 
   /**
    Apply filters to the pets list
@@ -68,12 +72,14 @@ export class HomeService {
       const petMatchesGender = this.genderFilter
         ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase()
         : true;
+      if (pet.behaviors!== null) {
 
-      const behaviors = pet.behaviors.map((b) => b.behavior).join(', ');
+      this.behaviors = pet.behaviors.map((b) => b.behavior).join(', ');
+      }
       const petMatchesBehavior =
         this.currentFilters.length === 0
           ? true
-          : this.currentFilters.every((filter) => behaviors.includes(filter));
+          : this.currentFilters.every((filter) => this.behaviors.includes(filter));
 
       return (
         petMatchesName &&
@@ -94,6 +100,10 @@ export class HomeService {
     this.currentFilters = [];
     this.getLoadedList();
     this.applyFilters();
+  }
+
+  addPetToBackend(newPet: PetsListing): Observable<PetsListing> {
+    return this.http.post<PetsListing>('http://localhost:3000/pets', newPet);
   }
 
   getList(): Observable<PetsListing[]> {

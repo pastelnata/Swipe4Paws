@@ -1,0 +1,62 @@
+* {
+    z-index: 7;
+}
+
+#popup-container {
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color:  #6C9D7C;
+    border: 2px solid black;
+    padding: 5%;
+    top: 30%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 5%;
+}
+
+.petPhoto {
+    width: 100%;
+    max-width: 200px;
+}
+
+h1 {
+    border-bottom: solid black;
+    font-size: large;
+}
+
+p {
+    font-size: medium;
+}
+
+.popupButton {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 12%;
+    margin: 1%;
+    background-color: rgb(255, 255, 255);
+}
+
+#popupButton:hover {
+    background-color: rgb(184, 184, 184);
+}
+
+.like-button i {
+    color: black;
+}
+
+.like-button i:hover {
+    color: rgb(255, 0, 0);
+}
+
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    font-size: 30px;
+}
+
+.like-button i.fa-solid {
+    color: rgb(255, 0, 0);
+}

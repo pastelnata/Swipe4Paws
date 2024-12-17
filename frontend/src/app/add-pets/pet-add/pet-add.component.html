@@ -1,0 +1,34 @@
+<div class="addPetContainer">
+    <form [formGroup]="petForm" (ngSubmit)="onSubmit()">
+        <label for="name" class="formData">Name:</label>
+        <input id="name" formControlName="name" class="formDataSpace" type="=text" /><br>
+
+        <label for="type" class="formData">Type:</label>
+        <input id="type" formControlName="type" class="formDataSpace" type="text" /><br>
+
+        <label for="race" class="formData">Race:</label>
+        <input id="race" formControlName="race" class="formDataSpace" type="text" /><br>
+
+        <label for="gender" class="formData">Gender:</label>
+        <select id="gender" formControlName="gender" class="formDataSpace">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Unknown">Unknown</option>
+        </select><br>
+
+        <label for="age" class="formData">Age:</label>
+        <input id="age" formControlName="age" class="formDataSpace" type="number" /><br>
+
+        <label for="behaviour" class="formData">Behaviour:</label>
+        <input id="behaviour" formControlName="behaviour" class="formDataSpace" type="text" /><br>
+
+        <label for="shelterid" class="formData">Shelter ID:</label>
+        <input id="shelterid" formControlName="shelterid" class="formDataSpace" type="number" /><br>
+
+        <label for="photo" class="formData">Photo URL:</label>
+        <input id="photo" formControlName="photo" class="formDataSpace" type="text" /><br>
+
+        <button type="submit" [disabled]="petForm.invalid" id="addPetButton">Add Pet</button>
+        <!--<button id="addPetButton" (click)="petAdding()">Add pet</button>-->
+    </form>
+</div>

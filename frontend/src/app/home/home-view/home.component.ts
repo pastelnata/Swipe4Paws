@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RedirectCommand } from '@angular/router';
 import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
+import { PopupComponent } from '../../popup/popup/popup.component';
+import { PetAddComponent } from '../../add-pets/pet-add/pet-add.component';
 import { LoginService } from '../../login/login.service';
 import { AuthService } from '../../../auth/auth.service';
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +32,8 @@ import { AuthService } from '../../../auth/auth.service';
     MatSelectModule,
     MatExpansionModule,
     ReactiveFormsModule,
+    PopupComponent,
+    PetAddComponent,
     MatPaginatorModule,
   ],
   templateUrl: './home.component.html',
@@ -48,6 +52,54 @@ export class HomeComponent implements OnInit {
   currentOptions: string[] = [];
   favourites: FavoriteModel[] = [];
   isFavouritesLoaded: boolean = false;
+  newPet!: PetsListing;
+
+  popupVisible = false;
+  popupPetName: string | null = null;
+  popupPetAge: number | null = null;
+  popupPhoto: string | null = null;
+  popupPetId!: number;
+
+  onPetAdded(newPet: PetsListing): void {
+    this.homeService.addPetToBackend(newPet).subscribe({
+      next: (savedPet) => {
+        //add to list
+        this.homeService.petsListingList.unshift(savedPet);
+        //check if pet fits the filters
+       this.homeService.applyFilters();
+
+       const filteredList = this.homeService.filteredPetsListSubject.value;
+
+       if (
+        this.homeService.typeFilter === '' &&
+        this.homeService.genderFilter === '' &&
+        this.homeService.currentFilters.length === 0
+       ) {
+        this.showPopup(savedPet);
+       } else  if (filteredList.some((pet: { petid: number; }) => pet.petid === savedPet.petid)) {
+        this.showPopup(savedPet);        
+       }    
+        console.log('Pet successfully added to backend and UI:', savedPet);
+      },
+      error: (err) => {
+        console.error('Error adding pet to backend', err);
+      }
+    });
+    //this.petsListingList.unshift(newPet);
+  }
+
+  showPopup(pet: PetsListing): void {
+    this.popupPetName = pet.name;
+    this.popupPetAge = pet.age;
+    this.popupPhoto = pet.photo;
+    this.popupPetId = pet.petid;
+
+    this.popupVisible = true;
+
+    setTimeout(() => {
+      this.popupVisible = false;
+    }, 10000);
+  }
 
   selectFiltersForm = new FormGroup({
     color: new FormControl(''),
@@ -65,6 +117,7 @@ export class HomeComponent implements OnInit {
      this.loadFavourites(id);
     })
 
+    this.popupVisible = false;
 
     const token = this.loginService.getToken();
     console.log(`Token: ${token}`);
@@ -228,6 +281,12 @@ export class HomeComponent implements OnInit {
     new RedirectCommand(parseUrl(`petInfo/${index}`));
   }
 
+  togglePopup() {
+    this.popupVisible = !this.popupVisible;
+  }
+
+
+  
   //removes filter and apply filters
   removeFilter(id: string): void {
     const elementToDelete: HTMLElement = document.getElementById(
