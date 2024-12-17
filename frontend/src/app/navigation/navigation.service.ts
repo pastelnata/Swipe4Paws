@@ -9,5 +9,8 @@ import { HomeService } from '../home/home.service';
   providedIn: 'root',
 })
 export class NavigationService {
-  
+  constructor(private homeService: HomeService) {}
+  scrollToSection() {
+    this.homeService.scrollToSection('Filter-Buttons');
+  }
 }
