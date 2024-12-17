@@ -13,13 +13,16 @@
                 {{currentPet.description}}
             </p>
             <div class="bottom-info">
-                <div class="email">
-                    <span>Name</span>
-                    <p> - {{currentPet.name}}</p>
-                </div>
+                
                 <div class="address">
-                    <span>Info</span>
-                    <p> - {{currentPet.race}}: {{currentPet.behaviors}}, {{currentPet.type}}, {{currentPet.gender}}</p>
+                    <span>Pet Info:</span>
+                    <p>age: {{currentPet.age !== 0 ? currentPet.age : 'Unknown'}}</p>
+                    <p>race: {{currentPet.race !== "" ? currentPet.race : 'Unknown'}}</p>
+                    <p>behaviors: {{currentPet.behaviors !== [] ? currentPet.behaviors : 'Unknown'}}</p>
+                    <p>type: {{currentPet.type !== '' ? currentPet.type : 'Unknown'}}</p>
+                    <p>gender: {{currentPet.gender !== null ? currentPet.gender : 'Unknown'}}</p>
+                    <p>date_added: {{currentPet.date_added | date: 'shortDate'}}</p>
+
                 </div>
             </div>
         </div>

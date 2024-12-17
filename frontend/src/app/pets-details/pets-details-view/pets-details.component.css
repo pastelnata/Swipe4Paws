@@ -105,39 +105,3 @@
     font-size: 34px;
     color: #679576;
 }
-
-/* Contact card */
-
-.contact-card{
-    padding: 5vh;
-}
-.contact-card h1{  
-    align-self: center;
-}
-
-.contact-form{
-    display: grid;
-    gap: 1vh;
-    grid-template-columns: 1fr;
-}
-
-.input-box{
-    border-radius: 5px;
-    border: 2px solid #679576;
-    width: 70vh;
-}
-
-.email-box{
-    
-}
-
-.massage-box{
-
-}
-
-.send-button{
-    background-color: #679576;
-    color: white;
-    width: 20vh;
-    justify-self: center;
-}
