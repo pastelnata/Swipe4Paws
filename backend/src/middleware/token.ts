@@ -18,7 +18,6 @@ class TokenService {
     // creates the jwt using the payload and private key
     // uses the algorithm RS256 to produce a signature that is a JSON Web Signature (JWS)
     const token = jwt.sign(payload, privateKey, { algorithm: "RS256" });
-    console.log('token created in token service:', token); // debug line
     return token;
   }
 

@@ -27,7 +27,6 @@ export class AuthService {
 
     if (token) {
       try {
-        console.log('token:', token);
         // Decode the token to get the payload
         return this.http.post(`${this.apiUrl}/token`, {}).pipe(
           map((response: any) => response.token),

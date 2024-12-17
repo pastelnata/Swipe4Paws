@@ -29,6 +29,10 @@ class Shelter extends Model {
     return this.shelterid;
   }
 
+  public getStatus(): string {
+    return this.status;
+  }
+
   public generateToken(): string {
     console.log("Generating token for shelter", this.email);
     return TokenService.generateToken(this.shelterid, this.email, this.name, this.role);

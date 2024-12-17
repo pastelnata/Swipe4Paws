@@ -33,7 +33,6 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
       this.showFooter = event.url !=='/login' && event.url !== '/register' && event.url !== '/register/shelter';
-      this.showHeader = event.url !=='/login' && event.url !== '/register' && event.url !== '/register/shelter';
       }
     });
   }

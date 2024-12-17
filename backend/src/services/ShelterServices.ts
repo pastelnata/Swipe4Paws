@@ -50,11 +50,11 @@ class ShelterService {
         address: address,
         postal_code: postal_code,
         city: city,
-        status: "Approved",
+        status: "Pending",
       });
 
       console.log("Shelter created:", email);
-      return newShelter.generateToken();
+      return "Shelter not approved";
     } catch (error) {
       console.error("Error creating shelter:", error);
       throw error;
@@ -115,6 +115,13 @@ class ShelterService {
       );
       if (!isPasswordValid) {
         throw new Error("Invalid password!");
+      }
+      
+      if(shelter.getStatus() === "Rejected") {
+        return "Shelter rejected";
+      }
+      if(shelter.getStatus() !== "Approved") {
+        return "Shelter not approved";
       }
 
       console.log("Shelter is logged in:", email);

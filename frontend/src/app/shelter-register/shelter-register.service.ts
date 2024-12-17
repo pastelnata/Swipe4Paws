@@ -23,6 +23,13 @@ export class ShelterRegisterService {
         next: (response) => {
           console.log(response);
           //save in browser storage
+          if(response.token === "Shelter not approved") {
+            alert('An admin will look at your shelter to guarantee its authenticity. You will be contacted soon.');
+            return;
+          } else if(response.token === "Shelter rejected") {
+            alert('Shelter rejected. Please contact admin.');
+            return;
+          }
           localStorage.setItem('token', response.token);
           this.auth.getUserRole();
         },
