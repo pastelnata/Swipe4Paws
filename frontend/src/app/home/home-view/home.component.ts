@@ -21,7 +21,8 @@ import { PopupComponent } from '../../popup/popup/popup.component';
 import { PetAddComponent } from '../../add-pets/pet-add/pet-add.component';
 import { LoginService } from '../../login/login.service';
 import { AuthService } from '../../../auth/auth.service';
-//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-home',
@@ -35,6 +36,17 @@ import { AuthService } from '../../../auth/auth.service';
     PopupComponent,
     PetAddComponent,
     MatPaginatorModule,
+  ],
+  animations: [
+    trigger('slideFade', [
+      transition(':enter', [ // When the element is added to the DOM
+        style({ opacity: 0, transform: 'translateY(-20px)' }),
+        animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [ // When the element is removed from the DOM
+        animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(-20px)' }))
+      ])
+    ])
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
