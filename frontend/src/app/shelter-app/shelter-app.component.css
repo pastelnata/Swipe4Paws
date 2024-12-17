@@ -90,6 +90,13 @@ h1 {
   margin-bottom: 10px;
 }
 
+/* Pet Name */
+.pets-card-info p:first-of-type {
+  font-size: 18px;  /* Make the font size bigger */
+  color: #2c2c2c;   /* Darker color for the pet's name */
+  font-weight: bold; /* Optional: Make it bold for better emphasis */
+}
+
 .pets-card-info p {
   font-size: 14px;
   color: #666;

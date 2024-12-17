@@ -12,6 +12,7 @@
     <div *ngFor="let pet of petsList; index as i" class="pets-card">
       <img src="{{pet.photo}}" alt="Pet Photo">
       <div class="pets-card-info">
+        <p>{{pet.name}}</p>
         <p>{{pet.age}} years old</p>
         <p>{{pet.type}}, {{pet.gender}}</p>
         <p>Date Added: {{pet.date_added | date: 'shortDate'}}</p>
