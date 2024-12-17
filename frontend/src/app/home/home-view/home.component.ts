@@ -180,11 +180,15 @@ export class HomeComponent implements OnInit {
 
   //Create html object filters
 
-  RetriveFilterOptions(){
-    this.currentOptions = this.notfilteredList
-    .map(pet => pet.behaviors.map(b => b.behavior)) // Extract nested behavior strings
-    .flat(); // Flatten the nested arrays
-    console.log("Pets behaviors list correctly loaded" + this.currentOptions);
+  RetriveFilterOptions() {
+    this.currentOptions = Array.from(
+      new Set(
+        this.notfilteredList
+          .map(pet => pet.behaviors.map(b => b.behavior))
+          .flat()
+      )
+    );
+    console.log("Pets behaviors list correctly loaded with unique values: " + this.currentOptions);
   }
 
 

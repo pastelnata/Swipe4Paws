@@ -49,6 +49,7 @@ export class PetAddComponent {
         console.log('Pet added successfully:', response);
         this.petAdded.emit(newPet);
         this.petForm.reset();
+        location.reload();
       },
       error: (err) => {
         console.error('Error adding pet:', error);
