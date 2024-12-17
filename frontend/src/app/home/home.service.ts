@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 })
 export class HomeService {
   public petsListingList: PetsListing[] = [];
-  private filteredPetsListSubject: BehaviorSubject<PetsListing[]> =
+  public filteredPetsListSubject: BehaviorSubject<PetsListing[]> =
     new BehaviorSubject<PetsListing[]>([]);
     // public filteredPetsList: PetsListing[] = [];
   private nameFilter: string = '';
   public typeFilter: string = '';
   public genderFilter: string = '';
-  private sortOrder: string = '';
-  private currentFilters: string[] = [];
+  private sortOrder: string = ''; 
+  public currentFilters: string[] = [];
   private currentOptions: string[] = []; //List of current behaviors of all pets so user can filter by them
   private query: string = '';
 

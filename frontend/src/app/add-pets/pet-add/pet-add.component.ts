@@ -54,11 +54,10 @@ export class PetAddComponent {
         console.error('Error adding pet:', error);
       }
     });
-
     //if (!newPet.shelterid) {
     //  console.log('Shelter ID is missing');
     //  return;
-    //}
+    //}*/
   }
 }
 
