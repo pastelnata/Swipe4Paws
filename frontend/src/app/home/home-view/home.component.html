@@ -44,7 +44,7 @@
             <!-- Button tooggle -->
             <button class="primary" type="button" (click)="toggleFilterOptions()">Filters:</button>
             <!-- Filter options -->
-            <div class="filter-options-box ng-star-inserted" *ngIf="showFilterOptions">
+            <div class="filter-options-box ng-star-inserted" *ngIf="showFilterOptions" @slideFade>
                 <div class="top-row-container">
                     <div class="filter-basic-options">
                         <div class="filter-by-type">
