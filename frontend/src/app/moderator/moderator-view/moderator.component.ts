@@ -39,7 +39,7 @@ export class ModeratorComponent {
     }
   }
 
-  async updateShelter(index: number, status: 'Approved' | 'Denied') {
+  async updateShelter(index: number, status: 'Approved' | 'Rejected') {
     const id = this.sheltersList[index].shelterid;
     if (id) {
       console.log(`updating shelter ${id} with status ${status}`)

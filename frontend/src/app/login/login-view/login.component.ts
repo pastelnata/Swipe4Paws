@@ -38,6 +38,13 @@ export class LoginComponent {
     this.loginService.loginUser(this.email, this.password).subscribe({
       next: (response) => {
         console.log('Login successful', response);
+        if(response.token === "Shelter not approved") {
+          alert('Pending approval. Please return later.');
+          return;
+        } else if(response.token === "Shelter rejected") {
+          alert('Shelter rejected. Please contact admin.');
+          return;
+        }
         // Save the token to localStorage or sessionStorage
         localStorage.setItem('token', response.token);
         // Redirect to a protected route (for example, dashboard)
