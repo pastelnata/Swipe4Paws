@@ -72,31 +72,6 @@ class ShelterService {
     }
   }
 
-  //allow update shelter info
-  public static async updateShelter(
-    shelterid: number,
-    name: string,
-    email: string,
-    password: string,
-    address: string,
-    postal_code: number,
-    city: string,
-    updatedData: Partial<Shelter>
-  ): Promise<Shelter | null> {
-    try {
-      const shelter = await Shelter.findOne({
-        where: { shelterid, name, email, password, address, postal_code, city },
-      });
-      if (!shelter) return null;
-
-      await shelter.update(updatedData);
-      return shelter;
-    } catch (error) {
-      console.error("Error updating shelter:", error);
-      throw error;
-    }
-  }
-
   //login shelter
   public static async loginShelter(
     email: string,
@@ -116,11 +91,11 @@ class ShelterService {
       if (!isPasswordValid) {
         throw new Error("Invalid password!");
       }
-      
-      if(shelter.getStatus() === "Rejected") {
+
+      if (shelter.getStatus() === "Rejected") {
         return "Shelter rejected";
       }
-      if(shelter.getStatus() !== "Approved") {
+      if (shelter.getStatus() !== "Approved") {
         return "Shelter not approved";
       }
 
@@ -128,6 +103,59 @@ class ShelterService {
       return shelter.generateToken();
     } catch (error) {
       console.error("Error logging in shelter:", error);
+      throw error;
+    }
+  }
+
+  public static async updateShelter(
+    shelterid: number,
+    name: string,
+    email: string,
+    password: string,
+    address: string,
+    postal_code: number,
+    city: string,
+    description: string
+  ): Promise<string> {
+    try {
+      const shelter = await Shelter.findOne({ where: { shelterid } });
+      if (!shelter) return "Shelter not found";
+
+      const emailExists = await Shelter.findOne({ where: { email } });
+      
+      if (emailExists) {
+        throw new Error("Email already exists");
+      }
+
+      if (name) {
+        shelter.setName(name);
+      }
+      if (email) {
+        shelter.setEmail(email);
+      }
+      if (password) {
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        shelter.setPassword(hashedPassword);
+      }
+      if (address) {
+        shelter.setAddress(address);
+      }
+      if (postal_code) {
+        shelter.setPostalCode(postal_code);
+      }
+      if (city) {
+        shelter.setCity(city);
+      }
+      if (description) {
+        shelter.setDescription(description);
+      }
+
+      await shelter.save();
+      const token = await shelter.generateToken();
+      return token;
+    } catch (error) {
+      console.error("Error updating shelter:", error);
       throw error;
     }
   }

@@ -103,6 +103,27 @@ class ShelterController {
       res.status(500).json({ message: "Error updating shelter status" });
     }
   }
+
+  public async updateShelter(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const { name, email, password, address, postal_code, city, description } = req.body;
+      const newToken = await ShelterService.updateShelter(
+        Number(id),
+        name,
+        email,
+        password,
+        address,
+        Number(postal_code),
+        city,
+        description
+      );
+      res.status(200).json(newToken);
+    } catch (error) {
+      console.error("Error creating user:", error);
+      res.status(500).json("Error updating user");
+    }
+  }
 }
 
 export default ShelterController;

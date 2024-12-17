@@ -18,13 +18,17 @@ class User extends Model {
     return this.password; 
   }
 
-  public changePassword(password: string): void {
+  public setPassword(password: string): void {
     this.password = password; 
   }
 
-  public changeUserName(username: string): void {
+  public setUsername(username: string): void {
     this.username = username; 
   }
+
+  public setEmail(email: string) {
+    this.email = email;
+  } 
   //get access to email for checking in login (UserServices.ts)
   public getEmail(): string {
     return this.email;

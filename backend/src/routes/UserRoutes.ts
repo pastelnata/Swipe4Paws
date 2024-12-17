@@ -1,6 +1,6 @@
 import UserController from "../controllers/UserController";
 import { Router } from "express";
-import { isModerator } from "../middleware/auth";
+import { isModerator, isUser } from "../middleware/auth";
 
 const userRoutes = Router();
 const userController = new UserController();
@@ -13,5 +13,9 @@ userRoutes.post('/register', async (req, res) => {
 });
 
 userRoutes.post('/login', (req, res) => userController.loginUser(req,res));
-userRoutes.post('/update', (req, res) => userController.updateUser(req,res))
+userRoutes.put('/settings/:id', async (req, res) => {
+  console.log('UserRoutes.ts: PUT /settings/:id');
+  await userController.updateUser(req,res)
+});
+
 export default userRoutes;

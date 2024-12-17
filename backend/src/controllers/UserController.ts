@@ -67,27 +67,22 @@ class UserController {
 
   public async updateUser(req: Request, res: Response) {
     try {
-      const { userId, username, password } = req.body;
-      const success = await UserService.updateUser(
-        userId,
+      const { id } = req.params
+      const { username, email, password } = req.body;
+      console.log("Updating user in controller...", id);
+      console.log(req.body);
+      const newToken = await UserService.updateUser(
+        Number(id),
         username,
+        email,
         password
       );
-      res.status(200).json({success});
+      res.status(200).json(newToken);
     } catch (error) {
       console.error("Error creating user:", error);
       res.status(500).json("Error updating user");
     }
   }
-  //logout a user
-  // public logoutUser(req: Request, res: Response): void {
-  //   res
-  //     .status(200)
-  //     .json({
-  //       message:
-  //         "Successfully logged out. Please remove your token from the client.",
-  //     });
-  //}
 }
 
 export default UserController;
