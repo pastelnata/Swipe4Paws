@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ShelterAppService } from './shelter-app.service';
 import { PetsListing } from '../models/pets-listing';
 import { Component } from '@angular/core';
+import { PetEditPopupViewComponent } from "../pet-edit-popup/pet-edit-popup-view/pet-edit-popup-view.component";
 
 @Component({
   selector: 'app-shelter-app',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, PetEditPopupViewComponent],
   templateUrl: './shelter-app.component.html',
   styleUrl: './shelter-app.component.css'
 })
@@ -73,19 +74,30 @@ export class ShelterAppComponent {
     });
   }
 
+
+  // Manage pet popup stuff
+  isPetEditVisible: boolean = false;
+  petDataToEdit: PetsListing = {
+    petid: -1,
+    date_added: new Date(),
+    name: "",
+    gender: "",
+    age: 0,
+    type: "",
+    race: "",
+    behaviors: [],
+    photo: "",
+    shelterid: 0,
+    description: "",
+  };
+  
   // Edit pet details (e.g., update the pet's name)
-  editPet(petId: number, updatedPet: Partial<PetsListing>) {
-    this.shelterAppService.editPet(petId, updatedPet).subscribe({
-      next: (editedPet) => {
-        const index = this.petsList.findIndex(pet => pet.petid === petId);
-        if (index !== -1) {
-          this.petsList[index] = { ...this.petsList[index], ...updatedPet };
-          console.log('Pet edited:', editedPet);
-        }
-      },
-      error: (error) => {
-        console.error('Error editing pet:', error);
-      }
-    });
+  openPetEditPopup(pet: PetsListing) {
+    this.petDataToEdit = pet;
+    this.isPetEditVisible = !this.isPetEditVisible;
+  }
+
+  closePetEditPopup() {
+    this.isPetEditVisible=false;
   }
 }
