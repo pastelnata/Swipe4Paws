@@ -11,9 +11,6 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"],
-input[type="number"],
-textarea,
 select {
     width: 100%;
     padding: 10px;
@@ -27,9 +24,6 @@ select {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="password"]:focus,
-textarea:focus
 select:focus {
     border-color: rgb(86, 125, 99);
     box-shadow: 0 0 5px rgb(55, 79, 63);
