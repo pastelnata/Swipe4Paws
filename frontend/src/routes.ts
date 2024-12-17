@@ -73,8 +73,8 @@ const routeConfig: Routes = [
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Sign Up' },
   { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
-  { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts'},
-  { path: 'settings', component: SettingsComponent },
+  { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts' },
+  { path: 'settings', component: SettingsComponent, title: 'Settings'},
   { path: '**', redirectTo: '/adopt', pathMatch: 'full' }
 ];
 
