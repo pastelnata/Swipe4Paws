@@ -54,6 +54,10 @@ export class PetsDetailsComponent implements OnInit {
   
     }
 
+    getBehaviorString(): string {
+      return this.currentPet.behaviors.map((b) => b.behavior).join(', ');
+    }
+
 
 
 

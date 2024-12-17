@@ -16,12 +16,12 @@
                 
                 <div class="address">
                     <span>Pet Info:</span>
-                    <p>age: {{currentPet.age !== 0 ? currentPet.age : 'Unknown'}}</p>
-                    <p>race: {{currentPet.race !== "" ? currentPet.race : 'Unknown'}}</p>
-                    <p>behaviors: {{currentPet.behaviors !== [] ? currentPet.behaviors : 'Unknown'}}</p>
-                    <p>type: {{currentPet.type !== '' ? currentPet.type : 'Unknown'}}</p>
-                    <p>gender: {{currentPet.gender !== null ? currentPet.gender : 'Unknown'}}</p>
-                    <p>date_added: {{currentPet.date_added | date: 'shortDate'}}</p>
+                    <p>Age: {{currentPet.age !== 0 ? currentPet.age : 'Unknown'}}</p>
+                    <p>Race: {{currentPet.race !== "" ? currentPet.race : 'Unknown'}}</p>
+                    <p>Behaviors: {{getBehaviorString()}}</p>
+                    <p>Type: {{currentPet.type !== '' ? currentPet.type : 'Unknown'}}</p>
+                    <p>Gender: {{currentPet.gender !== null ? currentPet.gender : 'Unknown'}}</p>
+                    <p>Date added: {{currentPet.date_added | date: 'shortDate'}}</p>
 
                 </div>
             </div>
