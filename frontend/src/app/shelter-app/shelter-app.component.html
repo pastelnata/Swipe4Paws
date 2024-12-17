@@ -1,3 +1,4 @@
+<app-pet-edit-popup-view *ngIf="isPetEditVisible" [petData]="petDataToEdit" (close)="closePetEditPopup()"></app-pet-edit-popup-view>
 <!-- Add Pet Button (placed above the pet list) -->
 <div class="add-button-container">
   <button class="btn" id="add-btn" (click)="addPet()">Add a new pet</button>
@@ -16,7 +17,7 @@
         <p>Date Added: {{pet.date_added | date: 'shortDate'}}</p>
         <!-- Pet Buttons: manage and remove -->
         <div class="btns">
-          <button class="btn" id="edit-btn" (click)="editPet(pet.petid, { name: 'New Name' })">Manage</button>
+          <button class="btn" id="edit-btn" (click)="openPetEditPopup(pet)">Manage</button>
           <button class="btn" id="remove-btn" (click)="removePet(i)">Remove</button>
         </div>
       </div>

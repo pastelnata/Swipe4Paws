@@ -1,0 +1,136 @@
+* {
+    z-index: 3;
+}
+
+@keyframes fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateY(10%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
+.popup-overlay {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    position: relative;
+    background-color: white;
+    border-radius: 30px;
+    outline: solid rgb(82, 153, 188) 1px;
+    border: solid white 30px;
+    width: auto;
+    height: auto;
+    z-index: 3;
+    animation: fall 0.5s linear forwards;
+    overflow: auto;
+}
+  
+.popup-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-shrink: 0;
+    align-items: center;
+    width: 100%;
+    padding: 0% 1%;
+    box-sizing: border-box;
+    border-bottom: 0.5px solid rgb(53, 85, 64);
+}
+
+.popup-description {
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+}
+
+.password-container p {
+    margin-right: 5px;
+}
+
+.change-password-button {
+    color: blue;
+}
+
+.close-popup-button {
+    cursor: pointer;
+}
+
+.bottom-description-container {
+    position: static;
+    box-sizing: border-box;
+    bottom: 0;
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#submit-button {
+    color: #4f8b3d;
+    background-color: white;
+    border: solid #4f8b3d 1px;
+}
+
+#submit-button:hover {
+    color: #ffffff;
+    background-color: #4f8b3d;
+}
+
+#delete-button {
+    color: #FF4742;
+    background-color: white;
+    border: solid #FF4742 1px;
+}
+
+#delete-button:hover {
+    color: #ffffff;
+    background-color: #FF4742;
+}
+
+textarea {
+    field-sizing: content;
+}

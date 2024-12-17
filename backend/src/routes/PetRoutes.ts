@@ -11,5 +11,6 @@ petRoutes.post('/', isShelter, petController.addPet);
 petRoutes.put('/:id', isShelter, petController.updatePet);
 petRoutes.delete('/:id', isShelter, petController.deletePet);
 petRoutes.get('/search', petController.searchPets);
+petRoutes.put('/update', (req, res) => petController.updatePet(req,res))
 
 export default petRoutes;
