@@ -16,6 +16,10 @@ class Shelter extends Model {
   private role: string = 'shelter';
   private description!: string;
 
+  public getName(): string {
+    return this.name;
+  }
+
     //access password for checking in shelterservices.ts (for login)
   public getPassword(): string {
     return this.password; 
@@ -31,6 +35,34 @@ class Shelter extends Model {
 
   public getStatus(): string {
     return this.status;
+  }
+
+  public setName(newName: string) {
+    this.name = newName;
+  }
+
+  public setPassword(password: string): void {
+    this.password = password; 
+  }
+
+  public setEmail(newEmail: string) {
+    this.email = newEmail;
+  }
+
+  public setAddress(newAddress: string) {
+    this.address = newAddress;
+  }
+
+  public setPostalCode(newPostalCode: number) {
+    this.postal_code = newPostalCode;
+  }
+
+  public setCity(newCity: string) {
+    this.city = newCity;
+  }
+
+  public setDescription(newDescription: string) {
+    this.description = newDescription;
   }
 
   public generateToken(): string {

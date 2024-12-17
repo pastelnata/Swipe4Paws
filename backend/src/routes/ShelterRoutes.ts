@@ -1,7 +1,7 @@
 import ShelterController from "../controllers/ShelterController";
 import app from "../config/server";
 import { Router } from "express";
-import { isModerator } from "../middleware/auth";
+import { isModerator, isShelter } from "../middleware/auth";
 
 const shelterRoutes = Router();
 const shelterController = new ShelterController();
@@ -17,6 +17,15 @@ shelterRoutes.patch('/:id/', isModerator, async (req, res) => {
     try {
         await shelterController.updateShelterStatus(req, res);
     } 
+    catch(error) {
+        console.log(error);
+    }
+});
+
+shelterRoutes.put('/settings/:id', isShelter, async (req, res) => {
+    try {
+        await shelterController.updateShelter(req, res);
+    }
     catch(error) {
         console.log(error);
     }

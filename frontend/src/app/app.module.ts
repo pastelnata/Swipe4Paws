@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsComponent } from './settings/settings-view/settings.component';
 
 @NgModule({
   providers: [
@@ -32,8 +32,7 @@ import { SettingsComponent } from './settings/settings.component';
     FormsModule,
     BrowserModule,
     MatIconModule,
-    MatPaginatorModule
-
+    MatPaginatorModule,
   ],
 })
 export class AppModule {}
