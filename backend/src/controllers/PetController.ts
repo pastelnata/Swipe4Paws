@@ -40,14 +40,12 @@ class PetController {
   //update call
   public async updatePet(req: Request, res: Response) {
     try {
-      const pet = await Pet.findByPk(req.params.id);
-      if (!pet) {
-        return res.status(404).json({ error: "Pet not found" });
-      }
-      await pet.update(req.body);
-      res.json(pet);
-    } catch (error) {
-      console.error("Error updating pet:", error);
+      const petData = req.body;
+      const success = await PetService.updatePet(petData);
+      res.status(200).json({success})
+    }
+    catch (error) {
+      throw new Error("Error");
     }
   }
 

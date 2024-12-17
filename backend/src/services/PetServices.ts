@@ -95,6 +95,31 @@ class PetService {
 
         return searchConditions;
     }
+
+    static async updatePet(petData: any): Promise<any> {
+        try {
+            const pet = await Pet.findByPk(petData.petid);
+            if (!pet) {
+                throw new Error('Pet not found');
+            }
+
+            // Update pet properties
+            await pet.update({
+                name: petData.name,
+                gender: petData.gender,
+                age: petData.age,
+                type: petData.type,
+                race: petData.race,
+                photo: petData.photo,
+                shelterid: petData.shelterid,
+                description: petData.description
+            });
+            return `${petData.name} updated successfully`;
+        } 
+        catch (error) {
+            throw new Error('Error.');
+        }
+    } 
 }
 
 export default PetService;
