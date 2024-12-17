@@ -40,6 +40,10 @@ export class ProfileBarViewComponent implements OnInit {
     this.router.navigate(['/favourites'])
   }
 
+  redirectToSettings() {
+    this.router.navigate(['/settings'])
+  }
+
   redirectToFunFacts() {
     this.router.navigate(['/fun-facts'])
   }

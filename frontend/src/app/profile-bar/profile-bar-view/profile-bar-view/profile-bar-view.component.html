@@ -9,9 +9,9 @@
       </div>
       <div class="popup-description">
         <div class="popup-description-top">
-          <div class="description-group" *ngIf="isLoggedIn">
+          <div class="description-group" *ngIf="isLoggedIn" (click)="redirectToSettings(); onClose();">
             <mat-icon>manage_accounts</mat-icon>
-            <p>Your profile</p>
+            <p>Settings</p>
           </div>
           <div class="description-group" *ngIf="isLoggedIn" (click)="redirectToFavourites(); onClose();">
             <mat-icon>star</mat-icon>

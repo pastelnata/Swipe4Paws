@@ -10,6 +10,7 @@ import { PetsListingComponent } from '../../pets-listing/pets-listing-view/pets-
 import { PetsListing } from '../../models/pets-listing';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { HomeService } from '../home.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { FavoriteModel } from '../../models/FavoriteModel';
 import { FavouritesService } from '../../favourites/favourites.service';
 import { LoginService } from '../../login/login.service';
 import { AuthService } from '../../../auth/auth.service';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +30,7 @@ import { AuthService } from '../../../auth/auth.service';
     MatSelectModule,
     MatExpansionModule,
     ReactiveFormsModule,
+    MatPaginatorModule,
   ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
@@ -342,6 +345,21 @@ export class HomeComponent implements OnInit {
         this.isFavouritesLoaded = true;
       }
     );
+  }
+  pageSizeOptions = [4, 8, 16]; // Page size options
+  currentPage = 0; // Current page index
+  pageSize = this.pageSizeOptions[0]; // Default page size
+
+  // Get paginated pets
+  get paginatedPets() {
+    const startIndex = this.currentPage * this.pageSize;
+    return this.petsListingList.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  // Handle page size and page change
+  handlePageEvent(event: any) {
+    this.pageSize = event.pageSize;
+    this.currentPage = event.pageIndex;
   }
 }
 function parseUrl(arg0: string): import('@angular/router').UrlTree {

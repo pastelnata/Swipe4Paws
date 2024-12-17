@@ -17,6 +17,14 @@ class User extends Model {
   public getPassword(): string {
     return this.password; 
   }
+
+  public changePassword(password: string): void {
+    this.password = password; 
+  }
+
+  public changeUserName(username: string): void {
+    this.username = username; 
+  }
   //get access to email for checking in login (UserServices.ts)
   public getEmail(): string {
     return this.email;

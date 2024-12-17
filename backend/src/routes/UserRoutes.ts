@@ -13,5 +13,5 @@ userRoutes.post('/register', async (req, res) => {
 });
 
 userRoutes.post('/login', (req, res) => userController.loginUser(req,res));
-
+userRoutes.post('/update', (req, res) => userController.updateUser(req,res))
 export default userRoutes;
