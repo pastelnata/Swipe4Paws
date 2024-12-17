@@ -42,6 +42,8 @@ export class HomeService {
     this.applyFilters();
   }
 
+  behaviors: string = "";
+
   /**
    Apply filters to the pets list
    If no filters are selected, the function returns the original list
@@ -70,12 +72,14 @@ export class HomeService {
       const petMatchesGender = this.genderFilter
         ? pet.gender.toLowerCase() === this.genderFilter.toLowerCase()
         : true;
+      if (pet.behaviors!== null) {
 
-      const behaviors = pet.behaviors.map((b) => b.behavior).join(', ');
+      this.behaviors = pet.behaviors.map((b) => b.behavior).join(', ');
+      }
       const petMatchesBehavior =
         this.currentFilters.length === 0
           ? true
-          : this.currentFilters.every((filter) => behaviors.includes(filter));
+          : this.currentFilters.every((filter) => this.behaviors.includes(filter));
 
       return (
         petMatchesName &&
