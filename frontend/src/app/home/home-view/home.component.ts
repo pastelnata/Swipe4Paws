@@ -33,7 +33,7 @@ import { AuthService } from '../../../auth/auth.service';
     MatExpansionModule,
     ReactiveFormsModule,
     PopupComponent,
-    PetAddComponent
+    PetAddComponent,
     MatPaginatorModule,
   ],
   templateUrl: './home.component.html',
