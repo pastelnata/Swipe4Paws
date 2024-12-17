@@ -4,6 +4,7 @@ import { PetsListing } from '../../models/pets-listing';
 import { CommonModule } from '@angular/common';
 import { HomeService } from '../../home/home.service';
 import { ActivatedRoute } from '@angular/router';
+import { PetsDetailsService } from '../pets-details.service';
 @Component({
   selector: 'app-pets-details',
   standalone: true,
@@ -13,39 +14,51 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PetsDetailsComponent implements OnInit {
   @Input() petsListing!:PetsListing;
-  public petsListingList: PetsListing[] = [];
-  private currentPetIndex: number = 0;
-  constructor (
-    private homeService: HomeService, 
-    private route: ActivatedRoute) {
-    this.loadListData();
+
+    constructor( private petService: PetsDetailsService) {
+      this.displayPet();
     }
   ngOnInit(): void {
-    const index = this.route.snapshot.paramMap.get('index');
-    console.log("index:" + index);
-    console.log("PetsListing inside details:")
-    console.log(this.petsListing);
-    this.currentPetIndex = this.getCurrentPetIndex();
-    this.loadCurrentPetData(this.currentPetIndex);
+    
     
   }
 
-  getCurrentPetIndex(): number {
-    const index = this.route.snapshot.paramMap.get('id');
-    console.log("index inside getCurrentPetIndex:" + index);
-    return Number(index);
-  }
+  currentPet: PetsListing = {
+    petid: 0,
+    date_added: new Date(), 
+    name: '',
+    gender: '',
+    age: 0,
+    type: '',
+    race: '',
+    behaviors: [],
+    photo: '',
+    shelterid: 0,
+    description: ''
+  };
+  
+    displayPet(){
+      const url = new URL(window.location.href);
+      const id = url.pathname.split('/').pop();
+      if(id){
+        this.getPetById(parseInt(id));
+      }else{
+        console.log("Id not found!");
+      }
+  
+    }
+  
+    getPetById(petId:number){
+      console.log("Id received" + petId);
+      this.petService.getPetById(petId).subscribe((pet: PetsListing) => this.currentPet = pet );
+  
+    }
 
-  loadListData(): void {
-    this.homeService.getList().subscribe((filteredPetsList: PetsListing[]) => {
-      this.petsListingList = filteredPetsList;
-      console.log(this.petsListingList);
-    });
-  }
+    getBehaviorString(): string {
+      return this.currentPet.behaviors.map((b) => b.behavior).join(', ');
+    }
 
-  loadCurrentPetData(index: number): void {
-    this.petsListing = this.petsListingList.find(pet => pet.petid === index)!;
-  }
+
 
 
 

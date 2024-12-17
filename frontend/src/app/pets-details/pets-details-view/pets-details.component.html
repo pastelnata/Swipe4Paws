@@ -1,20 +1,30 @@
-<head>
-    <link rel="stylesheet" href="pets-details.component.css">
-    <title>
-        "Pet details"
-    </title>
-</head>
-<body>
-    <h1>Pet details:</h1>
-    <section id="pet-details">
-        <div class="details" *ngFor="let petsListing of petsListingList">
-            <img class="pet-photo" [src]="petsListing.photo" alt="Description of the pet">
-            <p class="pet-name">Name: {{petsListing.name}}</p>
-            <p class="pet-age">Age: {{petsListing.age}}</p>
-            <p class="pet-description">{{petsListing.type}}, {{petsListing.gender}}</p>
-            <!-- <p class="pet-location">{{petsListing.city}}</p> -->
-            <p class="time-in-shelter">{{petsListing.date_added}}</p>
-            <p>{{petsListing.description}}</p>
+
+<section id="shelterPage">
+    <div class="shelter-card card">
+
+        <h1>{{currentPet.name}}</h1>
+
+        <div class="image-box">
+            <img src="{{currentPet.photo}}"alt="Photo of the shelter named {{currentPet.name}}">
         </div>
-    </section>
-</body>
+        <div class="description-box">
+            <span>About Pet:</span>
+            <p>
+                {{currentPet.description}}
+            </p>
+            <div class="bottom-info">
+                
+                <div class="address">
+                    <span>Pet Info:</span>
+                    <p>Age: {{currentPet.age !== 0 ? currentPet.age : 'Unknown'}}</p>
+                    <p>Race: {{currentPet.race !== "" ? currentPet.race : 'Unknown'}}</p>
+                    <p>Behaviors: {{getBehaviorString()}}</p>
+                    <p>Type: {{currentPet.type !== '' ? currentPet.type : 'Unknown'}}</p>
+                    <p>Gender: {{currentPet.gender !== null ? currentPet.gender : 'Unknown'}}</p>
+                    <p>Date added: {{currentPet.date_added | date: 'shortDate'}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

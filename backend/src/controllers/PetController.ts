@@ -72,6 +72,22 @@ class PetController {
       res.json({ error: "Error searching pets" });
     }
   }
+
+
+
+  public async getPetById(req: Request, res: Response) {
+    try {
+      const petId = parseInt(req.params.id, 10); 
+      if (isNaN(petId)) {
+        return res.status(400).json({ error: "Invalid pet ID" });
+      }
+      const pet = await PetService.getPetById(petId);
+      res.json(pet);
+    } catch (error) {
+      console.error("Error fetching pet by id:", error);
+    }
+  } 
+
 }
 
 export default PetController;
