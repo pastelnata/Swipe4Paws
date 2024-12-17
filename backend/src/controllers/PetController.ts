@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Pet from "../models/PetModel";
 import PetService from "../services/PetServices";
+import PetBehavior from "../models/PetBehaviorModel";
 
 class PetController {
   public async getAllPets(req: Request, res: Response) {
@@ -12,6 +13,30 @@ class PetController {
     }
   }
 
+
+/*public async addPet(req: Request, res: Response) {
+    try {
+      const pet = await Pet.create(req.body);
+      res.json(pet);
+      // Extract the id from the created pet
+      const createdPetId = pet.petid;
+      console.log("Created Pet ID:", createdPetId);
+
+      //Extract the behaviors from the request
+      console.log("Created pet behavior", req.body.behaviors);
+      const addedPetBehaviors = req.body.behaviors
+
+      // Iterate the list of behaviors from request and 
+      // add to the behaviors list with petID
+      for (const behavior of addedPetBehaviors) {
+        await PetBehavior.create({ petid: createdPetId, behavior: behavior });
+      }
+
+    } catch (error) {
+      console.error("Error adding pet:", error);
+    }
+  }
+*/
   //update call
   public async updatePet(req: Request, res: Response) {
     try {

@@ -12,7 +12,8 @@
     "test": "ng test",
     "serve:ssr:swipe4paws": "node dist/swipe4paws/server/server.mjs",
     "dev": "ts-node-dev --poll ./src/index.ts",
-    "start:backend": "npm run build:backend && node backend/dist/index.js"
+    "start:backend": "npm run build:backend && node backend/dist/index.js",
+    "dev:backend": "nodemon backend/src/index.js"
   },
   "private": true,
   "dependencies": {
@@ -32,12 +33,14 @@
     "@fortawesome/fontawesome-free": "^6.6.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "pg": "^8.13.1",
     "rollup": "^3.0.0",
     "rxjs": "~7.8.0",
@@ -62,6 +65,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nodemon": "^3.1.7",
     "rimraf": "^6.0.1",
     "typescript": "~5.5.2"
   },

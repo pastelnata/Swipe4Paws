@@ -5,19 +5,22 @@ import { NavigationComponent } from './navigation/navigation-view/navigation.com
 import { HeaderComponent } from "./header/header.component";
 import { HomeModule } from './home/home.module';
 import { ProfileBarModule } from './profile-bar/profile-bar.module';
+import { ProfileBarViewComponent } from './profile-bar/profile-bar-view/profile-bar-view/profile-bar-view.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet, 
+    RouterOutlet,
     CommonModule,
-    NavigationComponent, 
-    HeaderComponent, 
-    HomeModule, 
-    ProfileBarModule
-  ],
+    NavigationComponent,
+    HeaderComponent,
+    HomeModule,
+    ProfileBarModule,
+    ProfileBarViewComponent
+
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -29,8 +32,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-      this.showFooter = event.url !== '/register' && event.url !== '/register/shelter';
-      this.showHeader = event.url !== '/register' && event.url !== '/register/shelter';
+      this.showFooter = event.url !=='/login' && event.url !== '/register' && event.url !== '/register/shelter';
       }
     });
   }

@@ -86,7 +86,6 @@ export class RegisterComponent implements AfterViewInit {
       try {
         await this.registerService.createUser(user);
         console.log('User created');
-        this.router.navigateByUrl('/');
       } catch (error: any) {
         console.error('Error registering user:', error);
         // Display error message to the user
@@ -102,7 +101,6 @@ export class RegisterComponent implements AfterViewInit {
       email: this.email,
       password: this.password,
       preferences: this.selectedFilters,
-      token: '',
     };
     return user;
   }

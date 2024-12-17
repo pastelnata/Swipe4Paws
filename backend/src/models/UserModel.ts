@@ -1,17 +1,39 @@
 import { Model, DataTypes } from "sequelize";
 import jwt from "jsonwebtoken";
 import sequelize from "../config/sequelize";
-import { PetBehavior } from "./associations";
+import dotenv from "dotenv";
+import TokenService from "../middleware/token";
+
+dotenv.config();
 
 class User extends Model {
   private userid!: number;
   private email!: string;
+  private role: string = "user";
+  private username!: string;
+  private password!: string;
+
+  //access password for checking in UserServices.ts (for login)
+  public getPassword(): string {
+    return this.password; 
+  }
+  //get access to email for checking in login (UserServices.ts)
+  public getEmail(): string {
+    return this.email;
+  }
+
+  public getUserId(): number {
+    return this.userid;
+  }
 
   public generateToken(): string {
-    console.log("Generating token for user:", this.email);
-    const payload = { userid: this.userid, email: this.email };
-    const secret = "123456";
-    return jwt.sign(payload, secret);
+    try {
+      console.log("Generating token for user:", this.email);
+      return TokenService.generateToken(this.userid, this.email, this.username, this.role);
+    } catch (error) {
+      console.error("Error generating token:", error);
+      throw error;
+    }
   }
 }
 

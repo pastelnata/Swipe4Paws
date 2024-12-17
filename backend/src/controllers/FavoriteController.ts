@@ -24,9 +24,9 @@ class FavoriteController {
       }
     }
 
-  public async getAllFavorites(req: Request, res: Response) {
+  public async getAllFavorites(userId: number, req: Request, res: Response) {
     try {
-      const favorites = await FavoriteService.getAllFavorites();
+      const favorites = await FavoriteService.getAllFavorites(userId);
       res.json(favorites);
     } 
     catch (error) {

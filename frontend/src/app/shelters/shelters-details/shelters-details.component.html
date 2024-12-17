@@ -1,15 +1,16 @@
 
 <section id="shelterPage">
     <div class="shelter-card card">
-        
+
         <h1>{{currentShelter.name}}</h1>
-        
+
         <div class="image-box">
-            <img src="{{currentShelter.photo}}">
+            <img src="{{currentShelter.photo}}"alt="Photo of the shelter named {{currentShelter.name}}">
         </div>
         <div class="description-box">
             <span>About shelter:</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, dicta debitis! Quam commodi pariatur modi libero dicta neque nam eum officiis, eveniet vel id officia explicabo facere magni. Qui, maiores.
+            <p>
+                {{currentShelter.description}}
             </p>
             <div class="bottom-info">
                 <div class="email">

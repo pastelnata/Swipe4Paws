@@ -21,8 +21,8 @@ export class FavouritesService {
     return this.http.delete('http://localhost:3000/favorites/delete', { body: { petId, userId } });
   }
 
-  getAllFavourites(): Observable<any> {
-    return this.http.get<FavoriteModel[]>('http://localhost:3000/favorites/get');
+  getAllFavourites(userId: number): Observable<any> {
+    return this.http.get<FavoriteModel[]>(`http://localhost:3000/favorites/get?userId=${userId}`);
   }
 
   toggleFavourite(petId: number, userId: number, isLiked: Boolean): Observable<any> {
