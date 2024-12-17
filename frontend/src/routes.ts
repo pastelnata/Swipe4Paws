@@ -12,8 +12,8 @@ import { ModeratorComponent } from './app/moderator/moderator-view/moderator.com
 import { shelterGuard, userGuard, moderatorGuard } from './auth/auth.guard';
 import { FavouritesComponent } from './app/favourites/favourites-view/favourites-view.component';
 import { LoginComponent } from './app/login/login-view/login.component';
-import { FunFactsViewComponent } from "./app/fun-facts/fun-facts-view/fun-facts-view.component";
-import { SettingsComponent } from './app/settings/settings.component';
+import { FunFactsViewComponent } from './app/fun-facts/fun-facts-view/fun-facts-view.component';
+import { SettingsComponent } from './app/settings/settings-view/settings.component';
 import { PetAddComponent } from "./app/add-pets/pet-add/pet-add.component";
 
 const routeConfig: Routes = [
@@ -69,14 +69,22 @@ const routeConfig: Routes = [
     path: 'favourites',
     component: FavouritesComponent,
     canActivate: [userGuard],
-    title: 'Favourites'
+    title: 'Favourites',
   },
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'register', component: RegisterComponent, title: 'Sign Up' },
-  { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
-  { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts' },
-  { path: 'settings', component: SettingsComponent, title: 'Settings'},
-  { path: '**', redirectTo: '/adopt', pathMatch: 'full' }
+  {
+    path: 'register/shelter',
+    component: ShelterRegisterComponent,
+    title: 'Shelter Sign Up',
+  },
+  {
+    path: 'fun-facts',
+    component: FunFactsViewComponent,
+    title: 'Pet fun facts',
+  },
+  { path: 'settings', component: SettingsComponent, title: 'Settings' },
+  { path: '**', redirectTo: '/adopt', pathMatch: 'full' },
 ];
 
 export default routeConfig;

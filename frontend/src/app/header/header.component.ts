@@ -20,8 +20,6 @@ export class HeaderComponent {
     return this.auth.isLoggedIn();
   }
 
-  
-
   shouldShowFavIcon(): boolean {
     const currentUrl = this.router.url;
     return !(currentUrl === '/login' || currentUrl === '/register' || currentUrl === '/register/shelter' || currentUrl === '/moderator' || currentUrl === '/shelter-manager');
@@ -34,7 +32,6 @@ export class HeaderComponent {
   
   profileClicked() {
     this.toggleProfileBar.emit();
-    console.log('Logged out');
   }
 
   logoClicked() {
