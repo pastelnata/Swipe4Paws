@@ -1,0 +1,43 @@
+<div class="popup-overlay" id="popup-overlay" (click)="onClose()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <div class="popup-header">
+        <h5>Manage {{nonDynamicName}}</h5>
+        <p class="close-popup-button" (click)="onClose()">X</p>
+    </div>
+      <div class="popup-description">
+        <form (ngSubmit)="onSubmit()" #editPetForm="ngForm">
+            <div class="form-group">
+              <label for="name">Name:</label><br>
+              <input type="text" id="name" [(ngModel)]="petData.name" name="name" required/>
+            </div>
+            <div class="form-group">
+              <label for="age">Age:</label><br>
+              <input type="number" id="age" [(ngModel)]="petData.age" name="age" required/>
+            </div>
+            <div class="form-group">
+              <label for="type">Type:</label><br>
+              <input type="text" id="type" [(ngModel)]="petData.type" name="type" required/>
+            </div>
+            <div class="form-group">
+              <label for="race">Race:</label><br>
+              <input type="text" id="race" [(ngModel)]="petData.race" name="race"/>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender:</label><br>
+              <select id="gender" [(ngModel)]="petData.gender" name="gender" required>
+                <option value='Male'>Male</option> 
+                <option value='Female'>Female</option>
+                <option value='Unknown'>Unknown</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="description">Description:</label><br>
+              <textarea id="description" [(ngModel)]="petData.description" name="description" rows="4"></textarea>
+            </div>
+            <div class="bottom-description-container">
+              <button id="submit-button" type="submit" class="button">Save</button>
+            </div>
+        </form>              
+      </div>
+    </div>
+  </div>

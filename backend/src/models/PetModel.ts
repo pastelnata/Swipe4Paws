@@ -13,6 +13,7 @@ class Pet extends Model {
     private shelterid!: number;
     private photo!: string;
     private type!: string;
+    private description!: string;
 }
 
 Pet.init(
