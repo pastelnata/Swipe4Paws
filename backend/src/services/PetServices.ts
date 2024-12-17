@@ -22,7 +22,13 @@ class PetService {
 
     static async getPetById(petid: number): Promise<Pet | null> {
         try {
-          const pet = await Pet.findOne({ where: { petid } });
+          const pet = await Pet.findOne({ where: { petid }, include: [
+            {
+                model: PetBehavior,
+                as: 'behaviors',
+                attributes: ['behavior']
+            }
+        ] });
           return pet;
         } catch (error) {
           console.error("Error fetching pets by ID", error);
