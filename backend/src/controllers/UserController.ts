@@ -67,17 +67,13 @@ class UserController {
 
   public async updateUser(req: Request, res: Response) {
     try {
-      const { id } = req.params
-      const { username, email, password } = req.body;
-      console.log("Updating user in controller...", id);
-      console.log(req.body);
-      const newToken = await UserService.updateUser(
-        Number(id),
+      const { userId, username, password } = req.body;
+      const success = await UserService.updateUser(
+        userId,
         username,
-        email,
         password
       );
-      res.status(200).json(newToken);
+      res.status(200).json({success});
     } catch (error) {
       console.error("Error creating user:", error);
       res.status(500).json("Error updating user");
