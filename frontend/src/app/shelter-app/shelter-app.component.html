@@ -1,7 +1,10 @@
 <!-- Add Pet Button (placed above the pet list) -->
 <div class="add-button-container">
-  <button class="btn" id="add-btn" (click)="addPet()">Add a new pet</button>
+  <button class="btn" id="add-btn" (click)="toggleAddPetForm()">Add new pet</button>
 </div>
+
+<app-pet-add *ngIf="showAddPetForm" (petAdded)="onPetAdded($event)"></app-pet-add>
+
 
 <h1 *ngIf="ifNoPets">No pets available</h1>
 

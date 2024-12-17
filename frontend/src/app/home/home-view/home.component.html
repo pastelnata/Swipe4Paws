@@ -9,7 +9,6 @@
 <app-pet-add ></app-pet-add>
 <app-pets-details [petsListingList]="petsListingList$ | async"></app-pets-details>
 <app-pets-listing *ngFor="let petsListing of petsListingList" [petsListing]="petsListing" [favourites]="favourites"></app-pets-listing>-->
-<app-pet-add (petAdded)="onPetAdded($event)"></app-pet-add>
 
 <section id="main">
     <img #backgroundPic id="background-pic" class="background-pic show" src="/assets/main-background.png" alt="Main Background">
