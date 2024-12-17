@@ -75,6 +75,7 @@ const routeConfig: Routes = [
   { path: 'register/shelter', component: ShelterRegisterComponent, title: 'Shelter Sign Up' },
   { path: 'fun-facts', component: FunFactsViewComponent, title: 'Pet fun facts'},
   { path: 'settings', component: SettingsComponent },
+  { path: '**', redirectTo: '/adopt', pathMatch: 'full' }
 ];
 
 export default routeConfig;
