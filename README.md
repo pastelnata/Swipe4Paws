@@ -41,6 +41,11 @@ This project was developed during our third semester at university. Our objectiv
 
 - The app is accessible on [http://localhost:4200](http://localhost:4200).
 - The API is available at [http://localhost:3000](http://localhost:3000).
+  
+- To log in, use the following credentials:
+-   For user account,       user1@gmail.com:password1
+-   For shelter account,    shelter1@example.com:password1
+-   For moderator account,  moderator@gmail.com:moderator
 
 ### Stopping the Applicaion:
 
